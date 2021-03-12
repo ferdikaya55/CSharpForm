@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class frmMusteriler
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,8 @@ namespace WindowsFormsApp1
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.txtMusteriId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnSiparisler = new System.Windows.Forms.Button();
+            this.btnUrunler = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,9 +112,10 @@ namespace WindowsFormsApp1
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(314, 31);
+            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkle.Location = new System.Drawing.Point(297, 39);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnEkle.Size = new System.Drawing.Size(91, 31);
             this.btnEkle.TabIndex = 9;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
@@ -120,9 +123,10 @@ namespace WindowsFormsApp1
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(314, 64);
+            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSil.Location = new System.Drawing.Point(297, 76);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(75, 23);
+            this.btnSil.Size = new System.Drawing.Size(91, 32);
             this.btnSil.TabIndex = 10;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
@@ -130,9 +134,10 @@ namespace WindowsFormsApp1
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(314, 94);
+            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGuncelle.Location = new System.Drawing.Point(297, 114);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(75, 23);
+            this.btnGuncelle.Size = new System.Drawing.Size(91, 34);
             this.btnGuncelle.TabIndex = 11;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
@@ -155,11 +160,35 @@ namespace WindowsFormsApp1
             this.label4.TabIndex = 12;
             this.label4.Text = "Müşteri Id";
             // 
-            // Form1
+            // btnSiparisler
+            // 
+            this.btnSiparisler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSiparisler.Location = new System.Drawing.Point(619, 35);
+            this.btnSiparisler.Name = "btnSiparisler";
+            this.btnSiparisler.Size = new System.Drawing.Size(121, 41);
+            this.btnSiparisler.TabIndex = 14;
+            this.btnSiparisler.Text = "Siparişler";
+            this.btnSiparisler.UseVisualStyleBackColor = true;
+            this.btnSiparisler.Click += new System.EventHandler(this.btnSiparisler_Click);
+            // 
+            // btnUrunler
+            // 
+            this.btnUrunler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnUrunler.Location = new System.Drawing.Point(619, 86);
+            this.btnUrunler.Name = "btnUrunler";
+            this.btnUrunler.Size = new System.Drawing.Size(121, 41);
+            this.btnUrunler.TabIndex = 15;
+            this.btnUrunler.Text = "Ürünler";
+            this.btnUrunler.UseVisualStyleBackColor = true;
+            this.btnUrunler.Click += new System.EventHandler(this.btnUrunler_Click);
+            // 
+            // frmMusteriler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUrunler);
+            this.Controls.Add(this.btnSiparisler);
             this.Controls.Add(this.txtMusteriId);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnGuncelle);
@@ -172,7 +201,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "frmMusteriler";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -195,6 +224,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.TextBox txtMusteriId;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSiparisler;
+        private System.Windows.Forms.Button btnUrunler;
     }
 }
 

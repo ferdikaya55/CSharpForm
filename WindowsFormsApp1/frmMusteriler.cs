@@ -10,12 +10,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class frmMusteriler : Form
     {
         SqlConnection connection;
         SqlCommand command;
         SqlDataAdapter adapter;
-        public Form1()
+        public frmMusteriler()
         {
             InitializeComponent();
         }
@@ -26,9 +26,9 @@ namespace WindowsFormsApp1
         }
         private void GetMusteri()
         {
-            connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=DenemeDB;Integrated Security=SSPI");
+            connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=OycDB1;Integrated Security=SSPI");
             connection.Open();
-            adapter = new SqlDataAdapter("Select * from TBL_Musteriler",connection);
+            adapter = new SqlDataAdapter("Select * from Musteriler",connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
             dataGridView1.DataSource = table;
@@ -49,9 +49,9 @@ namespace WindowsFormsApp1
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            string query = "INSERT INTO TBL_Musteriler(MusteriAdi,Adres,Telefon) VALUES (@MusteriAdi,@Adres,@Telefon)";
+            string query = "INSERT INTO Musteriler(MusteriAd,Adres,Telefon) VALUES (@MusteriAd,@Adres,@Telefon)";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriAdi",txtMusteriAdi.Text);
+            command.Parameters.AddWithValue("@MusteriAd",txtMusteriAdi.Text);
             command.Parameters.AddWithValue("@Adres", txtAdresi.Text);
             command.Parameters.AddWithValue("@Telefon", txtTelefon.Text);
             connection.Open();
@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            string query = "DELETE FROM TBL_Musteriler WHERE MusteriId=@MusteriId";
+            string query = "DELETE FROM Musteriler WHERE MusteriId=@MusteriId";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("MusteriId", Convert.ToInt32(txtMusteriId.Text));
             connection.Open();
@@ -74,16 +74,29 @@ namespace WindowsFormsApp1
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            string query = "UPDATE TBL_Musteriler SET MusteriAdi=@MusteriAdi,Adres=@Adres,Telefon=@Telefon WHERE MusteriId=@MusteriId";
+            string query = "UPDATE Musteriler SET MusteriAd=@MusteriAd,Adres=@Adres,Telefon=@Telefon WHERE MusteriId=@MusteriId";
             command = new SqlCommand(query,connection);
             command.Parameters.AddWithValue("@MusteriId",Convert.ToInt32(txtMusteriId.Text));
-            command.Parameters.AddWithValue("@MusteriAdi", txtMusteriAdi.Text);
+            command.Parameters.AddWithValue("@MusteriAd", txtMusteriAdi.Text);
             command.Parameters.AddWithValue("@Adres", txtAdresi.Text);
             command.Parameters.AddWithValue("@Telefon", txtTelefon.Text);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
             GetMusteri();
+        }
+
+        private void btnSiparisler_Click(object sender, EventArgs e)
+        {
+            frmSiparisler frmSiparisler = new frmSiparisler();
+            frmSiparisler.ShowDialog();
+        }
+
+        private void btnUrunler_Click(object sender, EventArgs e)
+        {
+
+            frmUrunler frmUrunler = new frmUrunler();
+            frmUrunler.ShowDialog();
         }
     }
 }
