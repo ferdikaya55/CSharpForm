@@ -1,0 +1,11 @@
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.frmSiparisDetay.resources

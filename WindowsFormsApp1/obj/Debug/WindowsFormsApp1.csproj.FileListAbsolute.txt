@@ -10,3 +10,5 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp1\obj\Debug\Windows
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmMusteriler.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmSiparisler.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmUrunler.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SiparisDetay.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmAnasayfa.resources

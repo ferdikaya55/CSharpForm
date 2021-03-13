@@ -45,7 +45,11 @@ namespace WindowsFormsApp1
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewSiparis = new System.Windows.Forms.DataGridView();
+            this.btnSiparisler = new System.Windows.Forms.Button();
+            this.dataGridViewSiparisListesi = new System.Windows.Forms.DataGridView();
+            this.btnSiparisDetay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSiparis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSiparisListesi)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSiparisId
@@ -66,27 +70,27 @@ namespace WindowsFormsApp1
             // 
             // btnSiparisGuncelle
             // 
-            this.btnSiparisGuncelle.Location = new System.Drawing.Point(338, 78);
+            this.btnSiparisGuncelle.Location = new System.Drawing.Point(305, 161);
             this.btnSiparisGuncelle.Name = "btnSiparisGuncelle";
-            this.btnSiparisGuncelle.Size = new System.Drawing.Size(75, 23);
+            this.btnSiparisGuncelle.Size = new System.Drawing.Size(89, 31);
             this.btnSiparisGuncelle.TabIndex = 22;
             this.btnSiparisGuncelle.Text = "Güncelle";
             this.btnSiparisGuncelle.UseVisualStyleBackColor = true;
             // 
             // btnSiparisSil
             // 
-            this.btnSiparisSil.Location = new System.Drawing.Point(338, 49);
+            this.btnSiparisSil.Location = new System.Drawing.Point(305, 132);
             this.btnSiparisSil.Name = "btnSiparisSil";
-            this.btnSiparisSil.Size = new System.Drawing.Size(75, 23);
+            this.btnSiparisSil.Size = new System.Drawing.Size(89, 23);
             this.btnSiparisSil.TabIndex = 21;
             this.btnSiparisSil.Text = "Sil";
             this.btnSiparisSil.UseVisualStyleBackColor = true;
             // 
             // btnSiparisEkle
             // 
-            this.btnSiparisEkle.Location = new System.Drawing.Point(338, 20);
+            this.btnSiparisEkle.Location = new System.Drawing.Point(305, 103);
             this.btnSiparisEkle.Name = "btnSiparisEkle";
-            this.btnSiparisEkle.Size = new System.Drawing.Size(75, 23);
+            this.btnSiparisEkle.Size = new System.Drawing.Size(89, 23);
             this.btnSiparisEkle.TabIndex = 20;
             this.btnSiparisEkle.Text = "Ekle";
             this.btnSiparisEkle.UseVisualStyleBackColor = true;
@@ -182,15 +186,50 @@ namespace WindowsFormsApp1
             this.dataGridViewSiparis.ReadOnly = true;
             this.dataGridViewSiparis.RowHeadersWidth = 51;
             this.dataGridViewSiparis.RowTemplate.Height = 24;
-            this.dataGridViewSiparis.Size = new System.Drawing.Size(645, 169);
+            this.dataGridViewSiparis.Size = new System.Drawing.Size(805, 185);
             this.dataGridViewSiparis.TabIndex = 30;
             this.dataGridViewSiparis.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSiparis_CellEnter);
+            // 
+            // btnSiparisler
+            // 
+            this.btnSiparisler.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSiparisler.Location = new System.Drawing.Point(49, 455);
+            this.btnSiparisler.Name = "btnSiparisler";
+            this.btnSiparisler.Size = new System.Drawing.Size(172, 42);
+            this.btnSiparisler.TabIndex = 31;
+            this.btnSiparisler.Text = "Sipariş Listesi";
+            this.btnSiparisler.UseVisualStyleBackColor = true;
+            this.btnSiparisler.Click += new System.EventHandler(this.btnSiparisler_Click);
+            // 
+            // dataGridViewSiparisListesi
+            // 
+            this.dataGridViewSiparisListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSiparisListesi.Location = new System.Drawing.Point(42, 516);
+            this.dataGridViewSiparisListesi.Name = "dataGridViewSiparisListesi";
+            this.dataGridViewSiparisListesi.RowHeadersWidth = 51;
+            this.dataGridViewSiparisListesi.RowTemplate.Height = 24;
+            this.dataGridViewSiparisListesi.Size = new System.Drawing.Size(805, 196);
+            this.dataGridViewSiparisListesi.TabIndex = 32;
+            // 
+            // btnSiparisDetay
+            // 
+            this.btnSiparisDetay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSiparisDetay.Location = new System.Drawing.Point(257, 455);
+            this.btnSiparisDetay.Name = "btnSiparisDetay";
+            this.btnSiparisDetay.Size = new System.Drawing.Size(208, 42);
+            this.btnSiparisDetay.TabIndex = 33;
+            this.btnSiparisDetay.Text = "Sipariş Detayları";
+            this.btnSiparisDetay.UseVisualStyleBackColor = true;
+            this.btnSiparisDetay.Click += new System.EventHandler(this.btnSiparisDetay_Click);
             // 
             // frmSiparisler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1016, 738);
+            this.Controls.Add(this.btnSiparisDetay);
+            this.Controls.Add(this.dataGridViewSiparisListesi);
+            this.Controls.Add(this.btnSiparisler);
             this.Controls.Add(this.dataGridViewSiparis);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtFiyat);
@@ -208,9 +247,10 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmSiparisler";
-            this.Text = "frmSatislar";
+            this.Text = "frmSiparisler";
             this.Load += new System.EventHandler(this.frmSiparisler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSiparis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSiparisListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +274,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dataGridViewSiparis;
+        private System.Windows.Forms.Button btnSiparisler;
+        private System.Windows.Forms.DataGridView dataGridViewSiparisListesi;
+        private System.Windows.Forms.Button btnSiparisDetay;
     }
 }

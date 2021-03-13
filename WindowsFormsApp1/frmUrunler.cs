@@ -69,18 +69,30 @@ namespace WindowsFormsApp1
         {
             Random random = new Random();
             int siparisNo = random.Next(1,1000);
+            int adet = Convert.ToInt32(txtAdet.Text);
+            decimal birimFiyati = Convert.ToDecimal(txtBirimFiyati.Text);
             string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi,Adet,Fiyat) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi,@Adet,@Fiyat)";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriId",1);
+            command.Parameters.AddWithValue("@MusteriId", 2);
             command.Parameters.AddWithValue("@SiparisNo",Convert.ToString(siparisNo));
-            command.Parameters.AddWithValue("@SiparisTarihi", 2021-03-12);
-            command.Parameters.AddWithValue("@Adet", Convert.ToInt32(txtAdet.Text));
-            command.Parameters.AddWithValue("@Fiyat", Convert.ToDecimal(txtBirimFiyati.Text));
+            command.Parameters.AddWithValue("@SiparisTarihi",DateTime.Now);
+            command.Parameters.AddWithValue("@Adet",adet);
+            command.Parameters.AddWithValue("@Fiyat",birimFiyati);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
             frmSiparisler frmSiparisler = new frmSiparisler();
             frmSiparisler.ShowDialog();
+            string querySiparisDetay = "INSERT INTO Siparis_Detay(SiparisId,UrunId,Adet,Tutar) VALUES (@SiparisId,@UrunId,@Adet,@Tutar)";
+            command = new SqlCommand(querySiparisDetay, connection);
+            command.Parameters.AddWithValue("@SiparisId", );
+            command.Parameters.AddWithValue("@UrunId", );
+            command.Parameters.AddWithValue("@Adet", );
+            command.Parameters.AddWithValue("@Tutar", );
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }
