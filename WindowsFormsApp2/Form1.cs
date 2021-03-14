@@ -102,35 +102,7 @@ namespace WindowsFormsApp2
             txtMusteriAdi.Text = "";
             txtAdresi.Text = "";
             txtTelefon.Text = "";
-        }
-
-        private void btnSatinAl_Click(object sender, EventArgs e)
-        {
-            Random random = new Random();
-            int siparisNo = random.Next(1, 1000);
-          
-            string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi,Adet,Fiyat) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi,@Adet,@Fiyat)";
-            command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriId",txtMusteriId.Text);
-            command.Parameters.AddWithValue("@SiparisNo", Convert.ToString(siparisNo));
-            command.Parameters.AddWithValue("@SiparisTarihi", DateTime.Now);
-            command.Parameters.AddWithValue("@Adet", Convert.ToInt32(txtUrunAdeti.Text));
-            command.Parameters.AddWithValue("@Fiyat", Convert.ToDecimal(txtBirimFiyati.Text));
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-            MessageBox.Show("Ürün Satın Alma İşlemi Gerçekleştirildi");
-
-            
-
-        }
-        private void dataGridViewUrunler_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            txtUrunId.Text = dataGridViewUrunler.CurrentRow.Cells[0].Value.ToString();
-            txtUrunAdi.Text = dataGridViewUrunler.CurrentRow.Cells[1].Value.ToString();
-            txtBirimFiyati.Text = dataGridViewUrunler.CurrentRow.Cells[2].Value.ToString();
-            txtStokMiktari.Text = dataGridViewUrunler.CurrentRow.Cells[3].Value.ToString();
-        }
+        }     
         private void cmbUrunTipi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -165,7 +137,32 @@ namespace WindowsFormsApp2
             dataGridViewUrunler.DataSource = table;
             connection.Close();
         }
+        private void dataGridViewUrunler_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            txtUrunId.Text = dataGridViewUrunler.CurrentRow.Cells[0].Value.ToString();
+            txtUrunAdi.Text = dataGridViewUrunler.CurrentRow.Cells[1].Value.ToString();
+            txtBirimFiyati.Text = dataGridViewUrunler.CurrentRow.Cells[2].Value.ToString();
+            txtStokMiktari.Text = dataGridViewUrunler.CurrentRow.Cells[3].Value.ToString();
+        }
+        private void btnSatinAl_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            int siparisNo = random.Next(1, 1000);
 
+            string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi,Adet,Fiyat) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi,@Adet,@Fiyat)";
+            command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@MusteriId", txtMusteriId.Text);
+            command.Parameters.AddWithValue("@SiparisNo", Convert.ToString(siparisNo));
+            command.Parameters.AddWithValue("@SiparisTarihi", DateTime.Now);
+            command.Parameters.AddWithValue("@Adet", Convert.ToInt32(txtUrunAdeti.Text));
+            command.Parameters.AddWithValue("@Fiyat", Convert.ToDecimal(txtBirimFiyati.Text));
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            MessageBox.Show("Ürün Satın Alma İşlemi Gerçekleştirildi");
+
+
+        }
         private void dataGridViewSiparisListesi_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             txtSiparisId.Text = dataGridViewSiparisListesi.CurrentRow.Cells[0].Value.ToString();
@@ -200,7 +197,7 @@ namespace WindowsFormsApp2
         }
         private void IdKontrol()
         {
-          
+
             connection.Open();
             var idKontrol = "select * from Siparis_Detay where SiparisId=@SiparisId";
             command = new SqlCommand(idKontrol, connection);
