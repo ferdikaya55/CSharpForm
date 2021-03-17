@@ -261,5 +261,15 @@ namespace WindowsFormsApp2
             frmSiparisDetay frmSiparisDetay = new frmSiparisDetay();
             frmSiparisDetay.ShowDialog();
         }
+
+        private void btnEkle_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMusteriListele_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

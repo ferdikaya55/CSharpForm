@@ -99,7 +99,9 @@ namespace WindowsFormsApp2
             this.groupBoxMusteriler.Controls.Add(this.label2);
             this.groupBoxMusteriler.Controls.Add(this.label1);
             this.groupBoxMusteriler.Location = new System.Drawing.Point(23, 2);
+            this.groupBoxMusteriler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxMusteriler.Name = "groupBoxMusteriler";
+            this.groupBoxMusteriler.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxMusteriler.Size = new System.Drawing.Size(1048, 251);
             this.groupBoxMusteriler.TabIndex = 0;
             this.groupBoxMusteriler.TabStop = false;
@@ -111,30 +113,34 @@ namespace WindowsFormsApp2
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(410, 41);
+            this.dataGridView1.Location = new System.Drawing.Point(411, 41);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(632, 195);
+            this.dataGridView1.Size = new System.Drawing.Size(632, 194);
             this.dataGridView1.TabIndex = 30;
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter_1);
             // 
             // btnMusteriListele
             // 
             this.btnMusteriListele.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMusteriListele.Location = new System.Drawing.Point(280, 157);
+            this.btnMusteriListele.Location = new System.Drawing.Point(280, 158);
+            this.btnMusteriListele.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMusteriListele.Name = "btnMusteriListele";
             this.btnMusteriListele.Size = new System.Drawing.Size(105, 32);
             this.btnMusteriListele.TabIndex = 29;
             this.btnMusteriListele.Text = "Listele";
             this.btnMusteriListele.UseVisualStyleBackColor = true;
+            this.btnMusteriListele.Click += new System.EventHandler(this.btnMusteriListele_Click_1);
             // 
             // txtMusteriId
             // 
             this.txtMusteriId.Enabled = false;
             this.txtMusteriId.Location = new System.Drawing.Point(129, 53);
+            this.txtMusteriId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMusteriId.Name = "txtMusteriId";
             this.txtMusteriId.Size = new System.Drawing.Size(100, 22);
             this.txtMusteriId.TabIndex = 28;
@@ -152,6 +158,7 @@ namespace WindowsFormsApp2
             // 
             this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGuncelle.Location = new System.Drawing.Point(280, 116);
+            this.btnGuncelle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(105, 34);
             this.btnGuncelle.TabIndex = 26;
@@ -162,6 +169,7 @@ namespace WindowsFormsApp2
             // 
             this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSil.Location = new System.Drawing.Point(280, 78);
+            this.btnSil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(105, 32);
             this.btnSil.TabIndex = 25;
@@ -172,15 +180,18 @@ namespace WindowsFormsApp2
             // 
             this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnEkle.Location = new System.Drawing.Point(280, 41);
+            this.btnEkle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(105, 31);
             this.btnEkle.TabIndex = 24;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click_1);
             // 
             // txtAdresi
             // 
             this.txtAdresi.Location = new System.Drawing.Point(129, 118);
+            this.txtAdresi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAdresi.Name = "txtAdresi";
             this.txtAdresi.Size = new System.Drawing.Size(100, 22);
             this.txtAdresi.TabIndex = 23;
@@ -188,6 +199,7 @@ namespace WindowsFormsApp2
             // txtTelefon
             // 
             this.txtTelefon.Location = new System.Drawing.Point(129, 148);
+            this.txtTelefon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(100, 22);
             this.txtTelefon.TabIndex = 22;
@@ -195,6 +207,7 @@ namespace WindowsFormsApp2
             // txtMusteriAdi
             // 
             this.txtMusteriAdi.Location = new System.Drawing.Point(129, 86);
+            this.txtMusteriAdi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMusteriAdi.Name = "txtMusteriAdi";
             this.txtMusteriAdi.Size = new System.Drawing.Size(100, 22);
             this.txtMusteriAdi.TabIndex = 21;
@@ -245,22 +258,26 @@ namespace WindowsFormsApp2
             this.groupBoxSiparisler.Controls.Add(this.label10);
             this.groupBoxSiparisler.Controls.Add(this.dataGridViewSiparisListesi);
             this.groupBoxSiparisler.Location = new System.Drawing.Point(23, 476);
+            this.groupBoxSiparisler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxSiparisler.Name = "groupBoxSiparisler";
-            this.groupBoxSiparisler.Size = new System.Drawing.Size(1042, 291);
+            this.groupBoxSiparisler.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxSiparisler.Size = new System.Drawing.Size(1043, 290);
             this.groupBoxSiparisler.TabIndex = 1;
             this.groupBoxSiparisler.TabStop = false;
             this.groupBoxSiparisler.Text = "Siparişler";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(138, 145);
+            this.dateTimePicker1.Location = new System.Drawing.Point(139, 145);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(126, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(127, 22);
             this.dateTimePicker1.TabIndex = 44;
             // 
             // txtFiyat
             // 
-            this.txtFiyat.Location = new System.Drawing.Point(138, 204);
+            this.txtFiyat.Location = new System.Drawing.Point(139, 204);
+            this.txtFiyat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFiyat.Name = "txtFiyat";
             this.txtFiyat.Size = new System.Drawing.Size(100, 22);
             this.txtFiyat.TabIndex = 43;
@@ -276,7 +293,8 @@ namespace WindowsFormsApp2
             // 
             // txtAdet
             // 
-            this.txtAdet.Location = new System.Drawing.Point(138, 173);
+            this.txtAdet.Location = new System.Drawing.Point(139, 174);
+            this.txtAdet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAdet.Name = "txtAdet";
             this.txtAdet.Size = new System.Drawing.Size(100, 22);
             this.txtAdet.TabIndex = 41;
@@ -293,7 +311,8 @@ namespace WindowsFormsApp2
             // txtSiparisId
             // 
             this.txtSiparisId.Enabled = false;
-            this.txtSiparisId.Location = new System.Drawing.Point(138, 61);
+            this.txtSiparisId.Location = new System.Drawing.Point(139, 62);
+            this.txtSiparisId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiparisId.Name = "txtSiparisId";
             this.txtSiparisId.Size = new System.Drawing.Size(100, 22);
             this.txtSiparisId.TabIndex = 39;
@@ -309,7 +328,8 @@ namespace WindowsFormsApp2
             // 
             // btnSiparisGuncelle
             // 
-            this.btnSiparisGuncelle.Location = new System.Drawing.Point(295, 205);
+            this.btnSiparisGuncelle.Location = new System.Drawing.Point(295, 206);
+            this.btnSiparisGuncelle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSiparisGuncelle.Name = "btnSiparisGuncelle";
             this.btnSiparisGuncelle.Size = new System.Drawing.Size(96, 31);
             this.btnSiparisGuncelle.TabIndex = 37;
@@ -320,6 +340,7 @@ namespace WindowsFormsApp2
             // btnSiparisSil
             // 
             this.btnSiparisSil.Location = new System.Drawing.Point(295, 176);
+            this.btnSiparisSil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSiparisSil.Name = "btnSiparisSil";
             this.btnSiparisSil.Size = new System.Drawing.Size(96, 23);
             this.btnSiparisSil.TabIndex = 36;
@@ -330,6 +351,7 @@ namespace WindowsFormsApp2
             // btnSiparisListele
             // 
             this.btnSiparisListele.Location = new System.Drawing.Point(295, 142);
+            this.btnSiparisListele.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSiparisListele.Name = "btnSiparisListele";
             this.btnSiparisListele.Size = new System.Drawing.Size(96, 28);
             this.btnSiparisListele.TabIndex = 35;
@@ -340,14 +362,16 @@ namespace WindowsFormsApp2
             // txtSiparisNo
             // 
             this.txtSiparisNo.Enabled = false;
-            this.txtSiparisNo.Location = new System.Drawing.Point(138, 116);
+            this.txtSiparisNo.Location = new System.Drawing.Point(139, 116);
+            this.txtSiparisNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiparisNo.Name = "txtSiparisNo";
             this.txtSiparisNo.Size = new System.Drawing.Size(100, 22);
             this.txtSiparisNo.TabIndex = 34;
             // 
             // txtSiparisMusteriId
             // 
-            this.txtSiparisMusteriId.Location = new System.Drawing.Point(138, 89);
+            this.txtSiparisMusteriId.Location = new System.Drawing.Point(139, 89);
+            this.txtSiparisMusteriId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiparisMusteriId.Name = "txtSiparisMusteriId";
             this.txtSiparisMusteriId.Size = new System.Drawing.Size(100, 22);
             this.txtSiparisMusteriId.TabIndex = 33;
@@ -364,7 +388,7 @@ namespace WindowsFormsApp2
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 146);
+            this.label9.Location = new System.Drawing.Point(19, 146);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 17);
             this.label9.TabIndex = 31;
@@ -382,11 +406,12 @@ namespace WindowsFormsApp2
             // dataGridViewSiparisListesi
             // 
             this.dataGridViewSiparisListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSiparisListesi.Location = new System.Drawing.Point(410, 11);
+            this.dataGridViewSiparisListesi.Location = new System.Drawing.Point(411, 11);
+            this.dataGridViewSiparisListesi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSiparisListesi.Name = "dataGridViewSiparisListesi";
             this.dataGridViewSiparisListesi.RowHeadersWidth = 51;
             this.dataGridViewSiparisListesi.RowTemplate.Height = 24;
-            this.dataGridViewSiparisListesi.Size = new System.Drawing.Size(626, 274);
+            this.dataGridViewSiparisListesi.Size = new System.Drawing.Size(627, 274);
             this.dataGridViewSiparisListesi.TabIndex = 0;
             this.dataGridViewSiparisListesi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSiparisListesi_CellClick);
             this.dataGridViewSiparisListesi.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSiparisListesi_CellEnter);
@@ -407,9 +432,11 @@ namespace WindowsFormsApp2
             this.groupBoxUrunler.Controls.Add(this.label13);
             this.groupBoxUrunler.Controls.Add(this.cmbUrunTipi);
             this.groupBoxUrunler.Controls.Add(this.label14);
-            this.groupBoxUrunler.Location = new System.Drawing.Point(23, 259);
+            this.groupBoxUrunler.Location = new System.Drawing.Point(23, 258);
+            this.groupBoxUrunler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxUrunler.Name = "groupBoxUrunler";
-            this.groupBoxUrunler.Size = new System.Drawing.Size(1042, 190);
+            this.groupBoxUrunler.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxUrunler.Size = new System.Drawing.Size(1043, 190);
             this.groupBoxUrunler.TabIndex = 2;
             this.groupBoxUrunler.TabStop = false;
             this.groupBoxUrunler.Text = "Ürünler";
@@ -420,6 +447,7 @@ namespace WindowsFormsApp2
             this.dataGridViewUrunler.AllowUserToDeleteRows = false;
             this.dataGridViewUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUrunler.Location = new System.Drawing.Point(437, 14);
+            this.dataGridViewUrunler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewUrunler.Name = "dataGridViewUrunler";
             this.dataGridViewUrunler.ReadOnly = true;
             this.dataGridViewUrunler.RowHeadersWidth = 51;
@@ -431,6 +459,7 @@ namespace WindowsFormsApp2
             // txtStokMiktari
             // 
             this.txtStokMiktari.Location = new System.Drawing.Point(172, 164);
+            this.txtStokMiktari.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtStokMiktari.Name = "txtStokMiktari";
             this.txtStokMiktari.Size = new System.Drawing.Size(149, 22);
             this.txtStokMiktari.TabIndex = 28;
@@ -438,7 +467,7 @@ namespace WindowsFormsApp2
             // lblStokMiktari
             // 
             this.lblStokMiktari.AutoSize = true;
-            this.lblStokMiktari.Location = new System.Drawing.Point(65, 163);
+            this.lblStokMiktari.Location = new System.Drawing.Point(65, 162);
             this.lblStokMiktari.Name = "lblStokMiktari";
             this.lblStokMiktari.Size = new System.Drawing.Size(81, 17);
             this.lblStokMiktari.TabIndex = 27;
@@ -448,8 +477,9 @@ namespace WindowsFormsApp2
             // 
             this.btnSatinAl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSatinAl.Location = new System.Drawing.Point(327, 151);
+            this.btnSatinAl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSatinAl.Name = "btnSatinAl";
-            this.btnSatinAl.Size = new System.Drawing.Size(104, 29);
+            this.btnSatinAl.Size = new System.Drawing.Size(104, 30);
             this.btnSatinAl.TabIndex = 26;
             this.btnSatinAl.Text = "Satın Al";
             this.btnSatinAl.UseVisualStyleBackColor = true;
@@ -459,6 +489,7 @@ namespace WindowsFormsApp2
             // 
             this.txtUrunId.Enabled = false;
             this.txtUrunId.Location = new System.Drawing.Point(172, 44);
+            this.txtUrunId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUrunId.Name = "txtUrunId";
             this.txtUrunId.Size = new System.Drawing.Size(149, 22);
             this.txtUrunId.TabIndex = 25;
@@ -466,7 +497,7 @@ namespace WindowsFormsApp2
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(90, 47);
+            this.label11.Location = new System.Drawing.Point(91, 47);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(54, 17);
             this.label11.TabIndex = 24;
@@ -474,7 +505,8 @@ namespace WindowsFormsApp2
             // 
             // txtUrunAdeti
             // 
-            this.txtUrunAdeti.Location = new System.Drawing.Point(172, 136);
+            this.txtUrunAdeti.Location = new System.Drawing.Point(172, 135);
+            this.txtUrunAdeti.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUrunAdeti.Name = "txtUrunAdeti";
             this.txtUrunAdeti.Size = new System.Drawing.Size(149, 22);
             this.txtUrunAdeti.TabIndex = 23;
@@ -482,7 +514,7 @@ namespace WindowsFormsApp2
             // lblAdet
             // 
             this.lblAdet.AutoSize = true;
-            this.lblAdet.Location = new System.Drawing.Point(107, 136);
+            this.lblAdet.Location = new System.Drawing.Point(107, 135);
             this.lblAdet.Name = "lblAdet";
             this.lblAdet.Size = new System.Drawing.Size(37, 17);
             this.lblAdet.TabIndex = 22;
@@ -491,6 +523,7 @@ namespace WindowsFormsApp2
             // txtBirimFiyati
             // 
             this.txtBirimFiyati.Location = new System.Drawing.Point(172, 106);
+            this.txtBirimFiyati.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBirimFiyati.Name = "txtBirimFiyati";
             this.txtBirimFiyati.Size = new System.Drawing.Size(149, 22);
             this.txtBirimFiyati.TabIndex = 21;
@@ -498,6 +531,7 @@ namespace WindowsFormsApp2
             // txtUrunAdi
             // 
             this.txtUrunAdi.Location = new System.Drawing.Point(172, 78);
+            this.txtUrunAdi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUrunAdi.Name = "txtUrunAdi";
             this.txtUrunAdi.Size = new System.Drawing.Size(149, 22);
             this.txtUrunAdi.TabIndex = 20;
@@ -528,6 +562,7 @@ namespace WindowsFormsApp2
             "Malzeme",
             "Hizmet"});
             this.cmbUrunTipi.Location = new System.Drawing.Point(172, 14);
+            this.cmbUrunTipi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbUrunTipi.Name = "cmbUrunTipi";
             this.cmbUrunTipi.Size = new System.Drawing.Size(149, 24);
             this.cmbUrunTipi.TabIndex = 17;
@@ -550,6 +585,7 @@ namespace WindowsFormsApp2
             this.Controls.Add(this.groupBoxUrunler);
             this.Controls.Add(this.groupBoxSiparisler);
             this.Controls.Add(this.groupBoxMusteriler);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OycDB1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="MusteriId" />
+    </Key>
+    <Property Name="MusteriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MusteriAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Siparis_Detay">
+    <Key>
+      <PropertyRef Name="SiparisDetayId" />
+    </Key>
+    <Property Name="SiparisDetayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiparisId" Type="int" />
+    <Property Name="UrunId" Type="int" />
+    <Property Name="Adet" Type="int" />
+    <Property Name="Tutar" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Siparisler">
+    <Key>
+      <PropertyRef Name="SiparisId" />
+    </Key>
+    <Property Name="SiparisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MusteriId" Type="int" />
+    <Property Name="SiparisNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="SiparisTarihi" Type="datetime" />
+    <Property Name="Adet" Type="int" />
+    <Property Name="Fiyat" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Urun_Hizmet">
+    <Key>
+      <PropertyRef Name="UrunHizmetId" />
+    </Key>
+    <Property Name="UrunHizmetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirimFiyati" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UrunAciklama" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Urun_Malzeme">
+    <Key>
+      <PropertyRef Name="UrunMalzemeId" />
+    </Key>
+    <Property Name="UrunMalzemeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirimFiyati" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StokMiktari" Type="int" />
+  </EntityType>
+  <Association Name="FK_Siparis_Detay_Siparisler">
+    <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="0..1" />
+    <End Role="Siparis_Detay" Type="Self.Siparis_Detay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siparisler">
+        <PropertyRef Name="SiparisId" />
+      </Principal>
+      <Dependent Role="Siparis_Detay">
+        <PropertyRef Name="SiparisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Detay_Urun_Hizmet">
+    <End Role="Urun_Hizmet" Type="Self.Urun_Hizmet" Multiplicity="0..1" />
+    <End Role="Siparis_Detay" Type="Self.Siparis_Detay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun_Hizmet">
+        <PropertyRef Name="UrunHizmetId" />
+      </Principal>
+      <Dependent Role="Siparis_Detay">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Detay_Urun_Malzeme">
+    <End Role="Urun_Malzeme" Type="Self.Urun_Malzeme" Multiplicity="0..1" />
+    <End Role="Siparis_Detay" Type="Self.Siparis_Detay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun_Malzeme">
+        <PropertyRef Name="UrunMalzemeId" />
+      </Principal>
+      <Dependent Role="Siparis_Detay">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparisler_Musteriler">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+    <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="MusteriId" />
+      </Principal>
+      <Dependent Role="Siparisler">
+        <PropertyRef Name="MusteriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OycDB1ModelStoreContainer">
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Siparis_Detay" EntityType="Self.Siparis_Detay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Siparisler" EntityType="Self.Siparisler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urun_Hizmet" EntityType="Self.Urun_Hizmet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urun_Malzeme" EntityType="Self.Urun_Malzeme" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Siparis_Detay_Siparisler" Association="Self.FK_Siparis_Detay_Siparisler">
+      <End Role="Siparisler" EntitySet="Siparisler" />
+      <End Role="Siparis_Detay" EntitySet="Siparis_Detay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Detay_Urun_Hizmet" Association="Self.FK_Siparis_Detay_Urun_Hizmet">
+      <End Role="Urun_Hizmet" EntitySet="Urun_Hizmet" />
+      <End Role="Siparis_Detay" EntitySet="Siparis_Detay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Detay_Urun_Malzeme" Association="Self.FK_Siparis_Detay_Urun_Malzeme">
+      <End Role="Urun_Malzeme" EntitySet="Urun_Malzeme" />
+      <End Role="Siparis_Detay" EntitySet="Siparis_Detay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparisler_Musteriler" Association="Self.FK_Siparisler_Musteriler">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Siparisler" EntitySet="Siparisler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -83,12 +83,12 @@ namespace WindowsFormsApp1
             connection.Close();
             frmSiparisler frmSiparisler = new frmSiparisler();
             frmSiparisler.ShowDialog();
-            string querySiparisDetay = "INSERT INTO Siparis_Detay(SiparisId,UrunId,Adet,Tutar) VALUES (@SiparisId,@UrunId,@Adet,@Tutar)";
-            command = new SqlCommand(querySiparisDetay, connection);
-            command.Parameters.AddWithValue("@SiparisId", );
-            command.Parameters.AddWithValue("@UrunId", );
-            command.Parameters.AddWithValue("@Adet", );
-            command.Parameters.AddWithValue("@Tutar", );
+            //string querySiparisDetay = "INSERT INTO Siparis_Detay(SiparisId,UrunId,Adet,Tutar) VALUES (@SiparisId,@UrunId,@Adet,@Tutar)";
+            //command = new SqlCommand(querySiparisDetay, connection);
+            //command.Parameters.AddWithValue("@SiparisId", );
+            //command.Parameters.AddWithValue("@UrunId", );
+            //command.Parameters.AddWithValue("@Adet", );
+            //command.Parameters.AddWithValue("@Tutar", );
 
             connection.Open();
             command.ExecuteNonQuery();
