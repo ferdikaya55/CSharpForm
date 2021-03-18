@@ -31,8 +31,8 @@ namespace WindowsFormsApDevex
 
         private void navBarSiparisler_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            int id=0;
-            string ad="";
+            //int id=0;
+            //string ad="";
             FrmSiparisler frmSiparisler = new FrmSiparisler();
             frmSiparisler.ShowDialog();
         }

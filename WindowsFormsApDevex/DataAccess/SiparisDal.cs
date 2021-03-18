@@ -41,18 +41,18 @@ namespace WindowsFormsApDevex
         public DataTable DataTableSiparisDetayEmpty()
         {
             connection.Open();
-            adapter = new SqlDataAdapter("select SiparisDetayId,SiparisId,UrunId,um.UrunAdi,Tutar,um.BirimFiyati,sd.Miktar,Birim,ParaBirimi from Siparis_Detay sd inner join Urun_Malzeme um on sd.UrunId = um.UrunMalzemeId where SiparisId = 0; ", connection);
+            adapter = new SqlDataAdapter("select SiparisDetayId,SiparisId,um.UrunMalzemeId,um.UrunAdi,Tutar,um.BirimFiyati,sd.Miktar,Birim,ParaBirimi from Siparis_Detay sd inner join Urun_Malzeme um on sd.UrunMalzemeId = um.UrunMalzemeId where SiparisId = 0; ", connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
             connection.Close();
             return table;
         }
-        public void SiparisDetayInsert(int siparisId, int urunId, string birim, int miktar,decimal birimFiyati, string paraBirimi,decimal tutar)
+        public void SiparisDetayInsert(int siparisId, int urunId, string birim, double miktar,double birimFiyati, string paraBirimi,double tutar)
         {
-            string query = "INSERT INTO Siparis_Detay(SiparisId,UrunId,Miktar,Tutar,BirimFiyati,Birim,ParaBirimi) VALUES (@SiparisId,@UrunId,@Miktar,@Tutar,@BirimFiyati,@Birim,@ParaBirimi)";
+            string query = "INSERT INTO Siparis_Detay(SiparisId,UrunMalzemeId,Miktar,Tutar,BirimFiyati,Birim,ParaBirimi) VALUES (@SiparisId,@UrunMalzemeId,@Miktar,@Tutar,@BirimFiyati,@Birim,@ParaBirimi)";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@SiparisId", siparisId);
-            command.Parameters.AddWithValue("@UrunId", urunId);
+            command.Parameters.AddWithValue("@UrunMalzemeId", urunId);
             command.Parameters.AddWithValue("@Miktar", miktar);
             command.Parameters.AddWithValue("@Tutar", tutar);
             command.Parameters.AddWithValue("@BirimFiyati", birimFiyati);
