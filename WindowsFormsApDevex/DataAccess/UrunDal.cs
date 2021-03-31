@@ -72,7 +72,6 @@ namespace WindowsFormsApDevex
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
-           
         }
 
     }

@@ -18,7 +18,6 @@ namespace WindowsFormsApDevex
     public partial class Müşteriler : Form
     {
         MusteriDal musteriCls = new MusteriDal();
-
         public FormAcilisTipi Acilistipi { get; set; }
         public int SeciliMusteriId { get; set; }
         public Müşteriler(FormAcilisTipi acilisTipi)
@@ -26,7 +25,6 @@ namespace WindowsFormsApDevex
             this.Acilistipi = acilisTipi;
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             GetMusteriList();
@@ -35,21 +33,10 @@ namespace WindowsFormsApDevex
         {
             gridControlMusteriler.DataSource = musteriCls.DataTableMusteriListele();
         }
-
-        private void btnEkle_Click(object sender, EventArgs e)
-        {
-           
-            MusteriEkle();
-            GetMusteriList();
-        }
-
         public void MusteriEkle()
         {
-           
             FrmMusteri frmMusteriler = new FrmMusteri(0);
             frmMusteriler.ShowDialog();
-        
-
         }
         public void MusteriGuncelle()
         {
@@ -57,7 +44,6 @@ namespace WindowsFormsApDevex
             DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
             if (row != null)
             {
-                
                 int.TryParse(row["MusteriId"].ToString(), out musteriId);
                 if (musteriId != 0)
                 {
@@ -75,21 +61,30 @@ namespace WindowsFormsApDevex
                 int.TryParse(row["MusteriId"].ToString(),out musteriId);
                 if (musteriId!=0)
                 {
-                   
-                   bool sonuc=  musteriCls.MusteriKontrol(musteriId);
-                    if (sonuc==true)
+                    DialogResult result = MessageBox.Show("Müşteri Silinecek Emin misiniz ?", "Müşteri Silme ", MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.OK)
                     {
-                        musteriCls.MusteriDelete(musteriId);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Müşterinin siparişi olduğu için silinemez");
-                    }
-                }
-            }
-           
-        }
 
+                        bool sonuc = musteriCls.MusteriKontrol(musteriId);
+                        if (sonuc == true)
+                        {
+                            musteriCls.MusteriDelete(musteriId);
+                        }
+                        else
+                        {
+                            DialogResult dgResult = MessageBox.Show("Müşteriye Ait Sipariş Var Tüm Bilgiler Silinecek Emin misiniz ?", "Müşteri Silme ", MessageBoxButtons.OKCancel);
+                            if (dgResult == DialogResult.OK)
+                            {
+
+                                musteriCls.MusteriDelete(musteriId);
+
+
+                            }
+                        }
+                    }                 
+                }
+            }        
+        }
         private void gridControlMusteriler_DoubleClick(object sender, EventArgs e)
         {
             if (Acilistipi==FormAcilisTipi.Secim)
@@ -110,17 +105,14 @@ namespace WindowsFormsApDevex
 
            
         }
-
         private void gridControlMusteriler_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode==System.Windows.Forms.Keys.F5)
             {
-
                 GetMusteriList();
                 MessageBox.Show("Müşteriler Listesi Yenilendi");
             }
         }
-
         private void ekleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MusteriEkle();
@@ -135,17 +127,31 @@ namespace WindowsFormsApDevex
         }
         private void müşteriSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Seçilen Müşteri Silinecek Emin misiniz ?","Müşteri Silme ",MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-              
-                 MusteriSil();
-                 GetMusteriList();
-              
-               
-            }
+            MusteriSil();
+            GetMusteriList();
+        }
 
-           
+        private void barBtnEkle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MusteriEkle();
+            GetMusteriList();
+        }
+
+        private void barBtnGuncelle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MusteriGuncelle();
+            GetMusteriList();
+        }
+
+        private void barBtnSil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MusteriSil();
+            GetMusteriList();
+        }
+
+        private void barBtnCikis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

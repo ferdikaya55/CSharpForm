@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,11 +32,6 @@ namespace WindowsFormsApDevex
         {
             GetUrunList();
             
-        }
-        private void btnUrunEkle_Click(object sender, EventArgs e)
-        {
-            UrunEkle();
-            GetUrunList();
         }
         public void UrunEkle()
         {
@@ -133,6 +129,45 @@ namespace WindowsFormsApDevex
         {
             UrunSil();
             GetUrunList();
+        }
+
+        private void gridViewUrunler_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            int stokMiktari = Convert.ToInt32(view.GetRowCellValue(e.RowHandle, "StokMiktari"));
+            if (stokMiktari<=10)
+            {
+                e.Appearance.BackColor = Color.Red;
+                e.Appearance.ForeColor = Color.White;
+            }
+            else
+            {
+                e.Appearance.BackColor = Color.Green;
+                e.Appearance.ForeColor = Color.White;
+            }
+        }
+
+        private void barBtnUrunEkle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UrunEkle();
+            GetUrunList();
+        }
+
+        private void barBtnUrunGuncelle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UrunGuncelle();
+            GetUrunList();
+        }
+
+        private void barBtnUrunSil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UrunSil();
+            GetUrunList();
+        }
+
+        private void barBtnUrunCikis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

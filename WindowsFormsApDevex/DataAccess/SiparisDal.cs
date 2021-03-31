@@ -4,65 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Data;
 
-namespace WindowsFormsApDevex
+namespace WindowsFormsApDevex.DataAccess
 {
     public class SiparisDal
     {
         SqlConnection connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=OycDB1;Integrated Security=SSPI");
-        SqlCommand command;
         SqlDataAdapter adapter;
-        public int SiparisInsert(int musteriId,string siparisNo, DateTime siparisTarihi)
-        {
-            string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi) Select @@IDENTITY ";
-            command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriId", musteriId);
-            command.Parameters.AddWithValue("@SiparisNo", siparisNo);
-            command.Parameters.AddWithValue("@SiparisTarihi", siparisTarihi);
-            
-            connection.Open();
-            int siparisId = 0;
-            object oResult = command.ExecuteScalar();
-            if (oResult != null)
-            {
-                siparisId = Convert.ToInt32(oResult);
-            }
-            connection.Close();
-
-            return siparisId;
-           
-        }
-        public int GetSiparisId()
-        {
-            return 0;
-        }
-        public DataTable DataTableSiparisDetayEmpty()
+        SqlCommand command;
+        public DataTable DataTableSiparisListele()
         {
             connection.Open();
-            adapter = new SqlDataAdapter("select SiparisDetayId,SiparisId,um.UrunMalzemeId,um.UrunAdi,Tutar,um.BirimFiyati,sd.Miktar,Birim,ParaBirimi from Siparis_Detay sd inner join Urun_Malzeme um on sd.UrunMalzemeId = um.UrunMalzemeId where SiparisId = 0; ", connection);
+            adapter = new SqlDataAdapter("select s.SiparisId,m.MusteriAd,m.Adres,m.Telefon,s.SiparisNo,s.SiparisTarihi from Siparisler s left join Musteriler m on s.MusteriId = m.MusteriId", connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
             connection.Close();
             return table;
         }
-        public void SiparisDetayInsert(int siparisId, int urunId, string birim, double miktar,double birimFiyati, string paraBirimi,double tutar)
+        public void SiparisUpdate(int siparisId, string ad, string adres, string telefon)
         {
-            string query = "INSERT INTO Siparis_Detay(SiparisId,UrunMalzemeId,Miktar,Tutar,BirimFiyati,Birim,ParaBirimi) VALUES (@SiparisId,@UrunMalzemeId,@Miktar,@Tutar,@BirimFiyati,@Birim,@ParaBirimi)";
+            string query = "UPDATE Musteriler SET MusteriAd=@MusteriAd,Adres=@Adres,Telefon=@Telefon from Musteriler inner join Siparisler " +
+                            "on Musteriler.MusteriId = Siparisler.MusteriId where Siparisler.SiparisId = @SiparisId";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@SiparisId", siparisId);
-            command.Parameters.AddWithValue("@UrunMalzemeId", urunId);
-            command.Parameters.AddWithValue("@Miktar", miktar);
-            command.Parameters.AddWithValue("@Tutar", tutar);
-            command.Parameters.AddWithValue("@BirimFiyati", birimFiyati);
-            command.Parameters.AddWithValue("@Birim", birim);
-            command.Parameters.AddWithValue("@ParaBirimi", paraBirimi);
-
+            command.Parameters.AddWithValue("@MusteriAd", ad);
+            command.Parameters.AddWithValue("@Adres", adres);
+            command.Parameters.AddWithValue("@Telefon", telefon);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
-           
+
+        }
+        public void SiparisDelete(int siparisId)
+        {
+            string query = "DELETE FROM Siparisler WHERE SiparisId=@SiparisId";
+            command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@SiparisId", siparisId);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
 
         }
     }

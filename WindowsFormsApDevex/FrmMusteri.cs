@@ -31,17 +31,12 @@ namespace WindowsFormsApDevex
                 if (row != null)
                 {
                     txtMusteriAdi.Text = row["MusteriAd"].ToString();
-                    txtMusteriTelefon.Text = row["Adres"].ToString();
-                    txtMusteriAdresi.Text = row["Telefon"].ToString();
+                    txtMusteriTelefon.Text = row["Telefon"].ToString();
+                    txtMusteriAdresi.Text = row["Adres"].ToString();
 
                 }
 
             }
-        }
-
-        private void frmMusteriler_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -59,6 +54,13 @@ namespace WindowsFormsApDevex
                 this.Close();
             }
         }
+
+        private void frmMusteriler_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
-      
+
 }

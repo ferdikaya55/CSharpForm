@@ -18,6 +18,7 @@ namespace WindowsFormsApDevex
         public DataTable DataTableMusteriListele()
         {
             connection.Open();
+
             adapter = new SqlDataAdapter("Select * from Musteriler", connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -37,6 +38,7 @@ namespace WindowsFormsApDevex
             DataTable table = new DataTable();
             adapter.Fill(table);
             connection.Close();
+
             return table.Rows[0];
         }
 
@@ -53,7 +55,7 @@ namespace WindowsFormsApDevex
            
 
         }
-        public void MusteriUpdate(int id,string ad,string adres,string telefon)
+        public void MusteriUpdate(int id,string ad,string telefon,string adres)
         {
             string query = "UPDATE Musteriler SET MusteriAd=@MusteriAd,Adres=@Adres,Telefon=@Telefon WHERE MusteriId=@MusteriId";
             command = new SqlCommand(query, connection);
