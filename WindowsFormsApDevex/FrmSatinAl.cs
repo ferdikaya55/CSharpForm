@@ -139,8 +139,8 @@ namespace WindowsFormsApDevex
                         dr["BirimFiyati"] = Urunrow["BirimFiyati"];
                         dr["Birim"] = "Adet";
                         dr["ParaBirimi"] = "TL";
-                        dr["Miktar"] = 0;
-                        dr["Tutar"] = 0;
+                        dr["Miktar"] = 1;
+                        dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
 
                         gridViewSiparislerDetay.UpdateCurrentRow();
                     }
@@ -181,8 +181,8 @@ namespace WindowsFormsApDevex
                         dr["BirimFiyati"] = Urunrow["BirimFiyati"];
                         dr["Birim"] = "Adet";
                         dr["ParaBirimi"] = "TL";
-                        dr["Miktar"] = 0;
-                        dr["Tutar"] = 0;
+                        dr["Miktar"] = 1;
+                        dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
 
                         gridViewSiparislerDetay.UpdateCurrentRow();
                     }
@@ -261,7 +261,6 @@ namespace WindowsFormsApDevex
                     {
                         urunhizmetId = Convert.ToInt32(row["UrunHizmetId"]);
                     }
-                    
                     miktar = Convert.ToDouble(row["Miktar"]);
                     birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
                     tutar = Convert.ToDouble(row["Tutar"]);
@@ -269,6 +268,7 @@ namespace WindowsFormsApDevex
                     paraBirimi = row["ParaBirimi"].ToString();
                     satirTipi = row["SatirTipi"].ToString();
                     satinAlDbManager.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi, satirTipi);
+
                 }
                 siparisDurum = true;
                 return siparisDurum;
@@ -289,22 +289,25 @@ namespace WindowsFormsApDevex
             {
                 musteriId = SeciliMusteriId;
                 siparisNo = Convert.ToInt32(txtSiparisNo.Text);
-                siparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.Text);
+                siparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
                 satinAlDbManager.SiparisUpdate(SiparisID, musteriId, siparisNo, siparisTarihi);
 
                 foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
                 {
                     urunId = null;
                     urunhizmetId = null;
+                    
                     if (row["SiparisDetayId"] != DBNull.Value)
                     {
-                        if (row["UrunMalzemeId"] != null && row["UrunMalzemeId"] != DBNull.Value)
+                        if (row["SatirTipi"].ToString()=="Malzeme")
                         {
                             urunId = Convert.ToInt32(row["UrunMalzemeId"]);
+                            urunhizmetId = null;
                         }
-                        if (row["UrunHizmetId"] != null && row["UrunHizmetId"] != DBNull.Value)
+                        if (row["SatirTipi"].ToString() == "Hizmet")
                         {
                             urunhizmetId = Convert.ToInt32(row["UrunHizmetId"]);
+                            urunId = null;
                         }
                         sDetayId = Convert.ToInt32(row["SiparisDetayId"]);
                         miktar = Convert.ToDouble(row["Miktar"]);
@@ -317,14 +320,17 @@ namespace WindowsFormsApDevex
                     }
                     else
                     {
-                        if (row["UrunMalzemeId"] != null && row["UrunMalzemeId"] != DBNull.Value)
+                        if (row["SatirTipi"].ToString() == "Malzeme")
                         {
                             urunId = Convert.ToInt32(row["UrunMalzemeId"]);
+                            urunhizmetId = null;
                         }
-                        if (row["UrunHizmetId"] != null && row["UrunHizmetId"] != DBNull.Value)
+                        if (row["SatirTipi"].ToString() == "Hizmet")
                         {
                             urunhizmetId = Convert.ToInt32(row["UrunHizmetId"]);
+                            urunId = null;
                         }
+                       
                         miktar = Convert.ToDouble(row["Miktar"]);
                         birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
                         tutar = Convert.ToDouble(row["Tutar"]);
@@ -367,8 +373,7 @@ namespace WindowsFormsApDevex
                 if (YeniSiparisEkle())
                 {
                     MessageBox.Show("Sipariş Eklendi");
-                    // LoadDetayTable();
-                    this.Close();
+                     LoadDetayTable();
                 } 
             }
             else 
@@ -376,49 +381,53 @@ namespace WindowsFormsApDevex
                 if (SiparisGuncelle())
                 {
                     MessageBox.Show("İşlem Başaralı");
-                    this.Close();
+                    
                 }
             }
         }
         private bool SiparisDetayKontrol()
         {
-            foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
+            int satir = 0;
+            if (gridViewSiparislerDetay.RowCount>1)
             {
-                if (row["SatirTipi"]==null)
+                foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
                 {
-                    MessageBox.Show("Satır Tipi Seçiniz");
-                    return false;
-                }
-                if (row["SatirTipi"].ToString() == "Malzeme")
-                {
-                    if (row["UrunMalzemeId"] == null)
+                    satir++;
+                    if (row["SatirTipi"] == null)
                     {
-                        MessageBox.Show("Ürün seçiniz.");
+                        MessageBox.Show("Satır Tipi Seçiniz");
                         return false;
                     }
-                }
-                if (row["SatirTipi"].ToString() == "Hizmet")
-                {
-                    if (row["UrunHizmetId"] == null)
+                    if (row["SatirTipi"].ToString() == "Malzeme")
                     {
-                        MessageBox.Show("Ürün seçiniz.");
+                        if (row["UrunMalzemeId"] == null)
+                        {
+                            MessageBox.Show("Ürün seçiniz.");
+                            return false;
+                        }
+                    }
+                    if (row["SatirTipi"].ToString() == "Hizmet")
+                    {
+                        if (row["UrunHizmetId"] == null)
+                        {
+                            MessageBox.Show("Ürün seçiniz.");
+                            return false;
+                        }
+                    }
+                    if (Convert.ToDouble(row["Miktar"]) == 0)
+                    {
+                        MessageBox.Show(satir+". Satır'a Miktar Giriniz");
                         return false;
                     }
-                }
-                if (Convert.ToDouble(row["Miktar"])==0)
-                {
-                    MessageBox.Show("Miktar Giriniz");
-                    return false;
                 }
                 return true;
             }
-            MessageBox.Show("Sipariş Girilmedi.Ürün Seçiniz.");
+            MessageBox.Show("Sipariş Eklenmedi.Satır Seçiniz");
             return false;
-
         }
         private bool TxtSiparisKontrol()
         {
-           
+            int siparisNo;
             if (SeciliMusteriId==0)
             {
                 MessageBox.Show("Müşteri Seçiniz");
@@ -428,6 +437,19 @@ namespace WindowsFormsApDevex
             {
                 MessageBox.Show("Sipariş No Boş Geçilemez");
                 return false;
+            }
+            else
+            {
+                
+                    siparisNo = Convert.ToInt32(txtSiparisNo.Text);
+                    bool sonuc = satinAlDbManager.SiparisNoVarmi(siparisNo,SiparisID);
+                    if (sonuc)
+                    {
+                        MessageBox.Show("Bu Sipariş Numarasına ait sipariş Var");
+                        return false;
+                    }
+                
+               
             }
             if (dateEditSiparisTarihi.EditValue==null)
             {
@@ -443,7 +465,7 @@ namespace WindowsFormsApDevex
             {
                 CellValueChangedCalisiyor = true;
 
-                double birimFiyatValue = 0, miktarValue = 0, birimFiyati = 0, miktari = 0, tBirimFiyati = 0, tTutar = 0;
+                double birimFiyatValue = 0, miktarValue = 0, birimFiyati = 0, miktari = 0, tTutar = 0,tutar,toplamTutar,sonuc;
 
                 GridView view = sender as GridView;
                 if (view == null) return;
@@ -462,7 +484,8 @@ namespace WindowsFormsApDevex
                             miktarValue = Convert.ToDouble(dr["Miktar"]);
                         }
                     }
-                    double tutar = birimFiyatValue * miktarValue;
+
+                    tutar = birimFiyatValue * miktarValue;
                     tutar = Math.Round(tutar, 1);
                     view.SetRowCellValue(e.RowHandle, view.Columns["Tutar"], tutar);
                 }
@@ -481,9 +504,10 @@ namespace WindowsFormsApDevex
                         }
 
                     }
-                    double toplamTutar = miktari * birimFiyati;
+                    toplamTutar = miktari * birimFiyati;
                     toplamTutar = Math.Round(toplamTutar, 1);
                     view.SetRowCellValue(e.RowHandle, view.Columns["Tutar"], toplamTutar);
+
                 }
                 if (e.Column.FieldName == "Tutar")
                 {
@@ -496,12 +520,24 @@ namespace WindowsFormsApDevex
                     {
                         if (dr["Miktar"] != null && dr["Miktar"] != DBNull.Value)
                         {
-                            tBirimFiyati = Convert.ToDouble(dr["Miktar"]);
+                            miktari = Convert.ToDouble(dr["Miktar"]);
                         }
                     }
-                    double sonuc = tTutar / tBirimFiyati;
-                    sonuc = Math.Round(sonuc, 1);
-                    view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], sonuc);
+                    if (miktari==0)
+                    {
+                        sonuc = tTutar / (miktari+1);
+                        sonuc = Math.Round(sonuc, 1);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], sonuc);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["Miktar"], 1);
+                    }
+                    else
+                    {
+                        sonuc = tTutar / miktari;
+                        sonuc = Math.Round(sonuc, 1);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], sonuc);
+
+                    }
+                    
                 }
                 CellValueChangedCalisiyor = false;
             }
@@ -514,36 +550,27 @@ namespace WindowsFormsApDevex
         private void repositoryItemComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             var combo = sender as ComboBoxEdit;
-            
-            DataRow dr = gridViewSiparislerDetay.GetFocusedDataRow();
-            if (combo.SelectedItem.ToString()=="Malzeme")
-            {
-                if (dr!=null)
-                {
-                    dr["SatirTipi"] = combo.SelectedItem.ToString();
-                }
-                else
-                {
-                    DataTable dt = (DataTable)gridControlSiparisDetay.DataSource;
-                    DataRow drNew = dt.NewRow();
-                    drNew["SatirTipi"] = combo.SelectedItem.ToString();
-                    dt.Rows.Add(drNew);
-                }
-            }
-            else if(combo.SelectedItem.ToString() == "Hizmet")
-            {
-                if (dr != null)
-                {
-                    dr["SatirTipi"] = combo.SelectedItem.ToString();
-                }
-                else
-                {
-                    DataTable dt = (DataTable)gridControlSiparisDetay.DataSource;
-                    DataRow drNew = dt.NewRow();
-                    drNew["SatirTipi"] = combo.SelectedItem.ToString();
-                    dt.Rows.Add(drNew);
-                }
 
+            DataRow dr = gridViewSiparislerDetay.GetFocusedDataRow();
+            ////dr = gridViewSiparislerDetay.GetDataRow(gridViewSiparislerDetay.FocusedRowHandle);
+            ////((DataTable)gridControlSiparisDetay.DataSource).Rows.Clear();
+
+
+            if (combo.SelectedItem.ToString() == "Malzeme")
+            {
+                dr["UrunHizmetId"] = DBNull.Value;
+                dr["UrunAdi"] = DBNull.Value;
+                dr["BirimFiyati"] = DBNull.Value;
+                dr["Miktar"] = DBNull.Value;
+                dr["Tutar"] = DBNull.Value;
+            }
+            if (combo.SelectedItem.ToString() == "Hizmet")
+            {
+                dr["UrunMalzemeId"] = DBNull.Value;
+                dr["UrunAdi"] = DBNull.Value;
+                dr["BirimFiyati"] = DBNull.Value;
+                dr["Miktar"] = DBNull.Value;
+                dr["Tutar"] = DBNull.Value;
             }
         }
 

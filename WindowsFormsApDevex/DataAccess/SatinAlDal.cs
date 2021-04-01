@@ -14,6 +14,8 @@ namespace WindowsFormsApDevex
         SqlConnection connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;
         SqlDataAdapter adapter;
+        SqlDataReader reader;
+   
         public int SiparisInsert(int musteriId,int siparisNo, DateTime siparisTarihi)
         {
             string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi) Select @@IDENTITY ";
@@ -67,7 +69,24 @@ namespace WindowsFormsApDevex
 
             return table.Rows[0];
         }
+        public bool SiparisNoVarmi(int siparisNo,int siparisId)
+        {
+            bool kontrol = false;
+            connection.Open();
+            command = new SqlCommand("select SiparisId,SiparisNo from Siparisler where SiparisNo=" + siparisNo.ToString() + " and SiparisId<>" + siparisId.ToString() + "", connection);
 
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                kontrol = true;
+            }
+            connection.Close();
+            if (kontrol == true)
+            {
+                return kontrol;
+            }
+            else return kontrol;
+        }
         public int GetSiparisNo()
         {
             string query = "select top 1 SiparisNo from Siparisler order by SiparisNo desc";

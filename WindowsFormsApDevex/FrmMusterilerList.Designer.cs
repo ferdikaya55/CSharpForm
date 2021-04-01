@@ -63,12 +63,10 @@ namespace WindowsFormsApDevex
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControlMusteriler.ContextMenuStrip = this.contextMenuStrip1;
-            this.gridControlMusteriler.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-            this.gridControlMusteriler.Location = new System.Drawing.Point(29, 83);
+            this.gridControlMusteriler.Location = new System.Drawing.Point(22, 67);
             this.gridControlMusteriler.MainView = this.gridView1;
-            this.gridControlMusteriler.Margin = new System.Windows.Forms.Padding(4);
             this.gridControlMusteriler.Name = "gridControlMusteriler";
-            this.gridControlMusteriler.Size = new System.Drawing.Size(668, 469);
+            this.gridControlMusteriler.Size = new System.Drawing.Size(501, 381);
             this.gridControlMusteriler.TabIndex = 0;
             this.gridControlMusteriler.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -83,26 +81,26 @@ namespace WindowsFormsApDevex
             this.güncelleToolStripMenuItem,
             this.müşteriSilToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 70);
             // 
             // ekleToolStripMenuItem
             // 
             this.ekleToolStripMenuItem.Name = "ekleToolStripMenuItem";
-            this.ekleToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.ekleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.ekleToolStripMenuItem.Text = "Müşteri Ekle";
             this.ekleToolStripMenuItem.Click += new System.EventHandler(this.ekleToolStripMenuItem_Click);
             // 
             // güncelleToolStripMenuItem
             // 
             this.güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
-            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.güncelleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.güncelleToolStripMenuItem.Text = "Müşteri Güncelle";
             this.güncelleToolStripMenuItem.Click += new System.EventHandler(this.güncelleToolStripMenuItem_Click);
             // 
             // müşteriSilToolStripMenuItem
             // 
             this.müşteriSilToolStripMenuItem.Name = "müşteriSilToolStripMenuItem";
-            this.müşteriSilToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.müşteriSilToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.müşteriSilToolStripMenuItem.Text = "Müşteri Sil";
             this.müşteriSilToolStripMenuItem.Click += new System.EventHandler(this.müşteriSilToolStripMenuItem_Click);
             // 
@@ -118,7 +116,6 @@ namespace WindowsFormsApDevex
             this.gridColumn2,
             this.gridMusteriAdres,
             this.gridMusteriTelefon});
-            this.gridView1.DetailHeight = 431;
             this.gridView1.GridControl = this.gridControlMusteriler;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -132,10 +129,9 @@ namespace WindowsFormsApDevex
             this.gridMusteriId.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.gridMusteriId.AppearanceCell.Options.UseFont = true;
             this.gridMusteriId.Caption = "Musteri Id";
-            this.gridMusteriId.MinWidth = 27;
             this.gridMusteriId.Name = "gridMusteriId";
             this.gridMusteriId.OptionsColumn.AllowEdit = false;
-            this.gridMusteriId.Width = 79;
+            this.gridMusteriId.Width = 59;
             // 
             // gridColumn2
             // 
@@ -148,14 +144,13 @@ namespace WindowsFormsApDevex
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "MÜŞTERİ ADI";
             this.gridColumn2.FieldName = "MusteriAd";
-            this.gridColumn2.MinWidth = 27;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MusteriAd", "{0}")});
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 124;
+            this.gridColumn2.Width = 93;
             // 
             // gridMusteriAdres
             // 
@@ -168,12 +163,11 @@ namespace WindowsFormsApDevex
             this.gridMusteriAdres.AppearanceHeader.Options.UseFont = true;
             this.gridMusteriAdres.Caption = "MÜŞTERİ ADRESİ";
             this.gridMusteriAdres.FieldName = "Adres";
-            this.gridMusteriAdres.MinWidth = 27;
             this.gridMusteriAdres.Name = "gridMusteriAdres";
             this.gridMusteriAdres.OptionsColumn.AllowEdit = false;
             this.gridMusteriAdres.Visible = true;
             this.gridMusteriAdres.VisibleIndex = 1;
-            this.gridMusteriAdres.Width = 176;
+            this.gridMusteriAdres.Width = 132;
             // 
             // gridMusteriTelefon
             // 
@@ -186,12 +180,11 @@ namespace WindowsFormsApDevex
             this.gridMusteriTelefon.AppearanceHeader.Options.UseFont = true;
             this.gridMusteriTelefon.Caption = "MÜŞTERİ TELEFONU";
             this.gridMusteriTelefon.FieldName = "Telefon";
-            this.gridMusteriTelefon.MinWidth = 27;
             this.gridMusteriTelefon.Name = "gridMusteriTelefon";
             this.gridMusteriTelefon.OptionsColumn.AllowEdit = false;
             this.gridMusteriTelefon.Visible = true;
             this.gridMusteriTelefon.VisibleIndex = 2;
-            this.gridMusteriTelefon.Width = 137;
+            this.gridMusteriTelefon.Width = 103;
             // 
             // barManager1
             // 
@@ -282,43 +275,46 @@ namespace WindowsFormsApDevex
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(728, 30);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(546, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 556);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 448);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(728, 20);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(546, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 526);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 424);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(728, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(546, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 526);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 424);
             // 
             // Müşteriler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 576);
+            this.ClientSize = new System.Drawing.Size(546, 468);
             this.Controls.Add(this.gridControlMusteriler);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Müşteriler";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
