@@ -13,7 +13,7 @@ namespace WindowsFormsApDevex.DataAccess
     public partial class FrmLogin : Form
     {
         LoginDal loginDal = new LoginDal();
-        bool durum;
+        bool durum = false;
         public FrmLogin()
         {
             InitializeComponent();
@@ -27,6 +27,14 @@ namespace WindowsFormsApDevex.DataAccess
             if (ad!=null && sifre!=null)
             {
                durum= loginDal.Login(ad, sifre);
+                if (durum)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Bilgilerinizi Kontrol Ediniz");
+                }
             }
             if (durum==false)
             {

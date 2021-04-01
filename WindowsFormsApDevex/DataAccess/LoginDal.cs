@@ -30,18 +30,12 @@ namespace WindowsFormsApDevex.DataAccess
             connection.Close();
             if (kontrol == true)
             {
-                MessageBox.Show("Giriş Başarılı");
-                FrmAna frmAna = new FrmAna(yetki);
-                frmAna.ShowDialog();
-               
-                return true; 
+                
+                //FrmAna frmAna = new FrmAna(yetki);
+                //frmAna.ShowDialog();
+                return kontrol; 
             }
-            else
-            {
-                MessageBox.Show("Hatalı giriş");
-                return false;
-            }
-
+            else  return kontrol;
         }
     }
 }

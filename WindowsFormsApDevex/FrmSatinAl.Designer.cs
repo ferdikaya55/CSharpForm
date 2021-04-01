@@ -366,10 +366,12 @@ namespace WindowsFormsApDevex
             this.dateEditSiparisTarihi.Location = new System.Drawing.Point(94, 67);
             this.dateEditSiparisTarihi.Margin = new System.Windows.Forms.Padding(2);
             this.dateEditSiparisTarihi.Name = "dateEditSiparisTarihi";
+            this.dateEditSiparisTarihi.Properties.BeepOnError = false;
             this.dateEditSiparisTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditSiparisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditSiparisTarihi.Properties.MaskSettings.Set("mask", "G");
             this.dateEditSiparisTarihi.Size = new System.Drawing.Size(151, 20);
             this.dateEditSiparisTarihi.TabIndex = 8;
             // 

@@ -13,11 +13,21 @@ namespace WindowsFormsApDevex
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main() 
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            FrmLogin frmLogin = new FrmLogin();
+            if (frmLogin.ShowDialog()== DialogResult.OK)
+            {
+                Application.Run(new FrmAna());
+                
+            }
+            else
+            {
+                Application.Exit();
+            }
+           
         }
     }
 }

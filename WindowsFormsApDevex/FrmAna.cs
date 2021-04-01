@@ -12,12 +12,13 @@ using WindowsFormsApDevex.DataAccess;
 namespace WindowsFormsApDevex
 {
     public partial class FrmAna : Form
-    { 
+    {
         
         public string Yetki { get; set; }
-        public FrmAna(string yetki)
+        public FrmAna()
         {
-            this.Yetki = yetki;
+           
+           // this.Yetki = yetki;
             InitializeComponent();
         }
       
