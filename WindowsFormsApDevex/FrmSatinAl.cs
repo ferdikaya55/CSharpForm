@@ -137,11 +137,13 @@ namespace WindowsFormsApDevex
                         dr["UrunMalzemeId"] = Urunrow["UrunMalzemeId"];
                         dr["UrunAdi"] = Urunrow["UrunAdi"].ToString();
                         dr["BirimFiyati"] = Urunrow["BirimFiyati"];
+                        dr["KdvOrani"] = Urunrow["UrunMalzemeKdvOrani"];
                         dr["Birim"] = "Adet";
                         dr["ParaBirimi"] = "TL";
-                        dr["Miktar"] = 1;
+                        dr["Miktar"]=1;
                         dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
-
+                        dr["KdvToplamTutari"] = (Convert.ToDouble(dr["Tutar"]) * Convert.ToDouble(dr["KdvOrani"]))/100;
+                        dr["ToplamTutar"] = Convert.ToDouble(dr["KdvToplamTutari"]) + Convert.ToDouble(dr["Tutar"]);
                         gridViewSiparislerDetay.UpdateCurrentRow();
                     }
                     else
@@ -151,9 +153,13 @@ namespace WindowsFormsApDevex
 
                         drNew["UrunMalzemeId"] = Urunrow["UrunMalzemeId"].ToString();
                         drNew["UrunAdi"] = Urunrow["UrunAdi"].ToString();
-                        drNew["BirimFiyati"] = Urunrow["BirimFiyati"].ToString();
+                        drNew["BirimFiyati"] = Urunrow["BirimFiyati"];
+                        dr["KdvOrani"] = Urunrow["UrunMalzemeKdvOrani"];
                         drNew["Birim"] = "Adet";
                         drNew["ParaBirimi"] = "TL";
+                        dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
+                        dr["KdvToplamTutari"] = (Convert.ToDouble(dr["Tutar"]) * Convert.ToDouble(dr["KdvOrani"])) / 100;
+                        dr["ToplamTutar"] = Convert.ToDouble(dr["KdvToplamTutari"]) + Convert.ToDouble(dr["Tutar"]);
                         dt.Rows.Add(drNew);
                     }
                 }
@@ -179,11 +185,13 @@ namespace WindowsFormsApDevex
                         dr["UrunHizmetId"] = Urunrow["UrunHizmetId"];
                         dr["UrunAdi"] = Urunrow["UrunAdi"].ToString();
                         dr["BirimFiyati"] = Urunrow["BirimFiyati"];
+                        dr["KdvOrani"] = Urunrow["UrunHizmetKdvOrani"];
                         dr["Birim"] = "Adet";
                         dr["ParaBirimi"] = "TL";
                         dr["Miktar"] = 1;
                         dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
-
+                        dr["KdvToplamTutari"] = (Convert.ToDouble(dr["Tutar"]) * Convert.ToDouble(dr["KdvOrani"])) / 100;
+                        dr["ToplamTutar"] = Convert.ToDouble(dr["KdvToplamTutari"]) + Convert.ToDouble(dr["Tutar"]);
                         gridViewSiparislerDetay.UpdateCurrentRow();
                     }
                     else
@@ -193,9 +201,13 @@ namespace WindowsFormsApDevex
 
                         drNew["UrunHizmetId"] = Urunrow["UrunHizmetId"].ToString();
                         drNew["UrunAdi"] = Urunrow["UrunAdi"].ToString();
-                        drNew["BirimFiyati"] = Urunrow["BirimFiyati"].ToString();
+                        drNew["BirimFiyati"] = Urunrow["BirimFiyati"];
+                        dr["KdvOrani"] = Urunrow["UrunHizmetKdvOrani"];
                         drNew["Birim"] = "Adet";
                         drNew["ParaBirimi"] = "TL";
+                        dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
+                        dr["KdvToplamTutari"] = (Convert.ToDouble(dr["Tutar"]) * Convert.ToDouble(dr["KdvOrani"])) / 100;
+                        dr["ToplamTutar"] = Convert.ToDouble(dr["KdvToplamTutari"]) + Convert.ToDouble(dr["Tutar"]);
                         dt.Rows.Add(drNew);
                     }
                 }
@@ -235,9 +247,9 @@ namespace WindowsFormsApDevex
         }
         private bool YeniSiparisEkle()
         {
-            int musteriId, siparisNo;
+            int musteriId, siparisNo,kdvOrani;
             int? urunId, urunhizmetId;
-            double miktar, tutar, birimFiyati;
+            double miktar, tutar, birimFiyati,kdvToplamTutar,toplamTutar;
             string birim, paraBirimi,satirTipi;
             DateTime siparisTarihi;
             bool siparisDurum = false;
@@ -267,7 +279,11 @@ namespace WindowsFormsApDevex
                     birim = row["Birim"].ToString();
                     paraBirimi = row["ParaBirimi"].ToString();
                     satirTipi = row["SatirTipi"].ToString();
-                    satinAlDbManager.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi, satirTipi);
+                    kdvOrani = Convert.ToInt32(row["KdvOrani"]);
+                    kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
+                    toplamTutar = Convert.ToDouble(row["ToplamTutar"]);
+
+                    satinAlDbManager.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi, satirTipi,kdvOrani,kdvToplamTutar,toplamTutar);
 
                 }
                 siparisDurum = true;
@@ -279,9 +295,9 @@ namespace WindowsFormsApDevex
         }
         private bool SiparisGuncelle()
         {
-            int musteriId, siparisNo, sDetayId;
+            int musteriId, siparisNo, sDetayId,kdvOrani;
             int? urunId, urunhizmetId;
-            double miktar, tutar, birimFiyati;
+            double miktar, tutar, birimFiyati, kdvToplamTutar, toplamTutar;
             string birim, paraBirimi,satirTipi;
             DateTime siparisTarihi;
             bool siparisGuncelleDurum = false;
@@ -316,7 +332,10 @@ namespace WindowsFormsApDevex
                         birim = row["Birim"].ToString();
                         paraBirimi = row["ParaBirimi"].ToString();
                         satirTipi = row["SatirTipi"].ToString();
-                        satinAlDbManager.SiparisDetayUpdate(sDetayId, urunId, urunhizmetId, birim, miktar, birimFiyati, paraBirimi, tutar, satirTipi);
+                        kdvOrani = Convert.ToInt32(row["KdvOrani"]);
+                        kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
+                        toplamTutar = Convert.ToDouble(row["ToplamTutar"]);
+                        satinAlDbManager.SiparisDetayUpdate(sDetayId, urunId, urunhizmetId, birim, miktar, birimFiyati, paraBirimi, tutar, satirTipi,kdvOrani,kdvToplamTutar,toplamTutar);
                     }
                     else
                     {
@@ -337,7 +356,10 @@ namespace WindowsFormsApDevex
                         birim = row["Birim"].ToString();
                         paraBirimi = row["ParaBirimi"].ToString();
                         satirTipi = row["SatirTipi"].ToString();
-                        satinAlDbManager.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi, satirTipi);
+                        kdvOrani = Convert.ToInt32(row["KdvOrani"]);
+                        kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
+                        toplamTutar = Convert.ToDouble(row["ToplamTutar"]);
+                        satinAlDbManager.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi, satirTipi,kdvOrani,kdvToplamTutar,toplamTutar);
                     }
 
                 }
@@ -465,16 +487,16 @@ namespace WindowsFormsApDevex
             {
                 CellValueChangedCalisiyor = true;
 
-                double birimFiyatValue = 0, miktarValue = 0, birimFiyati = 0, miktari = 0, tTutar = 0,tutar,toplamTutar,sonuc;
-
+                double bFiyatValue=0 , miktarValue=0, tutarValue=0, toplamValue=0, birimFiyati=0, miktari=0,tutar=0,toplamTutar=0,kdvTutari=0,kdvToplamTutar=0;
+                int kdvOrani=0,kdvOraniValue=0;
                 GridView view = sender as GridView;
                 if (view == null) return;
-                //view.GetRowCellValue(e.RowHandle, "Miktar");
+               
                 if (e.Column.FieldName == "BirimFiyati")
                 {
                     if (e.Value != null)
                     {
-                        birimFiyatValue = Convert.ToDouble(e.Value);
+                        bFiyatValue = Convert.ToDouble(e.Value);
                     }
                     DataRow dr = view.GetDataRow(e.RowHandle);
                     if (dr != null)
@@ -483,17 +505,23 @@ namespace WindowsFormsApDevex
                         {
                             miktarValue = Convert.ToDouble(dr["Miktar"]);
                         }
+                        if (dr["KdvOrani"] != null && dr["KdvOrani"] != DBNull.Value)
+                        {
+                            kdvOrani = Convert.ToInt32(dr["KdvOrani"]);
+                        }
                     }
-
-                    tutar = birimFiyatValue * miktarValue;
-                    tutar = Math.Round(tutar, 1);
+                    tutar = Math.Round(bFiyatValue * miktarValue, 1);
+                    kdvToplamTutar = Math.Round(((tutar * kdvOrani) / 100), 1);
+                    toplamTutar = Math.Round(tutar + kdvToplamTutar,1);
                     view.SetRowCellValue(e.RowHandle, view.Columns["Tutar"], tutar);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["KdvToplamTutari"], kdvToplamTutar);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["ToplamTutar"], toplamTutar);
                 }
                 if (e.Column.FieldName == "Miktar")
                 {
                     if (e.Value != null)
                     {
-                        miktari = Convert.ToDouble(e.Value);
+                        miktarValue = Convert.ToDouble(e.Value);
                     }
                     DataRow dataRow = view.GetDataRow(e.RowHandle);
                     if (dataRow != null)
@@ -502,18 +530,23 @@ namespace WindowsFormsApDevex
                         {
                             birimFiyati = Convert.ToDouble(dataRow["BirimFiyati"]);
                         }
-
+                        if (dataRow["KdvOrani"] != null && dataRow["KdvOrani"] != DBNull.Value)
+                        {
+                            kdvOrani = Convert.ToInt32(dataRow["KdvOrani"]);
+                        }
                     }
-                    toplamTutar = miktari * birimFiyati;
-                    toplamTutar = Math.Round(toplamTutar, 1);
-                    view.SetRowCellValue(e.RowHandle, view.Columns["Tutar"], toplamTutar);
-
+                    tutar = Math.Round((miktarValue * birimFiyati), 1);
+                    kdvToplamTutar = Math.Round(((tutar * kdvOrani) / 100), 1);
+                    toplamTutar = Math.Round((tutar + kdvToplamTutar), 1);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["Tutar"], tutar);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["KdvToplamTutari"], kdvToplamTutar);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["ToplamTutar"], toplamTutar);
                 }
                 if (e.Column.FieldName == "Tutar")
-                {
-                    if (e.Value != null)
+                { 
+                     if (e.Value != null)
                     {
-                        tTutar = Convert.ToDouble(e.Value);
+                        tutarValue = Convert.ToDouble(e.Value);
                     }
                     DataRow dr = view.GetDataRow(e.RowHandle);
                     if (dr != null)
@@ -522,32 +555,85 @@ namespace WindowsFormsApDevex
                         {
                             miktari = Convert.ToDouble(dr["Miktar"]);
                         }
+                        if (dr["KdvOrani"] != null && dr["KdvOrani"] != DBNull.Value)
+                        {
+                            kdvOrani = Convert.ToInt32(dr["KdvOrani"]);
+                        }
                     }
                     if (miktari==0)
                     {
-                        sonuc = tTutar / (miktari+1);
-                        sonuc = Math.Round(sonuc, 1);
-                        view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], sonuc);
-                        view.SetRowCellValue(e.RowHandle, view.Columns["Miktar"], 1);
+                        MessageBox.Show("Birim Fiyat Belli Değil Ürünü Tekrar Seçiniz");
+                        
+                        view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], 0);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["Miktar"], 0);
                     }
                     else
                     {
-                        sonuc = tTutar / miktari;
-                        sonuc = Math.Round(sonuc, 1);
-                        view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], sonuc);
-
+                        birimFiyati = tutarValue / miktari;
+                        birimFiyati = Math.Round(birimFiyati,1);
+                        kdvToplamTutar = Math.Round((tutarValue * kdvOrani) / 100, 1);
+                        toplamTutar = Math.Round((kdvToplamTutar + tutarValue),1);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], birimFiyati);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["KdvToplamTutari"], kdvToplamTutar);
+                        view.SetRowCellValue(e.RowHandle, view.Columns["ToplamTutar"],toplamTutar);
                     }
-                    
+                }
+                if (e.Column.FieldName=="KdvOrani")
+                {
+                    if (e.Value != null)
+                    {
+                        kdvOraniValue = Convert.ToInt32(e.Value);
+                       
+                    }
+                    DataRow dr = view.GetDataRow(e.RowHandle);
+                    if (dr != null)
+                    {
+                        if (dr["Tutar"] != null && dr["Tutar"] != DBNull.Value)
+                        {
+                            tutar = Convert.ToDouble(dr["Tutar"]);
+                        }
+                    }
+                    kdvToplamTutar = Math.Round(((tutar * kdvOraniValue) / 100), 1);
+                    toplamTutar = Math.Round(tutar + kdvToplamTutar, 1);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["KdvToplamTutari"], kdvToplamTutar);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["ToplamTutar"], toplamTutar);
+                }
+                if (e.Column.FieldName=="ToplamTutar")
+                {
+                    if (e.Value!=null)
+                    {
+                        toplamValue = Convert.ToDouble(e.Value);
+                    }
+                    DataRow dr = view.GetDataRow(e.RowHandle);
+                    if (dr != null)
+                    {
+                        if (dr["KdvOrani"] != null && dr["KdvOrani"] != DBNull.Value)
+                        {
+                            kdvOrani = Convert.ToInt32(dr["KdvOrani"]);
+                        }
+
+                        if (dr["Miktar"] != null && dr["Miktar"] != DBNull.Value)
+                        {
+                            miktari = Convert.ToDouble(dr["Miktar"]);
+                        }
+                    }
+                    tutar = Math.Round(((toplamValue * 100) / (100 + kdvOrani)),1);
+                    birimFiyati = Math.Round(tutar / miktari,1);
+                    kdvToplamTutar = Math.Round(((tutar * kdvOrani) / 100),1);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["Tutar"], tutar);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["BirimFiyati"], birimFiyati);
+                    view.SetRowCellValue(e.RowHandle, view.Columns["KdvToplamTutari"], kdvToplamTutar);
                 }
                 CellValueChangedCalisiyor = false;
             }
         }
+    
         private void siparişDetaySilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SiparisDetaySil();
             LoadDetayTable();
         }
-        private void repositoryItemComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void repositoryItemComboBox1_SelectedIndexChanged(object sender, EventArgs e) 
         {
             var combo = sender as ComboBoxEdit;
 
@@ -574,6 +660,9 @@ namespace WindowsFormsApDevex
             }
         }
 
- 
+        private void repoComboKdvOrani_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

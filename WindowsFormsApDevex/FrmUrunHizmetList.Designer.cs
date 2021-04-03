@@ -35,6 +35,7 @@ namespace WindowsFormsApDevex
             this.UrunAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BirimFiyati = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UrunAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.UrunHizmetKdvOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlUrunHizmetList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewUrunHizmetList)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@ namespace WindowsFormsApDevex
             // gridViewUrunHizmetList
             // 
             this.gridViewUrunHizmetList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.UrunHizmetKdvOrani,
             this.UrunHizmetId,
             this.UrunAdi,
             this.BirimFiyati,
@@ -94,7 +96,15 @@ namespace WindowsFormsApDevex
             this.UrunAciklama.FieldName = "UrunAciklama";
             this.UrunAciklama.Name = "UrunAciklama";
             this.UrunAciklama.Visible = true;
-            this.UrunAciklama.VisibleIndex = 3;
+            this.UrunAciklama.VisibleIndex = 4;
+            // 
+            // UrunHizmetKdvOrani
+            // 
+            this.UrunHizmetKdvOrani.Caption = "KDV ORANI";
+            this.UrunHizmetKdvOrani.FieldName = "UrunHizmetKdvOrani";
+            this.UrunHizmetKdvOrani.Name = "UrunHizmetKdvOrani";
+            this.UrunHizmetKdvOrani.Visible = true;
+            this.UrunHizmetKdvOrani.VisibleIndex = 3;
             // 
             // FrmUrunHizmetList
             // 
@@ -121,5 +131,6 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraGrid.Columns.GridColumn UrunAdi;
         private DevExpress.XtraGrid.Columns.GridColumn BirimFiyati;
         private DevExpress.XtraGrid.Columns.GridColumn UrunAciklama;
+        private DevExpress.XtraGrid.Columns.GridColumn UrunHizmetKdvOrani;
     }
 }

@@ -48,5 +48,31 @@ namespace WindowsFormsApDevex.DataAccess
             txtKullaniciAdi.Text = "";
             txtSifre.Text = "";
         }
+        private void btnGirisYap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.Enter)
+            {
+                string ad = txtKullaniciAdi.Text.Trim();
+                string sifre = txtSifre.Text.Trim();
+
+                if (ad != null && sifre != null)
+                {
+                    durum = loginDal.Login(ad, sifre);
+                    if (durum)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bilgilerinizi Kontrol Ediniz");
+                    }
+                }
+                if (durum == false)
+                {
+                    txtKullaniciAdi.Text = "";
+                    txtSifre.Text = "";
+                }
+            }
+        }
     }
 }

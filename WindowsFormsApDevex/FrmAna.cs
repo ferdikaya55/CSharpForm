@@ -61,10 +61,10 @@ namespace WindowsFormsApDevex
         private void FrmAna_Load(object sender, EventArgs e)
         {
           
-            if (Yetki=="Kullanıcı")
-            {
-                navBarMusteriler.Visible = false;
-            }
+            //if (Yetki=="Kullanıcı")
+            //{
+            //    navBarMusteriler.Visible = false;
+            //}
         }
     }
 }

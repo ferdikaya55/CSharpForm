@@ -26,7 +26,7 @@ namespace WindowsFormsApDevex.DataAccess
         public DataRow DataRowGetUrunHizmet(int urunId)
         {
             adapter = new SqlDataAdapter();
-            string query = "Select UrunHizmetId,UrunAdi,BirimFiyati,UrunAciklama from Urun_Hizmet where UrunHizmetId=@id";
+            string query = "Select UrunHizmetId,UrunAdi,BirimFiyati,UrunAciklama,UrunHizmetKdvOrani from Urun_Hizmet where UrunHizmetId=@id";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@id", urunId);
             adapter.SelectCommand = command;

@@ -51,6 +51,7 @@ namespace WindowsFormsApDevex
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.UrunMalzemeKdvOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlUrunler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewUrunler)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -62,10 +63,10 @@ namespace WindowsFormsApDevex
             this.gridControlUrunler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlUrunler.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControlUrunler.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.gridControlUrunler.Location = new System.Drawing.Point(18, 84);
             this.gridControlUrunler.MainView = this.gridViewUrunler;
-            this.gridControlUrunler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControlUrunler.Margin = new System.Windows.Forms.Padding(2);
             this.gridControlUrunler.Name = "gridControlUrunler";
             this.gridControlUrunler.Size = new System.Drawing.Size(527, 278);
             this.gridControlUrunler.TabIndex = 0;
@@ -81,7 +82,8 @@ namespace WindowsFormsApDevex
             this.urunId,
             this.urunAdi,
             this.birimFiyati,
-            this.StokMiktari});
+            this.StokMiktari,
+            this.UrunMalzemeKdvOrani});
             this.gridViewUrunler.DetailHeight = 284;
             this.gridViewUrunler.GridControl = this.gridControlUrunler;
             this.gridViewUrunler.Name = "gridViewUrunler";
@@ -130,7 +132,7 @@ namespace WindowsFormsApDevex
             this.StokMiktari.MinWidth = 19;
             this.StokMiktari.Name = "StokMiktari";
             this.StokMiktari.Visible = true;
-            this.StokMiktari.VisibleIndex = 2;
+            this.StokMiktari.VisibleIndex = 3;
             this.StokMiktari.Width = 70;
             // 
             // contextMenuStrip1
@@ -141,26 +143,26 @@ namespace WindowsFormsApDevex
             this.ürünGüncelleToolStripMenuItem,
             this.ürünSilToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 70);
             // 
             // ürünEkleToolStripMenuItem
             // 
             this.ürünEkleToolStripMenuItem.Name = "ürünEkleToolStripMenuItem";
-            this.ürünEkleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ürünEkleToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.ürünEkleToolStripMenuItem.Text = "Ürün Ekle";
             this.ürünEkleToolStripMenuItem.Click += new System.EventHandler(this.ürünEkleToolStripMenuItem_Click);
             // 
             // ürünGüncelleToolStripMenuItem
             // 
             this.ürünGüncelleToolStripMenuItem.Name = "ürünGüncelleToolStripMenuItem";
-            this.ürünGüncelleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ürünGüncelleToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.ürünGüncelleToolStripMenuItem.Text = "Ürün Güncelle";
             this.ürünGüncelleToolStripMenuItem.Click += new System.EventHandler(this.ürünGüncelleToolStripMenuItem_Click);
             // 
             // ürünSilToolStripMenuItem
             // 
             this.ürünSilToolStripMenuItem.Name = "ürünSilToolStripMenuItem";
-            this.ürünSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ürünSilToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.ürünSilToolStripMenuItem.Text = "Ürün Sil";
             this.ürünSilToolStripMenuItem.Click += new System.EventHandler(this.ürünSilToolStripMenuItem_Click);
             // 
@@ -253,7 +255,7 @@ namespace WindowsFormsApDevex
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlTop.Size = new System.Drawing.Size(566, 24);
             // 
             // barDockControlBottom
@@ -262,7 +264,7 @@ namespace WindowsFormsApDevex
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 368);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlBottom.Size = new System.Drawing.Size(566, 20);
             // 
             // barDockControlLeft
@@ -271,7 +273,7 @@ namespace WindowsFormsApDevex
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 344);
             // 
             // barDockControlRight
@@ -280,8 +282,16 @@ namespace WindowsFormsApDevex
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(566, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 344);
+            // 
+            // UrunMalzemeKdvOrani
+            // 
+            this.UrunMalzemeKdvOrani.Caption = "KDV ORANI";
+            this.UrunMalzemeKdvOrani.FieldName = "UrunMalzemeKdvOrani";
+            this.UrunMalzemeKdvOrani.Name = "UrunMalzemeKdvOrani";
+            this.UrunMalzemeKdvOrani.Visible = true;
+            this.UrunMalzemeKdvOrani.VisibleIndex = 2;
             // 
             // FrmUrunlerList
             // 
@@ -294,7 +304,7 @@ namespace WindowsFormsApDevex
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmUrunlerList";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -332,5 +342,6 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraGrid.Columns.GridColumn UrunMalzemeKdvOrani;
     }
 }

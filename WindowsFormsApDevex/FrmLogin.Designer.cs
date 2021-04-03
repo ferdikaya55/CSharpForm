@@ -45,10 +45,10 @@ namespace WindowsFormsApDevex.DataAccess
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(41, 78);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl1.Location = new System.Drawing.Point(55, 96);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(62, 12);
+            this.labelControl1.Size = new System.Drawing.Size(76, 16);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Kullanıcı Adı";
             // 
@@ -56,53 +56,56 @@ namespace WindowsFormsApDevex.DataAccess
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(41, 114);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl2.Location = new System.Drawing.Point(55, 140);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(24, 12);
+            this.labelControl2.Size = new System.Drawing.Size(30, 16);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Şifre";
             // 
             // txtKullaniciAdi
             // 
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(116, 76);
-            this.txtKullaniciAdi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(155, 94);
+            this.txtKullaniciAdi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(76, 20);
+            this.txtKullaniciAdi.Size = new System.Drawing.Size(101, 22);
             this.txtKullaniciAdi.TabIndex = 2;
             // 
             // txtSifre
             // 
-            this.txtSifre.Location = new System.Drawing.Point(116, 109);
-            this.txtSifre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSifre.Location = new System.Drawing.Point(155, 134);
+            this.txtSifre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Properties.PasswordChar = '*';
-            this.txtSifre.Size = new System.Drawing.Size(76, 20);
+            this.txtSifre.Size = new System.Drawing.Size(101, 22);
             this.txtSifre.TabIndex = 3;
             // 
             // btnGirisYap
             // 
             this.btnGirisYap.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnGirisYap.Appearance.Options.UseFont = true;
-            this.btnGirisYap.Location = new System.Drawing.Point(140, 144);
-            this.btnGirisYap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGirisYap.Location = new System.Drawing.Point(187, 177);
+            this.btnGirisYap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGirisYap.Name = "btnGirisYap";
-            this.btnGirisYap.Size = new System.Drawing.Size(52, 22);
+            this.btnGirisYap.Size = new System.Drawing.Size(69, 27);
             this.btnGirisYap.TabIndex = 4;
             this.btnGirisYap.Text = "Giriş";
             this.btnGirisYap.Click += new System.EventHandler(this.btnGirisYap_Click);
+          
+            this.btnGirisYap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnGirisYap_KeyDown);
+           
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 258);
+            this.ClientSize = new System.Drawing.Size(307, 318);
             this.Controls.Add(this.btnGirisYap);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.txtKullaniciAdi);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmLogin";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

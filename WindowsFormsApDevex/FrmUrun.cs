@@ -23,6 +23,7 @@ namespace WindowsFormsApDevex
                 txtUrunAdi.Text = "";
                 txtUrunBirimFiyati.Text = "";
                 txtUrunStokMiktari.Text = "";
+                txtKdvOrani.Text = "";
 
             }
             else
@@ -33,7 +34,7 @@ namespace WindowsFormsApDevex
                     txtUrunAdi.Text = row["UrunAdi"].ToString();
                     txtUrunBirimFiyati.Text = row["BirimFiyati"].ToString();
                     txtUrunStokMiktari.Text = row["StokMiktari"].ToString();
-
+                    txtKdvOrani.Text = row["UrunMalzemeKdvOrani"].ToString();
                 }
 
             }
@@ -43,13 +44,13 @@ namespace WindowsFormsApDevex
         {
             if (urunId > 0)
             {
-                urun.UrunUpdate(urunId, txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text));
+                urun.UrunUpdate(urunId, txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text), Convert.ToInt32(txtKdvOrani.Text));
                 MessageBox.Show("Ürün Güncellendi");
                 this.Close();
             }
             else
             {
-                urun.UrunInsert(txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text));
+                urun.UrunInsert(txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text), Convert.ToInt32(txtKdvOrani.Text));
                 MessageBox.Show("Ürün Eklendi");
                 this.Close();
             }

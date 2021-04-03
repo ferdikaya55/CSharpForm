@@ -25,45 +25,11 @@ namespace WindowsFormsApDevex
         private void FrmSiparisler_Load(object sender, EventArgs e)
         {
             GetSiparisList();
-            ClearText();
+          
         }
         private void GetSiparisList()
         {
             gridControlSiparisler.DataSource = siparisCls.DataTableSiparisListele();
-        }
-
-        private void btnSiparisGuncelle_Click(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(txtSiparisId.Text);    
-            string adi= txtMusteriAdi.Text;
-            string adres = txtMusteriAdresi.Text;
-            string telefon = txtMusteriTelefonu.Text;
-            siparisCls.SiparisUpdate(id,adi,adres,telefon);
-            MessageBox.Show("Sipariş güncellendi");
-        }
-
-        private void gridViewSiparisler_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            DataRow dr = gridViewSiparisler.GetDataRow(gridViewSiparisler.FocusedRowHandle);
-            if (dr!=null)
-            {
-               
-                txtSiparisId.Text = dr["SiparisId"].ToString();
-                txtSiparisNo.Text = dr["SiparisNo"].ToString();
-                txtSiparisTarihi.Text = dr["SiparisTarihi"].ToString();
-                txtMusteriAdi.Text = dr["MusteriAd"].ToString();
-                txtMusteriAdresi.Text = dr["Adres"].ToString();
-                txtMusteriTelefonu.Text = dr["Telefon"].ToString();
-            }
-        }
-        private void ClearText()
-        {
-            txtSiparisId.Text = "";
-            txtSiparisNo.Text = "";
-            txtSiparisTarihi.Text = "";
-            txtMusteriAdi.Text = "";
-            txtMusteriAdresi.Text ="";
-            txtMusteriTelefonu.Text = "";
         }
         private void SiparisSil()
         {
@@ -92,7 +58,12 @@ namespace WindowsFormsApDevex
 
         private void sİPARİŞDÜZENLEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SiparisID = Convert.ToInt32(txtSiparisId.Text);
+            DataRow dr = gridViewSiparisler.GetDataRow(gridViewSiparisler.FocusedRowHandle);
+            if (dr != null)
+            {
+                SiparisID = Convert.ToInt32(dr["SiparisId"]);
+            }
+
             FrmSatinAl frmSatinAl = new FrmSatinAl(SiparisID);
             frmSatinAl.ShowDialog();
         }
@@ -108,7 +79,12 @@ namespace WindowsFormsApDevex
 
         private void yAZDIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int siparisID = Convert.ToInt32(txtSiparisId.Text);
+            DataRow dr = gridViewSiparisler.GetDataRow(gridViewSiparisler.FocusedRowHandle);
+            if (dr != null)
+            {
+                SiparisID = Convert.ToInt32(dr["SiparisId"]);
+            }
+            int siparisID = SiparisID;
             XtraReport3 xtraReport3 = new XtraReport3(siparisID);
             ReportPrintTool print = new ReportPrintTool(xtraReport3);
             print.AutoShowParametersPanel = true;

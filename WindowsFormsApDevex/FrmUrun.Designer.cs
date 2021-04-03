@@ -36,9 +36,12 @@ namespace WindowsFormsApDevex
             this.txtUrunStokMiktari = new DevExpress.XtraEditors.TextEdit();
             this.txtUrunBirimFiyati = new DevExpress.XtraEditors.TextEdit();
             this.txtUrunAdi = new DevExpress.XtraEditors.TextEdit();
+            this.txtKdvOrani = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrunStokMiktari.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrunBirimFiyati.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrunAdi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKdvOrani.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -79,7 +82,7 @@ namespace WindowsFormsApDevex
             this.btnUrunKaydet.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnUrunKaydet.Appearance.Options.UseFont = true;
             this.btnUrunKaydet.ImageOptions.Image = global::WindowsFormsApDevex.Properties.Resources.save_16x164;
-            this.btnUrunKaydet.Location = new System.Drawing.Point(170, 166);
+            this.btnUrunKaydet.Location = new System.Drawing.Point(169, 202);
             this.btnUrunKaydet.Margin = new System.Windows.Forms.Padding(2);
             this.btnUrunKaydet.Name = "btnUrunKaydet";
             this.btnUrunKaydet.Size = new System.Drawing.Size(83, 26);
@@ -118,11 +121,35 @@ namespace WindowsFormsApDevex
             this.txtUrunAdi.Size = new System.Drawing.Size(110, 20);
             this.txtUrunAdi.TabIndex = 0;
             // 
+            // txtKdvOrani
+            // 
+            this.txtKdvOrani.Location = new System.Drawing.Point(142, 164);
+            this.txtKdvOrani.Margin = new System.Windows.Forms.Padding(2);
+            this.txtKdvOrani.Name = "txtKdvOrani";
+            this.txtKdvOrani.Properties.BeepOnError = false;
+            this.txtKdvOrani.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegExpMaskManager));
+            this.txtKdvOrani.Properties.MaskSettings.Set("mask", "\\d+");
+            this.txtKdvOrani.Size = new System.Drawing.Size(110, 20);
+            this.txtKdvOrani.TabIndex = 7;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(47, 167);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(2);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(77, 12);
+            this.labelControl4.TabIndex = 8;
+            this.labelControl4.Text = "Ürün Kdv Oranı";
+            // 
             // FrmUrun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(299, 288);
+            this.Controls.Add(this.txtKdvOrani);
+            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.btnUrunKaydet);
             this.Controls.Add(this.txtUrunStokMiktari);
             this.Controls.Add(this.txtUrunBirimFiyati);
@@ -137,6 +164,7 @@ namespace WindowsFormsApDevex
             ((System.ComponentModel.ISupportInitialize)(this.txtUrunStokMiktari.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrunBirimFiyati.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUrunAdi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKdvOrani.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +179,7 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraEditors.TextEdit txtUrunBirimFiyati;
         private DevExpress.XtraEditors.TextEdit txtUrunStokMiktari;
         private DevExpress.XtraEditors.SimpleButton btnUrunKaydet;
+        private DevExpress.XtraEditors.TextEdit txtKdvOrani;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }
