@@ -354,10 +354,10 @@ namespace WindowsFormsApDevex
             // 
             // ToplamTutar
             // 
-            this.ToplamTutar.Caption = "TOPLAM TUTAR";
-            this.ToplamTutar.FieldName = "ToplamTutar";
+            this.ToplamTutar.Caption = "ARA TOPLAM";
+            this.ToplamTutar.FieldName = "AraToplam";
             this.ToplamTutar.MinWidth = 27;
-            this.ToplamTutar.Name = "ToplamTutar";
+            this.ToplamTutar.Name = "AraToplam";
             this.ToplamTutar.Visible = true;
             this.ToplamTutar.VisibleIndex = 8;
             this.ToplamTutar.Width = 92;

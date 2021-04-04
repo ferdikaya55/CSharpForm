@@ -201,6 +201,6 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\bin\Debug\de\D
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\bin\Debug\es\DevExpress.Diagram.v20.2.Core.resources.dll
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\bin\Debug\ja\DevExpress.Diagram.v20.2.Core.resources.dll
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\bin\Debug\ru\DevExpress.Diagram.v20.2.Core.resources.dll
-C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.DataAccess.XtraReport2.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.DataAccess.FrmLogin.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.XtraReport3.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.OycRapor.resources

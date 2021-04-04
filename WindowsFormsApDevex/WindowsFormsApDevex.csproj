@@ -90,11 +90,11 @@
     <Compile Include="DataAccess\LoginDal.cs" />
     <Compile Include="DataAccess\SiparisDal.cs" />
     <Compile Include="DataAccess\UrunHizmetDal.cs" />
-    <Compile Include="XtraReport2.cs">
+    <Compile Include="OycRapor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XtraReport2.Designer.cs">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
+    <Compile Include="OycRapor.Designer.cs">
+      <DependentUpon>OycRapor.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMusterilerList.cs">
       <SubType>Form</SubType>
@@ -159,8 +159,8 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport2.resx">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
+    <EmbeddedResource Include="OycRapor.resx">
+      <DependentUpon>OycRapor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMusterilerList.resx">
       <DependentUpon>FrmMusterilerList.cs</DependentUpon>

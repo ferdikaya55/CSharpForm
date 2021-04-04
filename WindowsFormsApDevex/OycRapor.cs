@@ -6,14 +6,13 @@ using System.Drawing;
 
 namespace WindowsFormsApDevex
 {
-    public partial class XtraReport3 : DevExpress.XtraReports.UI.XtraReport
+    public partial class OycRapor : DevExpress.XtraReports.UI.XtraReport
     {
-      
-        public XtraReport3(int siparisId)
+        public OycRapor(int siparisId)
         {
             InitializeComponent();
-           // this.SiparisId.Value = siparisId;
+            this.SiparisId.Value = siparisId;
         }
- 
+
     }
 }

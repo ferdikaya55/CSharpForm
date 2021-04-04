@@ -85,10 +85,14 @@ namespace WindowsFormsApDevex
                 SiparisID = Convert.ToInt32(dr["SiparisId"]);
             }
             int siparisID = SiparisID;
-            XtraReport3 xtraReport3 = new XtraReport3(siparisID);
-            ReportPrintTool print = new ReportPrintTool(xtraReport3);
+            OycRapor oycRapor = new OycRapor(siparisID);
+            ReportPrintTool print = new ReportPrintTool(oycRapor);
             print.AutoShowParametersPanel = true;
             print.ShowPreviewDialog();
+            //XtraReport3 xtraReport3 = new XtraReport3(siparisID);
+            //ReportPrintTool print = new ReportPrintTool(xtraReport3);
+            //print.AutoShowParametersPanel = true;
+            //print.ShowPreviewDialog();
 
             //Parameter param1 = new Parameter();
             //param1.Name = "SiparisId";
