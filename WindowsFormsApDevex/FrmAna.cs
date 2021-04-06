@@ -46,12 +46,6 @@ namespace WindowsFormsApDevex
             FrmSiparisler frmSiparisler = new FrmSiparisler();
             frmSiparisler.ShowDialog();
         }
-
-        private void navBarControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             FrmUrunHizmetList frmUrunHizmetList = new FrmUrunHizmetList();
@@ -65,6 +59,12 @@ namespace WindowsFormsApDevex
             //{
             //    navBarMusteriler.Visible = false;
             //}
+        }
+
+        private void navBarItemKurlar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            FrmKurlar frmKurlar = new FrmKurlar();
+            frmKurlar.ShowDialog();
         }
     }
 }

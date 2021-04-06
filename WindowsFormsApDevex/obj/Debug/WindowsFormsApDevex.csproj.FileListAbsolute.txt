@@ -204,3 +204,4 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\bin\Debug\ru\D
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.DataAccess.FrmLogin.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.XtraReport3.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.OycRapor.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmKurlar.resources

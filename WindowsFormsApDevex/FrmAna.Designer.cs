@@ -37,6 +37,7 @@ namespace WindowsFormsApDevex
             this.navBarSatinAl = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarSiparisler = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemKurlar = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,14 +52,14 @@ namespace WindowsFormsApDevex
             this.navBarUrunler,
             this.navBarSatinAl,
             this.navBarSiparisler,
-            this.navBarItem1});
+            this.navBarItem1,
+            this.navBarItemKurlar});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 218;
             this.navBarControl1.Size = new System.Drawing.Size(218, 601);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-           
             // 
             // navBarAnasayfa
             // 
@@ -73,7 +74,8 @@ namespace WindowsFormsApDevex
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarUrunler),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSatinAl),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSiparisler),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemKurlar)});
             this.navBarAnasayfa.Name = "navBarAnasayfa";
             // 
             // navBarMusteriler
@@ -116,15 +118,27 @@ namespace WindowsFormsApDevex
             // 
             // navBarItem1
             // 
+            this.navBarItem1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.navBarItem1.Appearance.Options.UseFont = true;
             this.navBarItem1.Caption = "ÜRÜN HİZMET";
             this.navBarItem1.ImageOptions.LargeImage = global::WindowsFormsApDevex.Properties.Resources.boproductgroup_32x32;
             this.navBarItem1.ImageOptions.SmallImage = global::WindowsFormsApDevex.Properties.Resources.boproductgroup_16x16;
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
             // 
+            // navBarItemKurlar
+            // 
+            this.navBarItemKurlar.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.navBarItemKurlar.Appearance.Options.UseFont = true;
+            this.navBarItemKurlar.Caption = "KURLAR";
+            this.navBarItemKurlar.ImageOptions.LargeImage = global::WindowsFormsApDevex.Properties.Resources._3dline_32x32;
+            this.navBarItemKurlar.ImageOptions.SmallImage = global::WindowsFormsApDevex.Properties.Resources._3dline_16x16;
+            this.navBarItemKurlar.Name = "navBarItemKurlar";
+            this.navBarItemKurlar.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItemKurlar_LinkClicked);
+            // 
             // FrmAna
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(881, 601);
@@ -149,5 +163,6 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraNavBar.NavBarItem navBarSatinAl;
         private DevExpress.XtraNavBar.NavBarItem navBarSiparisler;
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemKurlar;
     }
 }

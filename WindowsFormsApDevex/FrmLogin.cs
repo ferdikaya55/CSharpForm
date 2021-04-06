@@ -45,8 +45,11 @@ namespace WindowsFormsApDevex.DataAccess
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            txtKullaniciAdi.Text = "";
-            txtSifre.Text = "";
+            txtKullaniciAdi.Text = "Ferdi";
+            txtSifre.Text = "123";
+            FrmAna frmAna = new FrmAna();
+            frmAna.ShowDialog();
+            this.Close();
         }
         private void btnGirisYap_KeyDown(object sender, KeyEventArgs e)
         {
