@@ -29,24 +29,13 @@ namespace WindowsFormsApDevex
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnYazdir = new DevExpress.XtraEditors.SimpleButton();
             this.btnTariheGoreYazdir = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
-            // 
-            // btnYazdir
-            // 
-            this.btnYazdir.ImageOptions.Image = global::WindowsFormsApDevex.Properties.Resources.report_32x321;
-            this.btnYazdir.Location = new System.Drawing.Point(36, 34);
-            this.btnYazdir.Name = "btnYazdir";
-            this.btnYazdir.Size = new System.Drawing.Size(104, 67);
-            this.btnYazdir.TabIndex = 1;
-            this.btnYazdir.Text = "YAZDIR";
-            this.btnYazdir.Click += new System.EventHandler(this.btnYazdir_Click);
             // 
             // btnTariheGoreYazdir
             // 
             this.btnTariheGoreYazdir.ImageOptions.Image = global::WindowsFormsApDevex.Properties.Resources.report_32x32;
-            this.btnTariheGoreYazdir.Location = new System.Drawing.Point(167, 34);
+            this.btnTariheGoreYazdir.Location = new System.Drawing.Point(35, 27);
             this.btnTariheGoreYazdir.Name = "btnTariheGoreYazdir";
             this.btnTariheGoreYazdir.Size = new System.Drawing.Size(118, 70);
             this.btnTariheGoreYazdir.TabIndex = 0;
@@ -58,7 +47,6 @@ namespace WindowsFormsApDevex
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 232);
-            this.Controls.Add(this.btnYazdir);
             this.Controls.Add(this.btnTariheGoreYazdir);
             this.Name = "FrmRapor";
             this.ShowIcon = false;
@@ -71,6 +59,5 @@ namespace WindowsFormsApDevex
         #endregion
 
         private DevExpress.XtraEditors.SimpleButton btnTariheGoreYazdir;
-        private DevExpress.XtraEditors.SimpleButton btnYazdir;
     }
 }

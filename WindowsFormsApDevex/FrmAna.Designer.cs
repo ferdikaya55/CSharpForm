@@ -102,7 +102,7 @@ namespace WindowsFormsApDevex
             // 
             this.navBarSatinAl.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.navBarSatinAl.Appearance.Options.UseFont = true;
-            this.navBarSatinAl.Caption = "SATIN AL";
+            this.navBarSatinAl.Caption = "YENİ SİPARİŞ";
             this.navBarSatinAl.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("navBarSatinAl.ImageOptions.SvgImage")));
             this.navBarSatinAl.Name = "navBarSatinAl";
             this.navBarSatinAl.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarSatinAl_LinkClicked);
@@ -111,7 +111,7 @@ namespace WindowsFormsApDevex
             // 
             this.navBarSiparisler.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.navBarSiparisler.Appearance.Options.UseFont = true;
-            this.navBarSiparisler.Caption = "SİPARİŞLER";
+            this.navBarSiparisler.Caption = "SİPARİŞLER LİSTESİ";
             this.navBarSiparisler.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("navBarSiparisler.ImageOptions.SvgImage")));
             this.navBarSiparisler.Name = "navBarSiparisler";
             this.navBarSiparisler.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarSiparisler_LinkClicked_1);

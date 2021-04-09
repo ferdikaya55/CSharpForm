@@ -193,8 +193,6 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\Wind
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.Müşteriler.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmAna.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmMusteri.resources
-C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmSatinAl.resources
-C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmSiparisler.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmUrun.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmUrunHizmetList.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmUrunlerList.resources
@@ -211,3 +209,5 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\Wind
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmTeslim.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmRapor.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.RaporSiparis.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmSiparislerListesi.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmSiparisler.resources

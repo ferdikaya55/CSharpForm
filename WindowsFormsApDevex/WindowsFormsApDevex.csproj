@@ -153,17 +153,17 @@
     <Compile Include="FrmMusteri.Designer.cs">
       <DependentUpon>FrmMusteri.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSatinAl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmSatinAl.Designer.cs">
-      <DependentUpon>FrmSatinAl.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmSiparisler.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSiparisler.Designer.cs">
       <DependentUpon>FrmSiparisler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSiparislerListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSiparislerListesi.Designer.cs">
+      <DependentUpon>FrmSiparislerListesi.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmUrun.cs">
       <SubType>Form</SubType>
@@ -234,11 +234,11 @@
     <EmbeddedResource Include="FrmMusteri.resx">
       <DependentUpon>FrmMusteri.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSatinAl.resx">
-      <DependentUpon>FrmSatinAl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmSiparisler.resx">
       <DependentUpon>FrmSiparisler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSiparislerListesi.resx">
+      <DependentUpon>FrmSiparislerListesi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUrun.resx">
       <DependentUpon>FrmUrun.cs</DependentUpon>

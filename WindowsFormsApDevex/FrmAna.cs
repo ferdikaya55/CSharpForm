@@ -38,13 +38,13 @@ namespace WindowsFormsApDevex
         {
             int id=0;
             //string ad="";
-            FrmSatinAl frmSatinAl = new FrmSatinAl(id);
-            frmSatinAl.ShowDialog();
+            FrmSiparisler frmSiparisler = new FrmSiparisler(id);
+            frmSiparisler.ShowDialog();
         }
         private void navBarSiparisler_LinkClicked_1(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            FrmSiparisler frmSiparisler = new FrmSiparisler();
-            frmSiparisler.ShowDialog();
+            FrmSiparislerListesi frmSiparislerListesi = new FrmSiparislerListesi();
+            frmSiparislerListesi.ShowDialog();
         }
         private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {

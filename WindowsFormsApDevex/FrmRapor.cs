@@ -19,19 +19,12 @@ namespace WindowsFormsApDevex
            
             InitializeComponent();
         }
-
-        private void btnYazdir_Click(object sender, EventArgs e)
-        {
-           
-            //OycRapor oycRapor = new OycRapor(SiparisId);
-            //ReportPrintTool print = new ReportPrintTool(oycRapor);
-            //print.AutoShowParametersPanel = true;
-            //print.ShowPreviewDialog();
-        }
-
         private void btnTariheGoreYazdir_Click(object sender, EventArgs e)
         {
-
+            RaporSiparis raporSiparis = new RaporSiparis();
+            ReportPrintTool print = new ReportPrintTool(raporSiparis);
+            print.AutoShowParametersPanel = true;
+            print.ShowPreviewDialog();
         }
     }
 }
