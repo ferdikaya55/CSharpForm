@@ -43,9 +43,17 @@ namespace WindowsFormsApDevex
             this.Telefon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SiparisId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEditBaslangicTarihi = new DevExpress.XtraEditors.DateEdit();
+            this.dateEditBitisTarihi = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSiparisler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControlSiparisler
@@ -55,14 +63,13 @@ namespace WindowsFormsApDevex
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControlSiparisler.ContextMenuStrip = this.contextMenuStrip1;
             this.gridControlSiparisler.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.gridControlSiparisler.Location = new System.Drawing.Point(36, 22);
+            this.gridControlSiparisler.Location = new System.Drawing.Point(12, 64);
             this.gridControlSiparisler.MainView = this.gridViewSiparisler;
             this.gridControlSiparisler.Name = "gridControlSiparisler";
-            this.gridControlSiparisler.Size = new System.Drawing.Size(728, 379);
+            this.gridControlSiparisler.Size = new System.Drawing.Size(807, 378);
             this.gridControlSiparisler.TabIndex = 0;
             this.gridControlSiparisler.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSiparisler});
-          
             // 
             // contextMenuStrip1
             // 
@@ -72,26 +79,26 @@ namespace WindowsFormsApDevex
             this.sİPARİŞDÜZENLEToolStripMenuItem,
             this.yAZDIRToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 70);
             // 
             // sİPARİŞSİLToolStripMenuItem
             // 
             this.sİPARİŞSİLToolStripMenuItem.Name = "sİPARİŞSİLToolStripMenuItem";
-            this.sİPARİŞSİLToolStripMenuItem.Size = new System.Drawing.Size(196, 24);
+            this.sİPARİŞSİLToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.sİPARİŞSİLToolStripMenuItem.Text = "SİPARİŞ SİL";
             this.sİPARİŞSİLToolStripMenuItem.Click += new System.EventHandler(this.sİPARİŞSİLToolStripMenuItem_Click);
             // 
             // sİPARİŞDÜZENLEToolStripMenuItem
             // 
             this.sİPARİŞDÜZENLEToolStripMenuItem.Name = "sİPARİŞDÜZENLEToolStripMenuItem";
-            this.sİPARİŞDÜZENLEToolStripMenuItem.Size = new System.Drawing.Size(196, 24);
+            this.sİPARİŞDÜZENLEToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.sİPARİŞDÜZENLEToolStripMenuItem.Text = "SİPARİŞ DÜZENLE";
             this.sİPARİŞDÜZENLEToolStripMenuItem.Click += new System.EventHandler(this.sİPARİŞDÜZENLEToolStripMenuItem_Click);
             // 
             // yAZDIRToolStripMenuItem
             // 
             this.yAZDIRToolStripMenuItem.Name = "yAZDIRToolStripMenuItem";
-            this.yAZDIRToolStripMenuItem.Size = new System.Drawing.Size(196, 24);
+            this.yAZDIRToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.yAZDIRToolStripMenuItem.Text = "YAZDIR";
             this.yAZDIRToolStripMenuItem.Click += new System.EventHandler(this.yAZDIRToolStripMenuItem_Click);
             // 
@@ -109,7 +116,6 @@ namespace WindowsFormsApDevex
             this.gridViewSiparisler.OptionsBehavior.Editable = false;
             this.gridViewSiparisler.OptionsCustomization.AllowColumnMoving = false;
             this.gridViewSiparisler.OptionsView.ShowGroupPanel = false;
-            
             this.gridViewSiparisler.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridViewSiparisler_KeyDown);
             // 
             // MusteriAd
@@ -182,14 +188,58 @@ namespace WindowsFormsApDevex
             // 
             this.labelControl1.Location = new System.Drawing.Point(0, 0);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(0, 16);
+            this.labelControl1.Size = new System.Drawing.Size(0, 13);
             this.labelControl1.TabIndex = 21;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(12, 17);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(73, 13);
+            this.labelControl2.TabIndex = 22;
+            this.labelControl2.Text = "Başlangıç Tarihi";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(213, 17);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(48, 13);
+            this.labelControl3.TabIndex = 23;
+            this.labelControl3.Text = "Bitiş Tarihi";
+            // 
+            // dateEditBaslangicTarihi
+            // 
+            this.dateEditBaslangicTarihi.EditValue = null;
+            this.dateEditBaslangicTarihi.Location = new System.Drawing.Point(91, 14);
+            this.dateEditBaslangicTarihi.Name = "dateEditBaslangicTarihi";
+            this.dateEditBaslangicTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBaslangicTarihi.Size = new System.Drawing.Size(100, 20);
+            this.dateEditBaslangicTarihi.TabIndex = 24;
+            // 
+            // dateEditBitisTarihi
+            // 
+            this.dateEditBitisTarihi.EditValue = null;
+            this.dateEditBitisTarihi.Location = new System.Drawing.Point(278, 14);
+            this.dateEditBitisTarihi.Name = "dateEditBitisTarihi";
+            this.dateEditBitisTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBitisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditBitisTarihi.Size = new System.Drawing.Size(100, 20);
+            this.dateEditBitisTarihi.TabIndex = 25;
             // 
             // FrmSiparisler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 436);
+            this.ClientSize = new System.Drawing.Size(831, 454);
+            this.Controls.Add(this.dateEditBitisTarihi);
+            this.Controls.Add(this.dateEditBaslangicTarihi);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControlSiparisler);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -201,6 +251,10 @@ namespace WindowsFormsApDevex
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSiparisler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +275,9 @@ namespace WindowsFormsApDevex
         private System.Windows.Forms.ToolStripMenuItem sİPARİŞSİLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sİPARİŞDÜZENLEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yAZDIRToolStripMenuItem;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.DateEdit dateEditBaslangicTarihi;
+        private DevExpress.XtraEditors.DateEdit dateEditBitisTarihi;
     }
 }

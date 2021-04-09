@@ -209,3 +209,5 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\Wind
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmTeslimSekliList.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.csprojAssemblyReference.cache
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmTeslim.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmRapor.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.RaporSiparis.resources

@@ -27,6 +27,7 @@ namespace WindowsFormsApDevex.DataAccess
             string query = "UPDATE Musteriler SET MusteriAd=@MusteriAd,Adres=@Adres,Telefon=@Telefon from Musteriler inner join Siparisler " +
                             "on Musteriler.MusteriId = Siparisler.MusteriId where Siparisler.SiparisId = @SiparisId";
             command = new SqlCommand(query, connection);
+            //command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@SiparisId", siparisId);
             command.Parameters.AddWithValue("@MusteriAd", ad);
             command.Parameters.AddWithValue("@Adres", adres);

@@ -79,16 +79,20 @@ namespace WindowsFormsApDevex
 
         private void yAZDIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRow dr = gridViewSiparisler.GetDataRow(gridViewSiparisler.FocusedRowHandle);
-            if (dr != null)
-            {
-                SiparisID = Convert.ToInt32(dr["SiparisId"]);
-            }
-            int siparisID = SiparisID;
-            OycRapor oycRapor = new OycRapor(siparisID);
-            ReportPrintTool print = new ReportPrintTool(oycRapor);
+            RaporSiparis raporSiparis = new RaporSiparis();
+            ReportPrintTool print = new ReportPrintTool(raporSiparis);
             print.AutoShowParametersPanel = true;
             print.ShowPreviewDialog();
+
+            //DataRow dr = gridViewSiparisler.GetDataRow(gridViewSiparisler.FocusedRowHandle);
+            //if (dr != null)
+            //{
+            //    SiparisID = Convert.ToInt32(dr["SiparisId"]);
+            //}
+            //int siparisID = SiparisID;
+            //FrmRapor frmRapor = new FrmRapor();
+            //frmRapor.ShowDialog();
+
             //XtraReport3 xtraReport3 = new XtraReport3(siparisID);
             //ReportPrintTool print = new ReportPrintTool(xtraReport3);
             //print.AutoShowParametersPanel = true;
