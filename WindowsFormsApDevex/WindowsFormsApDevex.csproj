@@ -81,7 +81,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\TeslimSekliDal.cs" />
+    <Compile Include="FrmOdeme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOdeme.Designer.cs">
+      <DependentUpon>FrmOdeme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOdemeSekli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOdemeSekli.Designer.cs">
+      <DependentUpon>FrmOdemeSekli.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\KurlarDal.cs" />
+    <Compile Include="DataAccess\OdemeSekliDal.cs" />
     <Compile Include="FrmKurlar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +111,18 @@
     <Compile Include="DataAccess\LoginDal.cs" />
     <Compile Include="DataAccess\SiparisDal.cs" />
     <Compile Include="DataAccess\UrunHizmetDal.cs" />
+    <Compile Include="FrmTeslim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTeslim.Designer.cs">
+      <DependentUpon>FrmTeslim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTeslimSekliList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTeslimSekliList.Designer.cs">
+      <DependentUpon>FrmTeslimSekliList.cs</DependentUpon>
+    </Compile>
     <Compile Include="OycRapor.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -163,11 +189,23 @@
     <Compile Include="XtraReport3.Designer.cs">
       <DependentUpon>XtraReport3.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmOdeme.resx">
+      <DependentUpon>FrmOdeme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOdemeSekli.resx">
+      <DependentUpon>FrmOdemeSekli.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKurlar.resx">
       <DependentUpon>FrmKurlar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTeslim.resx">
+      <DependentUpon>FrmTeslim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTeslimSekliList.resx">
+      <DependentUpon>FrmTeslimSekliList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OycRapor.resx">
       <DependentUpon>OycRapor.cs</DependentUpon>

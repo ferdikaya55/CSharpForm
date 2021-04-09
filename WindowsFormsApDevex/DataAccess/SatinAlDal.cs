@@ -11,20 +11,22 @@ namespace WindowsFormsApDevex
 {
     public class SatinAlDal
     {
-        SqlConnection connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=OycDB1;Integrated Security=SSPI");
+        SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;
         SqlDataAdapter adapter;
         SqlDataReader reader;
    
-        public int SiparisInsert(int musteriId,int siparisNo, DateTime siparisTarihi,int kurId,double kurDegeri)
+        public int SiparisInsert(int musteriId,int siparisNo, DateTime siparisTarihi,int kurId,double kurDegeri,int odemeId,int teslimId)
         {
-            string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi,KurId,KurDegeri) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi,@KurId,@KurDegeri) Select @@IDENTITY ";
+            string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi,KurId,KurDegeri,OdemeId,TeslimId) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi,@KurId,@KurDegeri,@OdemeId,@TeslimId) Select @@IDENTITY ";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@MusteriId", musteriId);
             command.Parameters.AddWithValue("@SiparisNo", siparisNo);
             command.Parameters.AddWithValue("@SiparisTarihi", siparisTarihi);
             command.Parameters.AddWithValue("@KurId", kurId);
             command.Parameters.AddWithValue("@KurDegeri", kurDegeri);
+            command.Parameters.AddWithValue("@OdemeId", odemeId);
+            command.Parameters.AddWithValue("@TeslimId", teslimId);
 
             connection.Open();
             int siparisId = 0;
@@ -42,9 +44,7 @@ namespace WindowsFormsApDevex
         {
             connection.Open();
             adapter = new SqlDataAdapter();
-            string query = "select SiparisDetayId,SiparisId,Kurlar.KurAdi as ParaBirimi,(Case SatirTipi when 'Malzeme' then(select UrunAdi from Urun_Malzeme where sd.UrunMalzemeId = UrunMalzemeId) " +
-                " when 'Hizmet' then(select UrunAdi from Urun_Hizmet where sd.UrunHizmetId = UrunHizmetId)end) as UrunAdi,(Case SatirTipi when 'Malzeme'then(select UrunMalzemeKdvOrani from Urun_Malzeme where sd.UrunMalzemeId = UrunMalzemeId) " +
-                "when 'Hizmet'then(select UrunHizmetKdvOrani from Urun_Hizmet where sd.UrunHizmetId = UrunHizmetId)end) as KdvOrani,SatirTipi,sd.KdvToplamTutari,sd.AraToplam,uh.UrunHizmetId,um.UrunMalzemeId,um.StokMiktari,sd.BirimFiyati,Tutar,sd.Miktar,Birim,sd.IndirimOrani,IndirimKazanci,sd.Toplam from Siparis_Detay sd left join Urun_Malzeme um on sd.UrunMalzemeId = um.UrunMalzemeId left join Urun_Hizmet uh on sd.UrunHizmetId = uh.UrunHizmetId left join Kurlar on sd.KurId = Kurlar.KurId where SiparisId = @SiparisId";
+            string query = "select * from SiparisDetayBilgileri where SiparisId=@SiparisId";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@SiparisId", siparisId);
             adapter.SelectCommand = command;
@@ -57,7 +57,7 @@ namespace WindowsFormsApDevex
         public DataRow GetDataRowSiparis(int id)
         {
             adapter = new SqlDataAdapter();
-            string query = "select m.MusteriId,m.MusteriAd,m.Adres,m.Telefon,s.SiparisNo,s.SiparisTarihi,KurAdi,s.KurId,s.KurDegeri from Siparisler s left join Musteriler m on s.MusteriId = m.MusteriId left join Kurlar on s.KurId=Kurlar.KurId where SiparisId = @id";
+            string query = "select s.SiparisId,m.MusteriId,m.MusteriAd,m.Adres,m.Telefon,s.SiparisNo,s.SiparisTarihi,KurAdi,s.KurId,s.KurDegeri,TeslimSekli.TeslimId,TeslimSekli.TeslimSekliAdi,OdemeSekli.OdemeId,OdemeAdi from Siparisler s left join Musteriler m on s.MusteriId = m.MusteriId left join Kurlar on s.KurId = Kurlar.KurId inner join  OdemeSekli on s.OdemeId = OdemeSekli.OdemeId inner join TeslimSekli on s.TeslimId = TeslimSekli.TeslimId where SiparisId =@id";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@id", id);
             adapter.SelectCommand = command;
@@ -94,7 +94,7 @@ namespace WindowsFormsApDevex
             connection.Open();
             int siparisNo = 0;
             object oResult = command.ExecuteScalar();
-            if (oResult!=null)
+            if (oResult != null)
             {
                 siparisNo = Convert.ToInt32(oResult);
             }
@@ -163,7 +163,7 @@ namespace WindowsFormsApDevex
         }
         public void SiparisDetayUpdate(int siparisDetayId, int? urunId,int? urunHizmetId, string birim, double miktar, double birimFiyati, int kurId,double kurDegeri, double tutar,string satirTipi, int kdvOrani, double kdvtutar, double araToplam, int indirimOrani, double indirimKazanci, double toplam)
         {
-            string query = "UPDATE Siparis_Detay set UrunMalzemeId = @UrunMalzemeId,UrunHizmetId=@UrunHizmetId, Miktar = @Miktar, Tutar = @Tutar, BirimFiyati = @BirimFiyati, Birim = @Birim, KurId = @KurId,Kurdegeri=@KurDegeriSatirTipi=@SatirTipi,KdvOrani=@KdvOrani,KdvToplamTutari=@KdvToplamTutari,AraToplam=@AraToplam,IndirimOrani=@IndirimOrani,IndirimKazanci=@IndirimKazanci,Toplam=@Toplam where Siparis_Detay.SiparisDetayId = @SiparisDetayId";
+            string query = "UPDATE Siparis_Detay set UrunMalzemeId = @UrunMalzemeId,UrunHizmetId=@UrunHizmetId, Miktar = @Miktar, Tutar = @Tutar, BirimFiyati = @BirimFiyati, Birim = @Birim, KurId = @KurId,Kurdegeri=@KurDegeri,SatirTipi=@SatirTipi,KdvOrani=@KdvOrani,KdvToplamTutari=@KdvToplamTutari,AraToplam=@AraToplam,IndirimOrani=@IndirimOrani,IndirimKazanci=@IndirimKazanci,Toplam=@Toplam where Siparis_Detay.SiparisDetayId = @SiparisDetayId";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@SiparisDetayId", siparisDetayId);
             if (urunId == null)
@@ -203,9 +203,9 @@ namespace WindowsFormsApDevex
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public void SiparisUpdate(int siparisId,int musteriId, int siparisNo, DateTime siparisTarihi,int kurId,double kurDegeri)
+        public void SiparisUpdate(int siparisId,int musteriId, int siparisNo, DateTime siparisTarihi,int kurId,double kurDegeri,int odemeId,int teslimId)
         {
-            string query = "Update Siparisler set MusteriId=@MusteriId,SiparisNo=@SiparisNo,SiparisTarihi=@SiparisTarihi,KurId=@KurId,KurDegeri=@KurDegeri where SiparisId=@SiparisId";
+            string query = "Update Siparisler set MusteriId=@MusteriId,SiparisNo=@SiparisNo,SiparisTarihi=@SiparisTarihi,KurId=@KurId,KurDegeri=@KurDegeri,OdemeId=@OdemeId,TeslimId=@TeslimId where SiparisId=@SiparisId";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@SiparisId", siparisId);
             command.Parameters.AddWithValue("@MusteriId", musteriId);
@@ -213,6 +213,8 @@ namespace WindowsFormsApDevex
             command.Parameters.AddWithValue("@SiparisTarihi", siparisTarihi);
             command.Parameters.AddWithValue("@KurId", kurId);
             command.Parameters.AddWithValue("@KurDegeri", kurDegeri);
+            command.Parameters.AddWithValue("@OdemeId", odemeId);
+            command.Parameters.AddWithValue("@TeslimId", teslimId);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();

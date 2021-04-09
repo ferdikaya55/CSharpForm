@@ -1,5 +1,4 @@
-﻿
-namespace WindowsFormsApDevex
+﻿namespace WindowsFormsApDevex
 {
     partial class FrmKurlar
     {

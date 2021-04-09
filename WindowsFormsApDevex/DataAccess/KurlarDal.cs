@@ -9,7 +9,7 @@ namespace WindowsFormsApDevex.DataAccess
 {
     public class KurlarDal
     {
-        SqlConnection connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=OycDB1;Integrated Security=SSPI");
+        SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;
         SqlDataAdapter adapter;
         public DataTable DataTableKurlarListele()
@@ -31,7 +31,7 @@ namespace WindowsFormsApDevex.DataAccess
             connection.Close();
 
         }
-        public void KurUpdate(int id,string kurAdi)
+        public void KurUpdate(int id, string kurAdi)
         {
             string query = "UPDATE Kurlar SET KurAdi=@KurAdi WHERE KurId=@KurId";
             command = new SqlCommand(query, connection);

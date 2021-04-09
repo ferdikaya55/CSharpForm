@@ -10,7 +10,7 @@ namespace WindowsFormsApDevex.DataAccess
     
     public class UrunHizmetDal
     {
-        SqlConnection connection = new SqlConnection(@"Data source=DESKTOP-TFKKQ1E\SQLEXPRESS;Initial Catalog=OycDB1;Integrated Security=SSPI");
+        SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;
         SqlDataAdapter adapter;
         public DataTable DataTableUrunHizmet()

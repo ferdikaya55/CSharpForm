@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApDevex.DataAccess;
 using WindowsFormsApDevex.Helper;
+using System.Xml;
 
 namespace WindowsFormsApDevex
 {
@@ -39,28 +40,31 @@ namespace WindowsFormsApDevex
         SatinAlDal satinAlDbManager = new SatinAlDal();
         UrunHizmetDal urunHizmetDal = new UrunHizmetDal();
         KurlarDal kurlarDal = new KurlarDal();
+        OdemeSekliDal odemeSekliDal = new OdemeSekliDal();
+        TeslimSekliDal teslimSekliDal = new TeslimSekliDal();
         FrmUrunlerList frmUrunler;
 
         public FrmSatinAl(int siparisId)
         {
             InitializeComponent();     
             this.SiparisID = siparisId;
-           
+            FormLoadOluyor = true;
             if (SiparisID != 0) // update formu olarak açılmış, gerekli bilgileri yükle
             {
-                FormLoadOluyor = true;
                 DataRow row = satinAlDbManager.GetDataRowSiparis(SiparisID);
                 if (row != null)
-                {  FormLoadOluyor = true;
+                {  
                     if (row["MusteriId"] != DBNull.Value)
-                    {
+                    { 
                         SeciliMusteriId = Convert.ToInt32(row["MusteriId"]);
                         btnEditMusteriler.Text = row["MusteriAd"].ToString();
                     }
                     txtSiparisNo.Text = row["SiparisNo"].ToString();
                     dateEditSiparisTarihi.Text = row["SiparisTarihi"].ToString();
                     lookUpEditKurlar.EditValue = row["KurId"];
-                    txtKurDegeri.EditValue = row["KurDegeri"];
+                    txtKurDegeri.Text = row["KurDegeri"].ToString();
+                    lookUpEditOdemeSekli.EditValue= row["OdemeId"];
+                    lookUpEditTeslimSekli.EditValue = row["TeslimId"];
                 }
             }
             else
@@ -72,10 +76,19 @@ namespace WindowsFormsApDevex
             }
             LoadDetayTable();
             LoadLookUpEdit();
-          
-
+            FormLoadOluyor = false;
         }
-       
+        private void frmSiparisler_Load(object sender, EventArgs e)
+        {
+            gridViewSiparislerDetay.OptionsNavigation.AutoFocusNewRow = true;
+            //lookUpEditKurlar.ItemIndex = 0;
+            //KurID = Convert.ToInt32(lookUpEditKurlar.EditValue);
+            //if (KurID == 1)
+            //{
+            //    txtKurDegeri.EditValue = 1;
+            //    txtKurDegeri.Enabled = false;
+            //}
+        }
         private void LoadDetayTable()
         {
             gridControlSiparisDetay.DataSource = satinAlDbManager.GetDataTableDetay(SiparisID);
@@ -89,46 +102,22 @@ namespace WindowsFormsApDevex
             lookUpEditKurlar.Properties.ValueMember = "KurId"; 
             lookUpEditKurlar.Properties.DisplayMember = "KurAdi";
             lookUpEditKurlar.Properties.Columns["KurId"].Visible = false;
-        
-        }
-        private void lookUpEditKurlar_EditValueChanged(object sender, EventArgs e)
-        {
-            if (FormLoadOluyor==false)
-            {
-               
-                KurAdi = lookUpEditKurlar.Text;
-                KurID = Convert.ToInt32(lookUpEditKurlar.EditValue);
-                foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
-                {
-                    row["ParaBirimi"] = KurAdi;
-                }
-                if (KurID != 1)
-                {
-                    txtKurDegeri.Enabled = true;
-                    txtKurDegeri.Text = "";
-                }
-                else
-                {
-                    txtKurDegeri.EditValue = 1;
-                    txtKurDegeri.Enabled = false;
-                }
-               
-            }
-           
-        }
-        private void frmSiparisler_Load(object sender, EventArgs e)
-        {
-            gridViewSiparislerDetay.OptionsNavigation.AutoFocusNewRow = true;
-            //lookUpEditKurlar.ItemIndex = 0;
-            //KurID = Convert.ToInt32(lookUpEditKurlar.EditValue);
-            //if (KurID == 1)
-            //{
-            //    txtKurDegeri.EditValue = 1;
-            //    txtKurDegeri.Enabled = false;
-            //}
+
+            lookUpEditOdemeSekli.Properties.DataSource = odemeSekliDal.DataTableOdemeSekliListele();
+            lookUpEditOdemeSekli.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OdemeId"));
+            lookUpEditOdemeSekli.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OdemeAdi"));
+            lookUpEditOdemeSekli.Properties.ValueMember = "OdemeId";
+            lookUpEditOdemeSekli.Properties.DisplayMember = "OdemeAdi";
+            lookUpEditOdemeSekli.Properties.Columns["OdemeId"].Visible = false;
+
+            lookUpEditTeslimSekli.Properties.DataSource = teslimSekliDal.DataTableTeslimSekliListele();
+            lookUpEditTeslimSekli.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TeslimId"));
+            lookUpEditTeslimSekli.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TeslimSekliAdi"));
+            lookUpEditTeslimSekli.Properties.ValueMember = "TeslimId";
+            lookUpEditTeslimSekli.Properties.DisplayMember = "TeslimSekliAdi";
+            lookUpEditTeslimSekli.Properties.Columns["TeslimId"].Visible = false;
 
         }
-
         private void btnEditMusteriler_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             Müşteriler form1 = new Müşteriler(FormAcilisTipi.Secim);
@@ -170,7 +159,6 @@ namespace WindowsFormsApDevex
                 }
             }
         }
-     
         private void SelectUrunMalzeme()
         {
             frmUrunler = new FrmUrunlerList(UrunFormAcilisTipi.Secim);
@@ -263,6 +251,7 @@ namespace WindowsFormsApDevex
                         dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
                        // dr["KdvToplamTutari"] = (Convert.ToDouble(dr["Tutar"]) * Convert.ToDouble(dr["KdvOrani"])) / 100;
                         dr["AraToplam"] = Convert.ToDouble(dr["IndirimKazanci"]) + Convert.ToDouble(dr["Tutar"]);
+                        dr["Toplam"] = dr["AraToplam"];
                         gridViewSiparislerDetay.UpdateCurrentRow();
                     }
                     else
@@ -280,64 +269,34 @@ namespace WindowsFormsApDevex
                         drNew["KdvToplamTutari"] = 0;
                         drNew["IndirimOrani"] = 0;
                         drNew["IndirimKazanci"] = 0;
-                        drNew["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
+                        drNew["Tutar"] = Convert.ToDouble(drNew["Miktar"]) * Convert.ToDouble(drNew["BirimFiyati"]);
                         //dr["KdvToplamTutari"] = (Convert.ToDouble(dr["Tutar"]) * Convert.ToDouble(dr["KdvOrani"])) / 100;
-                        drNew["AraToplam"] = Convert.ToDouble(dr["IndirimKazanci"]) + Convert.ToDouble(dr["Tutar"]);
+                        drNew["AraToplam"] = Convert.ToDouble(drNew["IndirimKazanci"]) + Convert.ToDouble(drNew["Tutar"]);
+                        drNew["Toplam"] = drNew["AraToplam"];
                         dt.Rows.Add(drNew);
                     }
                 }
             }
         }
-        private void gridViewSiparislerDetay_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
-        {
-
-            int urunMalzemeid = 0,urunHizmetId=0;
-
-            if (e.Row is DataRowView)
-            {
-                DataRowView row = (DataRowView)e.Row;
-                if (row["UrunMalzemeId"]!= DBNull.Value)
-                {
-                    urunMalzemeid = Convert.ToInt32(row["UrunMalzemeId"]);
-                   
-                }
-                else if(row["UrunHizmetId"] != DBNull.Value)
-                {
-                    urunHizmetId = Convert.ToInt32(row["UrunHizmetId"]);
-                }
-            }
-
-            if (urunMalzemeid == 0 && urunHizmetId==0)
-            {
-                e.Valid = false;
-                e.ErrorText = "Ürün Seçiniz. " + urunMalzemeid.ToString() + urunHizmetId.ToString();
-            }
-        }
-        private void GridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
-        {
-            NewItemRowCalisiyor = true;
-            this.gridViewSiparislerDetay.SetRowCellValue(e.RowHandle, "BirimFiyati", 0);
-            this.gridViewSiparislerDetay.SetRowCellValue(e.RowHandle, "Miktar", 1);
-            NewItemRowCalisiyor = false;
-        }
+       
         private bool YeniSiparisEkle()
         {
-            int musteriId, siparisNo,kdvOrani,indirimOrani, paraBirimi;
+            int musteriId, siparisNo,kdvOrani,indirimOrani, paraBirimi,teslimId,odemeId;
             int? urunId, urunhizmetId;
             double miktar, tutar, birimFiyati,kdvToplamTutar, araToplam,indirimKazanci,toplam,kurDegeri;
             string birim, satirTipi;
             DateTime siparisTarihi;
             bool siparisDurum = false;
-            
-
             if (TxtSiparisKontrol() && SiparisDetayKontrol())
             {
                 musteriId = SeciliMusteriId;
                 siparisNo = Convert.ToInt32(txtSiparisNo.Text);
                 siparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
-                paraBirimi = KurID;
+                paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
                 kurDegeri = Convert.ToDouble(txtKurDegeri.Text);
-                SiparisID = satinAlDbManager.SiparisInsert(musteriId, siparisNo, siparisTarihi,paraBirimi,kurDegeri);
+                teslimId = Convert.ToInt32(lookUpEditTeslimSekli.EditValue);
+                odemeId = Convert.ToInt32(lookUpEditOdemeSekli.EditValue);
+                SiparisID = satinAlDbManager.SiparisInsert(musteriId, siparisNo, siparisTarihi,paraBirimi,kurDegeri,odemeId,teslimId);
                 foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
                 {
                     urunId = null;
@@ -354,7 +313,7 @@ namespace WindowsFormsApDevex
                     birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
                     tutar = Convert.ToDouble(row["Tutar"]);
                     birim = row["Birim"].ToString();
-                    paraBirimi = KurID;
+                    paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
                     satirTipi = row["SatirTipi"].ToString();
                     kdvOrani = Convert.ToInt32(row["KdvOrani"]);
                     kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
@@ -371,24 +330,25 @@ namespace WindowsFormsApDevex
             }
 
             return siparisDurum;
-
         }
         private bool SiparisGuncelle()
         {
-            int musteriId, siparisNo, sDetayId,kdvOrani,indirimOrani,paraBirimi;
+            int musteriId, siparisNo, sDetayId,kdvOrani,indirimOrani,paraBirimi, teslimId, odemeId;
             int? urunId, urunhizmetId;
             double miktar, tutar, birimFiyati, kdvToplamTutar, araToplam,indirimKazanci, toplam,kurDegeri;
             string birim,satirTipi;
             DateTime siparisTarihi;
             bool siparisGuncelleDurum = false;
-            paraBirimi = KurID;
-            kurDegeri = Convert.ToDouble(txtKurDegeri.EditValue);
+            paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
+            kurDegeri = Convert.ToDouble(txtKurDegeri.Text);
+            teslimId = Convert.ToInt32(lookUpEditTeslimSekli.EditValue);
+            odemeId = Convert.ToInt32(lookUpEditOdemeSekli.EditValue);
             if (TxtSiparisKontrol() && SiparisDetayKontrol())
             {
                 musteriId = SeciliMusteriId;
                 siparisNo = Convert.ToInt32(txtSiparisNo.Text);
                 siparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
-                satinAlDbManager.SiparisUpdate(SiparisID, musteriId, siparisNo, siparisTarihi, paraBirimi, kurDegeri);
+                satinAlDbManager.SiparisUpdate(SiparisID, musteriId, siparisNo, siparisTarihi, paraBirimi, kurDegeri,odemeId,teslimId);
 
                 foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
                 {
@@ -412,7 +372,7 @@ namespace WindowsFormsApDevex
                         birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
                         tutar = Convert.ToDouble(row["Tutar"]);
                         birim = row["Birim"].ToString();
-                        paraBirimi = KurID;
+                        paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
                         satirTipi = row["SatirTipi"].ToString();
                         kdvOrani = Convert.ToInt32(row["KdvOrani"]);
                         kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
@@ -439,7 +399,7 @@ namespace WindowsFormsApDevex
                         birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
                         tutar = Convert.ToDouble(row["Tutar"]);
                         birim = row["Birim"].ToString();
-                        paraBirimi = KurID;
+                        paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
                         satirTipi = row["SatirTipi"].ToString();
                         kdvOrani = Convert.ToInt32(row["KdvOrani"]);
                         kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
@@ -585,8 +545,55 @@ namespace WindowsFormsApDevex
                     return false;
                 }
             }
+            if (lookUpEditOdemeSekli.EditValue==null)
+            {
+                MessageBox.Show("Ödeme Şekli Seçiniz");
+                return false;
+            }
+            if (lookUpEditTeslimSekli.EditValue == null)
+            {
+                MessageBox.Show("Teslim Şekli Seçiniz");
+                return false;
+            }
 
             return true;
+        }
+        private void siparişDetaySilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SiparisDetaySil();
+            LoadDetayTable();
+        }
+        private void gridViewSiparislerDetay_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+
+            int urunMalzemeid = 0, urunHizmetId = 0;
+
+            if (e.Row is DataRowView)
+            {
+                DataRowView row = (DataRowView)e.Row;
+                if (row["UrunMalzemeId"] != DBNull.Value)
+                {
+                    urunMalzemeid = Convert.ToInt32(row["UrunMalzemeId"]);
+
+                }
+                else if (row["UrunHizmetId"] != DBNull.Value)
+                {
+                    urunHizmetId = Convert.ToInt32(row["UrunHizmetId"]);
+                }
+            }
+
+            if (urunMalzemeid == 0 && urunHizmetId == 0)
+            {
+                e.Valid = false;
+                e.ErrorText = "Ürün Seçiniz. " + urunMalzemeid.ToString() + urunHizmetId.ToString();
+            }
+        }
+        private void GridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            NewItemRowCalisiyor = true;
+            this.gridViewSiparislerDetay.SetRowCellValue(e.RowHandle, "BirimFiyati", 0);
+            this.gridViewSiparislerDetay.SetRowCellValue(e.RowHandle, "Miktar", 1);
+            NewItemRowCalisiyor = false;
         }
         private void gridViewSiparislerDetay_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -848,11 +855,42 @@ namespace WindowsFormsApDevex
                 CellValueChangedCalisiyor = false;
             }
         }
-    
-        private void siparişDetaySilToolStripMenuItem_Click(object sender, EventArgs e)
+        private void lookUpEditKurlar_EditValueChanged(object sender, EventArgs e)
         {
-            SiparisDetaySil();
-            LoadDetayTable();
+            if (FormLoadOluyor==false)
+            {
+                FormLoadOluyor = true;
+                KurAdi = lookUpEditKurlar.Text;
+                KurID = Convert.ToInt32(lookUpEditKurlar.EditValue);
+
+                foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
+                {
+                    row["ParaBirimi"] = KurAdi;
+                }
+                if (KurID != 1)
+                {
+                    string kurDegeri = KurDegerleriniCek(KurAdi);
+                    txtKurDegeri.Enabled = true;
+                    txtKurDegeri.Text = kurDegeri;
+                }
+                else
+                {
+                    txtKurDegeri.EditValue = 1;
+                    txtKurDegeri.Enabled = false;
+                }
+                FormLoadOluyor = false;
+            }
+        }
+        private string KurDegerleriniCek(string kod)
+        {
+            string deger;
+            string kurlar = "http://www.tcmb.gov.tr/kurlar/today.xml";
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(kurlar);
+
+            deger = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='" + kod + "']/BanknoteSelling").InnerXml;
+            deger.Replace('.', ',');
+            return deger;
         }
         private void repositoryItemComboBox1_SelectedIndexChanged(object sender, EventArgs e) 
         {
@@ -881,11 +919,18 @@ namespace WindowsFormsApDevex
             }
         }
 
-        private void repoComboKdvOrani_SelectedIndexChanged(object sender, EventArgs e)
+        private void lookUpEditOdemeSekli_Properties_DoubleClick(object sender, EventArgs e)
         {
-
+            FrmOdemeSekli frmOdemeSekli = new FrmOdemeSekli(FormAcilisTipiOdeme.Listele);
+            frmOdemeSekli.ShowDialog();
+            lookUpEditOdemeSekli.Properties.DataSource = odemeSekliDal.DataTableOdemeSekliListele();
         }
 
-      
+        private void lookUpEditTeslimSekli_Properties_DoubleClick(object sender, EventArgs e)
+        {
+            FrmTeslimSekliList frmTeslimSekli = new FrmTeslimSekliList(FormAcilisTipiTeslim.Listele);
+            frmTeslimSekli.ShowDialog();
+            lookUpEditTeslimSekli.Properties.DataSource = teslimSekliDal.DataTableTeslimSekliListele();
+        }
     }
 }
