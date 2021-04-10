@@ -14,7 +14,7 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmKurlar : Form
     {
-        KurlarDal kurlarCls = new KurlarDal();
+        KurlarMan kurlarMan = new KurlarMan();
 
         public FrmKurlar()
         {
@@ -27,7 +27,7 @@ namespace WindowsFormsApDevex
         }
         private void KurListele()
         {
-            gridControlKurlar.DataSource = kurlarCls.DataTableKurlarListele();
+            gridControlKurlar.DataSource = kurlarMan.DataTableKurlarListele();
         }
 
         private void ekleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace WindowsFormsApDevex
             var result = XtraInputBox.Show("Kur adı giriniz", "Kur Tanımlama", "").ToString();
             if (result != null)
             {
-                kurlarCls.KurInsert(result);
+                kurlarMan.KurInsert(result);
                 MessageBox.Show("Kur Eklendi");
                 KurListele();
             }
@@ -53,7 +53,7 @@ namespace WindowsFormsApDevex
             var result = XtraInputBox.Show("Kur adı giriniz", "Kur Güncelleme", kurAdi).ToString();
             if (result != null)
             {
-                kurlarCls.KurUpdate(kurId, result);
+                kurlarMan.KurUpdate(kurId, result);
                 MessageBox.Show("Kur Güncellendi");
                 KurListele();
             }
@@ -73,7 +73,7 @@ namespace WindowsFormsApDevex
                 DialogResult result = MessageBox.Show("Kur Silinecek Emin misiniz ?", "Kur Silme ", MessageBoxButtons.OKCancel);
                 if (result == DialogResult.OK)
                 {
-                    kurlarCls.KurDelete(kurId);
+                    kurlarMan.KurDelete(kurId);
                     MessageBox.Show("Kur Silindi");
                     KurListele();
                 }

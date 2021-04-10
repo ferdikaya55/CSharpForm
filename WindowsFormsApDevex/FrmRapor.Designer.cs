@@ -35,23 +35,26 @@ namespace WindowsFormsApDevex
             // btnTariheGoreYazdir
             // 
             this.btnTariheGoreYazdir.ImageOptions.Image = global::WindowsFormsApDevex.Properties.Resources.report_32x32;
-            this.btnTariheGoreYazdir.Location = new System.Drawing.Point(35, 27);
+            this.btnTariheGoreYazdir.Location = new System.Drawing.Point(47, 33);
+            this.btnTariheGoreYazdir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTariheGoreYazdir.Name = "btnTariheGoreYazdir";
-            this.btnTariheGoreYazdir.Size = new System.Drawing.Size(118, 70);
+            this.btnTariheGoreYazdir.Size = new System.Drawing.Size(157, 86);
             this.btnTariheGoreYazdir.TabIndex = 0;
             this.btnTariheGoreYazdir.Text = "TARİHE GÖRE\r\nYAZDIR";
             this.btnTariheGoreYazdir.Click += new System.EventHandler(this.btnTariheGoreYazdir_Click);
             // 
             // FrmRapor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 232);
+            this.ClientSize = new System.Drawing.Size(461, 286);
             this.Controls.Add(this.btnTariheGoreYazdir);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmRapor";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Raporlar";
+            this.Load += new System.EventHandler(this.FrmRapor_Load);
             this.ResumeLayout(false);
 
         }

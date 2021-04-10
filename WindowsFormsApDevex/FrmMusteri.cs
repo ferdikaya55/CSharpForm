@@ -12,7 +12,7 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmMusteri : Form
     {
-        MusteriDal musteri = new MusteriDal();
+        MusteriMan musteriMan = new MusteriMan();
         public int musteriId { get; set; }
         public FrmMusteri(int musteriId)
         {
@@ -23,11 +23,10 @@ namespace WindowsFormsApDevex
                 txtMusteriAdi.Text = "";
                 txtMusteriTelefon.Text = "";
                 txtMusteriAdresi.Text = "";
-                
             }
             else
             {
-                DataRow row = musteri.DataRowGetMusteri(musteriId);
+                DataRow row = musteriMan.DataRowGetMusteri(musteriId);
                 if (row != null)
                 {
                     txtMusteriAdi.Text = row["MusteriAd"].ToString();
@@ -35,32 +34,51 @@ namespace WindowsFormsApDevex
                     txtMusteriAdresi.Text = row["Adres"].ToString();
 
                 }
-
             }
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (musteriId>0)
+            if (TxtKontrol())
             {
-                musteri.MusteriUpdate(musteriId, txtMusteriAdi.Text, txtMusteriTelefon.Text, txtMusteriAdresi.Text);
-                MessageBox.Show("Müşteri Güncellendi");
-                this.Close();
-            }
-            else
-            {
-                musteri.MusteriInsert(txtMusteriAdi.Text, txtMusteriTelefon.Text, txtMusteriAdresi.Text);
-                MessageBox.Show("Müşteri Eklendi");
-                this.Close();
-            }
-        }
+                if (musteriId > 0)
+                {
+                    musteriMan.MusteriUpdate(musteriId, txtMusteriAdi.Text, txtMusteriTelefon.Text, txtMusteriAdresi.Text);
+                    MessageBox.Show("Müşteri Güncellendi");
+                    this.Close();
+                }
+                else
+                {
+                    musteriMan.MusteriInsert(txtMusteriAdi.Text, txtMusteriTelefon.Text, txtMusteriAdresi.Text);
+                    MessageBox.Show("Müşteri Eklendi");
+                    this.Close();
+                }
 
+            }
+           
+        }
+        private bool TxtKontrol()
+        {
+            if (txtMusteriAdi.Text=="")
+            {
+                MessageBox.Show("Müşteri Adı Giriniz.");
+                return false;
+            }
+            if (txtMusteriTelefon.Text=="")
+            {
+                MessageBox.Show("Müşteri Telefonu Giriniz.");
+                return false;
+            }
+            if (txtMusteriAdresi.Text == "")
+            {
+                MessageBox.Show("Müşteri Adresi Giriniz.");
+                return false;
+            }
+            return true;
+        }
         private void frmMusteriler_Load(object sender, EventArgs e)
         {
 
         }
-
-
     }
 
 }

@@ -13,7 +13,7 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmTeslim : Form
     {
-        TeslimSekliDal teslimSekliDal = new TeslimSekliDal();
+        TeslimSekliMan teslimSekliMan = new TeslimSekliMan();
         public int TeslimSekliID { get; set; }
         public FrmTeslim(int teslimSekliId)
         {
@@ -25,25 +25,24 @@ namespace WindowsFormsApDevex
             }
             else
             {
-                DataRow row = teslimSekliDal.DataRowGetTeslimSekli(TeslimSekliID);
+                DataRow row = teslimSekliMan.DataRowGetTeslimSekli(TeslimSekliID);
                 if (row!=null)
                 {
                     txtTeslimatSekli.Text = row["TeslimSekliAdi"].ToString();
                 }
             }
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             if (TeslimSekliID>0)
             {
-                teslimSekliDal.TeslimSekliUpdate(TeslimSekliID, txtTeslimatSekli.Text);
+                teslimSekliMan.TeslimSekliUpdate(TeslimSekliID, txtTeslimatSekli.Text);
                 MessageBox.Show("Teslimat Şekli Güncellendi");
                 this.Close();
             }
             else
             {
-                teslimSekliDal.TeslimSekliInsert(txtTeslimatSekli.Text);
+                teslimSekliMan.TeslimSekliInsert(txtTeslimatSekli.Text);
                 MessageBox.Show("Teslimat Şekli Eklendi");
                 this.Close();
             }

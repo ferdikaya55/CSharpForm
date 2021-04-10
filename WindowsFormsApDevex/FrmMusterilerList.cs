@@ -17,7 +17,7 @@ namespace WindowsFormsApDevex
     }
     public partial class Müşteriler : Form
     {
-        MusteriDal musteriCls = new MusteriDal();
+        MusteriMan musteriMan = new MusteriMan();
         public FormAcilisTipi Acilistipi { get; set; }
         public int SeciliMusteriId { get; set; }
         public Müşteriler(FormAcilisTipi acilisTipi)
@@ -31,7 +31,7 @@ namespace WindowsFormsApDevex
         }
         private void GetMusteriList()
         {
-            gridControlMusteriler.DataSource = musteriCls.DataTableMusteriListele();
+            gridControlMusteriler.DataSource = musteriMan.DataTableMusteriListele();
         }
         public void MusteriEkle()
         {
@@ -65,10 +65,10 @@ namespace WindowsFormsApDevex
                     if (result == DialogResult.OK)
                     {
 
-                        bool sonuc = musteriCls.MusteriKontrol(musteriId);
+                        bool sonuc = musteriMan.MusteriKontrol(musteriId);
                         if (sonuc == true)
                         {
-                            musteriCls.MusteriDelete(musteriId);
+                            musteriMan.MusteriDelete(musteriId);
                         }
                         else
                         {
@@ -76,9 +76,7 @@ namespace WindowsFormsApDevex
                             if (dgResult == DialogResult.OK)
                             {
 
-                                musteriCls.MusteriDelete(musteriId);
-
-
+                                musteriMan.MusteriDelete(musteriId);
                             }
                         }
                     }                 
@@ -102,8 +100,6 @@ namespace WindowsFormsApDevex
             {
                 MusteriGuncelle();
             }
-
-           
         }
         private void gridControlMusteriler_KeyDown(object sender, KeyEventArgs e)
         {

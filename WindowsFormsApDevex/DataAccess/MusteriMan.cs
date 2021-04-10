@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApDevex
 {
-    public class MusteriDal
+    public class MusteriMan
     {
         SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command ;

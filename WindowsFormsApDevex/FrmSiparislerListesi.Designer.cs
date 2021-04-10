@@ -42,11 +42,13 @@ namespace WindowsFormsApDevex
             this.Adres = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Telefon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SiparisId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Tutar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditBaslangicTarihi = new DevExpress.XtraEditors.DateEdit();
             this.dateEditBitisTarihi = new DevExpress.XtraEditors.DateEdit();
+            this.KurDegeri = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSiparisler)).BeginInit();
@@ -79,26 +81,26 @@ namespace WindowsFormsApDevex
             this.sİPARİŞDÜZENLEToolStripMenuItem,
             this.yAZDIRToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 76);
             // 
             // sİPARİŞSİLToolStripMenuItem
             // 
             this.sİPARİŞSİLToolStripMenuItem.Name = "sİPARİŞSİLToolStripMenuItem";
-            this.sİPARİŞSİLToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.sİPARİŞSİLToolStripMenuItem.Size = new System.Drawing.Size(196, 24);
             this.sİPARİŞSİLToolStripMenuItem.Text = "SİPARİŞ SİL";
             this.sİPARİŞSİLToolStripMenuItem.Click += new System.EventHandler(this.sİPARİŞSİLToolStripMenuItem_Click);
             // 
             // sİPARİŞDÜZENLEToolStripMenuItem
             // 
             this.sİPARİŞDÜZENLEToolStripMenuItem.Name = "sİPARİŞDÜZENLEToolStripMenuItem";
-            this.sİPARİŞDÜZENLEToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.sİPARİŞDÜZENLEToolStripMenuItem.Size = new System.Drawing.Size(196, 24);
             this.sİPARİŞDÜZENLEToolStripMenuItem.Text = "SİPARİŞ DÜZENLE";
             this.sİPARİŞDÜZENLEToolStripMenuItem.Click += new System.EventHandler(this.sİPARİŞDÜZENLEToolStripMenuItem_Click);
             // 
             // yAZDIRToolStripMenuItem
             // 
             this.yAZDIRToolStripMenuItem.Name = "yAZDIRToolStripMenuItem";
-            this.yAZDIRToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.yAZDIRToolStripMenuItem.Size = new System.Drawing.Size(196, 24);
             this.yAZDIRToolStripMenuItem.Text = "YAZDIR";
             this.yAZDIRToolStripMenuItem.Click += new System.EventHandler(this.yAZDIRToolStripMenuItem_Click);
             // 
@@ -110,7 +112,9 @@ namespace WindowsFormsApDevex
             this.SiparisTarihi,
             this.Adres,
             this.Telefon,
-            this.SiparisId});
+            this.SiparisId,
+            this.Tutar,
+            this.KurDegeri});
             this.gridViewSiparisler.GridControl = this.gridControlSiparisler;
             this.gridViewSiparisler.Name = "gridViewSiparisler";
             this.gridViewSiparisler.OptionsBehavior.Editable = false;
@@ -185,18 +189,28 @@ namespace WindowsFormsApDevex
             this.SiparisId.OptionsColumn.AllowEdit = false;
             this.SiparisId.Width = 90;
             // 
+            // Tutar
+            // 
+            this.Tutar.Caption = "Tutar";
+            this.Tutar.FieldName = "Tutar";
+            this.Tutar.MinWidth = 25;
+            this.Tutar.Name = "Tutar";
+            this.Tutar.Visible = true;
+            this.Tutar.VisibleIndex = 6;
+            this.Tutar.Width = 94;
+            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(0, 0);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(0, 13);
+            this.labelControl1.Size = new System.Drawing.Size(0, 16);
             this.labelControl1.TabIndex = 21;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 17);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(73, 13);
+            this.labelControl2.Size = new System.Drawing.Size(90, 16);
             this.labelControl2.TabIndex = 22;
             this.labelControl2.Text = "Başlangıç Tarihi";
             // 
@@ -204,7 +218,7 @@ namespace WindowsFormsApDevex
             // 
             this.labelControl3.Location = new System.Drawing.Point(213, 17);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(48, 13);
+            this.labelControl3.Size = new System.Drawing.Size(60, 16);
             this.labelControl3.TabIndex = 23;
             this.labelControl3.Text = "Bitiş Tarihi";
             // 
@@ -217,7 +231,7 @@ namespace WindowsFormsApDevex
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBaslangicTarihi.Size = new System.Drawing.Size(100, 20);
+            this.dateEditBaslangicTarihi.Size = new System.Drawing.Size(100, 22);
             this.dateEditBaslangicTarihi.TabIndex = 24;
             // 
             // dateEditBitisTarihi
@@ -229,12 +243,22 @@ namespace WindowsFormsApDevex
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditBitisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBitisTarihi.Size = new System.Drawing.Size(100, 20);
+            this.dateEditBitisTarihi.Size = new System.Drawing.Size(100, 22);
             this.dateEditBitisTarihi.TabIndex = 25;
+            // 
+            // KurDegeri
+            // 
+            this.KurDegeri.Caption = "Kur Degeri";
+            this.KurDegeri.FieldName = "KurDegeri";
+            this.KurDegeri.MinWidth = 25;
+            this.KurDegeri.Name = "KurDegeri";
+            this.KurDegeri.Visible = true;
+            this.KurDegeri.VisibleIndex = 5;
+            this.KurDegeri.Width = 94;
             // 
             // FrmSiparislerListesi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 454);
             this.Controls.Add(this.dateEditBitisTarihi);
@@ -280,5 +304,7 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.DateEdit dateEditBaslangicTarihi;
         private DevExpress.XtraEditors.DateEdit dateEditBitisTarihi;
+        private DevExpress.XtraGrid.Columns.GridColumn Tutar;
+        private DevExpress.XtraGrid.Columns.GridColumn KurDegeri;
     }
 }

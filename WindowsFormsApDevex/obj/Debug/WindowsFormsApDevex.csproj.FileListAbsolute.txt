@@ -211,3 +211,4 @@ C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\Wind
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.RaporSiparis.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmSiparislerListesi.resources
 C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.FrmSiparisler.resources
+C:\Users\Ferdi Kaya\source\repos\FormExamples\WindowsFormsApDevex\obj\Debug\WindowsFormsApDevex.WaitForm1.resources

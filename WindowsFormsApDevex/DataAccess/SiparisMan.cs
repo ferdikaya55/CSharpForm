@@ -9,7 +9,7 @@ using System.Data;
 
 namespace WindowsFormsApDevex
 {
-    public class SatinAlDal
+    public class SiparisMan
     {
         SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;

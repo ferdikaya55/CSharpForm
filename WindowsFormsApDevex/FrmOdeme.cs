@@ -13,7 +13,7 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmOdeme : Form
     {
-        OdemeSekliDal odemeSekliDal = new OdemeSekliDal();
+        OdemeSekliMan odemeSekliMan = new OdemeSekliMan();
         public int OdemeSekliId { get; set; }
         public FrmOdeme(int odemeId)
         {
@@ -22,11 +22,10 @@ namespace WindowsFormsApDevex
             if (OdemeSekliId == 0)
             {
                 txtOdemeSekli.Text = "";
-
             }
             else
             {
-                DataRow row = odemeSekliDal.DataRowGetOdemeSekli(OdemeSekliId);
+                DataRow row = odemeSekliMan.DataRowGetOdemeSekli(OdemeSekliId);
                 if (row != null)
                 {
                     txtOdemeSekli.Text = row["OdemeAdi"].ToString();
@@ -34,19 +33,17 @@ namespace WindowsFormsApDevex
 
             }
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             if (OdemeSekliId > 0)
             {
-                odemeSekliDal.OdemeSekliUpdate(OdemeSekliId, txtOdemeSekli.Text);
+                odemeSekliMan.OdemeSekliUpdate(OdemeSekliId, txtOdemeSekli.Text);
                 MessageBox.Show("Ödeme Şekli Güncellendi");
                 this.Close();
-              
             }
             else
             {
-                odemeSekliDal.OdemeSekliInsert(txtOdemeSekli.Text);
+                odemeSekliMan.OdemeSekliInsert(txtOdemeSekli.Text);
                 MessageBox.Show("Ödeme Şekli Eklendi");
                 this.Close();
             }

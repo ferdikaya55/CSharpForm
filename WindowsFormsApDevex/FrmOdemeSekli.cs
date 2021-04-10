@@ -16,7 +16,7 @@ namespace WindowsFormsApDevex.DataAccess
     }
     public partial class FrmOdemeSekli : Form
     {
-        OdemeSekliDal odemeSekliCls = new OdemeSekliDal();
+        OdemeSekliMan odemeSekliMan = new OdemeSekliMan();
         public FormAcilisTipiOdeme Acilistipi { get; set; }
         public int SeciliOdemeId { get; set; }
         public FrmOdemeSekli(FormAcilisTipiOdeme acilisTipi)
@@ -30,10 +30,9 @@ namespace WindowsFormsApDevex.DataAccess
         }
         private void OdemeSekliListesi()
         {
-            gridControlOdemeSekli.DataSource = odemeSekliCls.DataTableOdemeSekliListele();
+            gridControlOdemeSekli.DataSource = odemeSekliMan.DataTableOdemeSekliListele();
           
         }
-
         private void gridViewOdemeSekli_DoubleClick(object sender, EventArgs e)
         {
             if (Acilistipi == FormAcilisTipiOdeme.Secim)
@@ -93,7 +92,7 @@ namespace WindowsFormsApDevex.DataAccess
                     DialogResult result = MessageBox.Show("Ödeme Şekli Silinecek Emin misiniz ?", "Ödeme Şekli Silme ", MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
-                            odemeSekliCls.OdemeSekliDelete(odemeId);
+                        odemeSekliMan.OdemeSekliDelete(odemeId);
                     }
                 }
             }
@@ -104,13 +103,9 @@ namespace WindowsFormsApDevex.DataAccess
             MessageBox.Show("Ödeme Şekli Silindi");
             OdemeSekliListesi();
         }
-
-      
-
         private void FrmOdemeSekli_FormClosed(object sender, FormClosedEventArgs e)
         {
            
         }
-
     }
 }

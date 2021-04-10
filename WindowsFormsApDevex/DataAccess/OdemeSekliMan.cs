@@ -7,24 +7,24 @@ using System.Data.SqlClient;
 using System.Data;
 namespace WindowsFormsApDevex.DataAccess
 {
-    public class TeslimSekliDal
+    public class OdemeSekliMan
     {
         SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;
         SqlDataAdapter adapter;
-        public DataTable DataTableTeslimSekliListele()
+        public DataTable DataTableOdemeSekliListele()
         {
             connection.Open();
-            adapter = new SqlDataAdapter("Select * from TeslimSekli", connection);
+            adapter = new SqlDataAdapter("Select * from OdemeSekli", connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
             connection.Close();
             return table;
         }
-        public DataRow DataRowGetTeslimSekli(int id)
+        public DataRow DataRowGetOdemeSekli(int id)
         {
             adapter = new SqlDataAdapter();
-            string query = "Select TeslimId,TeslimSekliAdi from TeslimSekli where TeslimId=@id";
+            string query = "Select OdemeId,OdemeAdi from OdemeSekli where OdemeId=@id";
             command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@id", id);
             adapter.SelectCommand = command;
@@ -37,36 +37,38 @@ namespace WindowsFormsApDevex.DataAccess
             return table.Rows[0];
         }
 
-        public void TeslimSekliInsert(string teslimSekliAdi)
+        public void OdemeSekliInsert(string odemeAdi)
         {
-            string query = "INSERT INTO TeslimSekli(TeslimSekliAdi) VALUES (@TeslimSekliAdi)";
+            string query = "INSERT INTO OdemeSekli(OdemeAdi) VALUES (@OdemeAdi)";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TeslimSekliAdi", teslimSekliAdi);
+            command.Parameters.AddWithValue("@OdemeAdi", odemeAdi);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
 
         }
-        public void TeslimSekliUpdate(int id, string teslimSekliAdi)
+        public void OdemeSekliUpdate(int id, string odemeAdi)
         {
-            string query = "UPDATE TeslimSekli SET TeslimSekliAdi=@TeslimSekliAdi WHERE TeslimId=@TeslimId";
+            string query = "UPDATE OdemeSekli SET OdemeAdi=@OdemeAdi WHERE OdemeId=@OdemeId";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TeslimId", id);
-            command.Parameters.AddWithValue("@TeslimSekliAdi", teslimSekliAdi);
+            command.Parameters.AddWithValue("@OdemeId", id);
+            command.Parameters.AddWithValue("@OdemeAdi", odemeAdi);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
 
         }
-        public void TeslimSekliDelete(int id)
+        public void OdemeSekliDelete(int odemeId)
         {
-            string query = "DELETE FROM TeslimSekli WHERE TeslimId=@TeslimId";
+            string query = "DELETE FROM OdemeSekli WHERE OdemeId=@OdemeId";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TeslimId", id);
+            command.Parameters.AddWithValue("@OdemeId", odemeId);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
 
         }
+
+
     }
 }

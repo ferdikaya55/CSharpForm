@@ -31,11 +31,11 @@ namespace WindowsFormsApDevex
         {
             this.gridControlUrunHizmetList = new DevExpress.XtraGrid.GridControl();
             this.gridViewUrunHizmetList = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.UrunHizmetKdvOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UrunHizmetId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UrunAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BirimFiyati = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UrunAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.UrunHizmetKdvOrani = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlUrunHizmetList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewUrunHizmetList)).BeginInit();
             this.SuspendLayout();
@@ -45,10 +45,12 @@ namespace WindowsFormsApDevex
             this.gridControlUrunHizmetList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlUrunHizmetList.Location = new System.Drawing.Point(40, 40);
+            this.gridControlUrunHizmetList.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
+            this.gridControlUrunHizmetList.Location = new System.Drawing.Point(13, 13);
             this.gridControlUrunHizmetList.MainView = this.gridViewUrunHizmetList;
+            this.gridControlUrunHizmetList.Margin = new System.Windows.Forms.Padding(4);
             this.gridControlUrunHizmetList.Name = "gridControlUrunHizmetList";
-            this.gridControlUrunHizmetList.Size = new System.Drawing.Size(686, 445);
+            this.gridControlUrunHizmetList.Size = new System.Drawing.Size(681, 395);
             this.gridControlUrunHizmetList.TabIndex = 0;
             this.gridControlUrunHizmetList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewUrunHizmetList});
@@ -62,56 +64,67 @@ namespace WindowsFormsApDevex
             this.UrunAdi,
             this.BirimFiyati,
             this.UrunAciklama});
+            this.gridViewUrunHizmetList.DetailHeight = 431;
             this.gridViewUrunHizmetList.GridControl = this.gridControlUrunHizmetList;
             this.gridViewUrunHizmetList.Name = "gridViewUrunHizmetList";
             this.gridViewUrunHizmetList.OptionsBehavior.Editable = false;
-            // 
-            // UrunHizmetId
-            // 
-            this.UrunHizmetId.Caption = "UrunHizmetId";
-            this.UrunHizmetId.FieldName = "UrunHizmetId";
-            this.UrunHizmetId.Name = "UrunHizmetId";
-            this.UrunHizmetId.Visible = true;
-            this.UrunHizmetId.VisibleIndex = 0;
-            // 
-            // UrunAdi
-            // 
-            this.UrunAdi.Caption = "Ürün Adı";
-            this.UrunAdi.FieldName = "UrunAdi";
-            this.UrunAdi.Name = "UrunAdi";
-            this.UrunAdi.Visible = true;
-            this.UrunAdi.VisibleIndex = 1;
-            // 
-            // BirimFiyati
-            // 
-            this.BirimFiyati.Caption = "Birim Fiyatı";
-            this.BirimFiyati.FieldName = "BirimFiyati";
-            this.BirimFiyati.Name = "BirimFiyati";
-            this.BirimFiyati.Visible = true;
-            this.BirimFiyati.VisibleIndex = 2;
-            // 
-            // UrunAciklama
-            // 
-            this.UrunAciklama.Caption = "Ürün Açıklama";
-            this.UrunAciklama.FieldName = "UrunAciklama";
-            this.UrunAciklama.Name = "UrunAciklama";
-            this.UrunAciklama.Visible = true;
-            this.UrunAciklama.VisibleIndex = 4;
+            this.gridViewUrunHizmetList.OptionsView.ShowGroupPanel = false;
             // 
             // UrunHizmetKdvOrani
             // 
             this.UrunHizmetKdvOrani.Caption = "KDV ORANI";
             this.UrunHizmetKdvOrani.FieldName = "UrunHizmetKdvOrani";
+            this.UrunHizmetKdvOrani.MinWidth = 27;
             this.UrunHizmetKdvOrani.Name = "UrunHizmetKdvOrani";
             this.UrunHizmetKdvOrani.Visible = true;
-            this.UrunHizmetKdvOrani.VisibleIndex = 3;
+            this.UrunHizmetKdvOrani.VisibleIndex = 2;
+            this.UrunHizmetKdvOrani.Width = 109;
+            // 
+            // UrunHizmetId
+            // 
+            this.UrunHizmetId.Caption = "UrunHizmetId";
+            this.UrunHizmetId.FieldName = "UrunHizmetId";
+            this.UrunHizmetId.MinWidth = 27;
+            this.UrunHizmetId.Name = "UrunHizmetId";
+            this.UrunHizmetId.Width = 100;
+            // 
+            // UrunAdi
+            // 
+            this.UrunAdi.Caption = "Ürün Adı";
+            this.UrunAdi.FieldName = "UrunAdi";
+            this.UrunAdi.MinWidth = 27;
+            this.UrunAdi.Name = "UrunAdi";
+            this.UrunAdi.Visible = true;
+            this.UrunAdi.VisibleIndex = 0;
+            this.UrunAdi.Width = 132;
+            // 
+            // BirimFiyati
+            // 
+            this.BirimFiyati.Caption = "Birim Fiyatı";
+            this.BirimFiyati.FieldName = "BirimFiyati";
+            this.BirimFiyati.MinWidth = 27;
+            this.BirimFiyati.Name = "BirimFiyati";
+            this.BirimFiyati.Visible = true;
+            this.BirimFiyati.VisibleIndex = 1;
+            this.BirimFiyati.Width = 96;
+            // 
+            // UrunAciklama
+            // 
+            this.UrunAciklama.Caption = "Ürün Açıklama";
+            this.UrunAciklama.FieldName = "UrunAciklama";
+            this.UrunAciklama.MinWidth = 27;
+            this.UrunAciklama.Name = "UrunAciklama";
+            this.UrunAciklama.Visible = true;
+            this.UrunAciklama.VisibleIndex = 3;
+            this.UrunAciklama.Width = 314;
             // 
             // FrmUrunHizmetList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 512);
+            this.ClientSize = new System.Drawing.Size(707, 421);
             this.Controls.Add(this.gridControlUrunHizmetList);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUrunHizmetList";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

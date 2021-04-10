@@ -46,41 +46,44 @@
             // 
             this.gridControlKurlar.ContextMenuStrip = this.contextMenuStripKurlar;
             this.gridControlKurlar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlKurlar.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridControlKurlar.Location = new System.Drawing.Point(0, 0);
             this.gridControlKurlar.MainView = this.gridViewKurlar;
+            this.gridControlKurlar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridControlKurlar.Name = "gridControlKurlar";
-            this.gridControlKurlar.Size = new System.Drawing.Size(297, 140);
+            this.gridControlKurlar.Size = new System.Drawing.Size(504, 225);
             this.gridControlKurlar.TabIndex = 15;
             this.gridControlKurlar.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewKurlar});
             // 
             // contextMenuStripKurlar
             // 
+            this.contextMenuStripKurlar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripKurlar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ekleToolStripMenuItem,
             this.kurGüncelleToolStripMenuItem,
             this.kurSilToolStripMenuItem});
             this.contextMenuStripKurlar.Name = "contextMenuStripKurlar";
-            this.contextMenuStripKurlar.Size = new System.Drawing.Size(142, 70);
+            this.contextMenuStripKurlar.Size = new System.Drawing.Size(162, 76);
             // 
             // ekleToolStripMenuItem
             // 
             this.ekleToolStripMenuItem.Name = "ekleToolStripMenuItem";
-            this.ekleToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.ekleToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
             this.ekleToolStripMenuItem.Text = "Kur Ekle";
             this.ekleToolStripMenuItem.Click += new System.EventHandler(this.ekleToolStripMenuItem_Click);
             // 
             // kurGüncelleToolStripMenuItem
             // 
             this.kurGüncelleToolStripMenuItem.Name = "kurGüncelleToolStripMenuItem";
-            this.kurGüncelleToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.kurGüncelleToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
             this.kurGüncelleToolStripMenuItem.Text = "Kur Güncelle";
             this.kurGüncelleToolStripMenuItem.Click += new System.EventHandler(this.kurGüncelleToolStripMenuItem_Click);
             // 
             // kurSilToolStripMenuItem
             // 
             this.kurSilToolStripMenuItem.Name = "kurSilToolStripMenuItem";
-            this.kurSilToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.kurSilToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
             this.kurSilToolStripMenuItem.Text = "Kur Sil";
             this.kurSilToolStripMenuItem.Click += new System.EventHandler(this.kurSilToolStripMenuItem_Click);
             // 
@@ -89,6 +92,7 @@
             this.gridViewKurlar.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.KurId,
             this.KurAdi});
+            this.gridViewKurlar.DetailHeight = 431;
             this.gridViewKurlar.GridControl = this.gridControlKurlar;
             this.gridViewKurlar.Name = "gridViewKurlar";
             this.gridViewKurlar.OptionsBehavior.Editable = false;
@@ -98,24 +102,27 @@
             // 
             this.KurId.Caption = "Kur Id";
             this.KurId.FieldName = "KurId";
+            this.KurId.MinWidth = 27;
             this.KurId.Name = "KurId";
-            this.KurId.Width = 60;
+            this.KurId.Width = 80;
             // 
             // KurAdi
             // 
             this.KurAdi.Caption = "Kur Adı";
             this.KurAdi.FieldName = "KurAdi";
+            this.KurAdi.MinWidth = 27;
             this.KurAdi.Name = "KurAdi";
             this.KurAdi.Visible = true;
             this.KurAdi.VisibleIndex = 0;
-            this.KurAdi.Width = 152;
+            this.KurAdi.Width = 203;
             // 
             // FrmKurlar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 140);
+            this.ClientSize = new System.Drawing.Size(504, 225);
             this.Controls.Add(this.gridControlKurlar);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmKurlar";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

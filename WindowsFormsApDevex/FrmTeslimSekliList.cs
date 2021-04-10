@@ -18,7 +18,7 @@ namespace WindowsFormsApDevex
     }
     public partial class FrmTeslimSekliList : Form
     {
-        TeslimSekliDal teslimSekliDal =new  TeslimSekliDal();
+        TeslimSekliMan teslimSekliMan =new  TeslimSekliMan();
         public FormAcilisTipiTeslim FormAcilisTipiTeslim { get; set; }
         public int SeciliTeslimId { get; set; }
         public FrmTeslimSekliList(FormAcilisTipiTeslim formAcilisTipiTeslim)
@@ -33,7 +33,7 @@ namespace WindowsFormsApDevex
 
         private void TeslimSekliListele()
         {
-            gridControlTeslimSekli.DataSource = teslimSekliDal.DataTableTeslimSekliListele();
+            gridControlTeslimSekli.DataSource = teslimSekliMan.DataTableTeslimSekliListele();
         }
         private void gridViewTeslimSekli_DoubleClick(object sender, EventArgs e)
         {
@@ -96,7 +96,7 @@ namespace WindowsFormsApDevex
                 if (teslimId!=0)
                 {
                     DialogResult result = MessageBox.Show("Teslim Şekli Silinecek Emin misiniz?", "Teslim Şekli Silme", MessageBoxButtons.OKCancel);
-                    teslimSekliDal.TeslimSekliDelete(teslimId);
+                    teslimSekliMan.TeslimSekliDelete(teslimId);
                 }
             }
         }

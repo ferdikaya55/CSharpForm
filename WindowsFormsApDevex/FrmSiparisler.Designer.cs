@@ -30,13 +30,13 @@ namespace WindowsFormsApDevex
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSiparisler));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.urunSecimi = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -79,6 +79,7 @@ namespace WindowsFormsApDevex
             this.lookUpEditOdemeSekli = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.lookUpEditTeslimSekli = new DevExpress.XtraEditors.LookUpEdit();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::WindowsFormsApDevex.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.urunSecimi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
@@ -110,7 +111,7 @@ namespace WindowsFormsApDevex
             this.repositoryItemButtonEdit1.Appearance.Options.UseFont = true;
             this.repositoryItemButtonEdit1.AutoHeight = false;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "ÜRÜN SEÇ", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "ÜRÜN SEÇ", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.ContextImageOptions.Alignment = DevExpress.XtraEditors.ContextImageAlignment.Far;
             this.repositoryItemButtonEdit1.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit1.ContextImageOptions.Image")));
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
@@ -153,16 +154,16 @@ namespace WindowsFormsApDevex
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControlSiparisDetay.ContextMenuStrip = this.ctxMenu;
-            this.gridControlSiparisDetay.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControlSiparisDetay.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlSiparisDetay.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.gridControlSiparisDetay.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            this.gridControlSiparisDetay.Location = new System.Drawing.Point(4, 100);
+            gridLevelNode1});
+            this.gridControlSiparisDetay.Location = new System.Drawing.Point(5, 123);
             this.gridControlSiparisDetay.MainView = this.gridViewSiparislerDetay;
-            this.gridControlSiparisDetay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControlSiparisDetay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlSiparisDetay.Name = "gridControlSiparisDetay";
-            this.gridControlSiparisDetay.Size = new System.Drawing.Size(1060, 401);
+            this.gridControlSiparisDetay.Size = new System.Drawing.Size(1413, 494);
             this.gridControlSiparisDetay.TabIndex = 0;
             this.gridControlSiparisDetay.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSiparislerDetay});
@@ -173,12 +174,12 @@ namespace WindowsFormsApDevex
             this.ctxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.siparişDetaySilToolStripMenuItem});
             this.ctxMenu.Name = "ctxMenu";
-            this.ctxMenu.Size = new System.Drawing.Size(157, 26);
+            this.ctxMenu.Size = new System.Drawing.Size(186, 28);
             // 
             // siparişDetaySilToolStripMenuItem
             // 
             this.siparişDetaySilToolStripMenuItem.Name = "siparişDetaySilToolStripMenuItem";
-            this.siparişDetaySilToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.siparişDetaySilToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.siparişDetaySilToolStripMenuItem.Text = "Sipariş Detay Sil";
             this.siparişDetaySilToolStripMenuItem.Click += new System.EventHandler(this.siparişDetaySilToolStripMenuItem_Click);
             // 
@@ -205,7 +206,6 @@ namespace WindowsFormsApDevex
             this.indirimkazanci,
             this.Toplam,
             this.StokMiktari});
-            this.gridViewSiparislerDetay.DetailHeight = 284;
             this.gridViewSiparislerDetay.GridControl = this.gridControlSiparisDetay;
             this.gridViewSiparislerDetay.Name = "gridViewSiparislerDetay";
             this.gridViewSiparislerDetay.OptionsCustomization.AllowColumnMoving = false;
@@ -222,20 +222,17 @@ namespace WindowsFormsApDevex
             this.SiparisId.AppearanceHeader.Options.UseFont = true;
             this.SiparisId.Caption = "Sipariş Id";
             this.SiparisId.FieldName = "SiparisId";
-            this.SiparisId.MinWidth = 15;
             this.SiparisId.Name = "SiparisId";
-            this.SiparisId.Width = 56;
             // 
             // UrunMalzemeId
             // 
             this.UrunMalzemeId.Caption = "ÜRÜN ID";
             this.UrunMalzemeId.ColumnEdit = this.repositoryItemButtonEdit1;
             this.UrunMalzemeId.FieldName = "UrunMalzemeId";
-            this.UrunMalzemeId.MinWidth = 15;
             this.UrunMalzemeId.Name = "UrunMalzemeId";
             this.UrunMalzemeId.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "UrunMalzemeId", "{0}")});
-            this.UrunMalzemeId.Width = 60;
+            this.UrunMalzemeId.Width = 80;
             // 
             // Birim
             // 
@@ -245,11 +242,10 @@ namespace WindowsFormsApDevex
             this.Birim.DisplayFormat.FormatString = "N2";
             this.Birim.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.Birim.FieldName = "Birim";
-            this.Birim.MinWidth = 15;
             this.Birim.Name = "Birim";
             this.Birim.Visible = true;
             this.Birim.VisibleIndex = 2;
-            this.Birim.Width = 49;
+            this.Birim.Width = 65;
             // 
             // BirimFiyati
             // 
@@ -259,11 +255,10 @@ namespace WindowsFormsApDevex
             this.BirimFiyati.DisplayFormat.FormatString = "N2";
             this.BirimFiyati.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.BirimFiyati.FieldName = "BirimFiyati";
-            this.BirimFiyati.MinWidth = 15;
             this.BirimFiyati.Name = "BirimFiyati";
             this.BirimFiyati.Visible = true;
             this.BirimFiyati.VisibleIndex = 3;
-            this.BirimFiyati.Width = 68;
+            this.BirimFiyati.Width = 91;
             // 
             // Miktar
             // 
@@ -273,11 +268,10 @@ namespace WindowsFormsApDevex
             this.Miktar.DisplayFormat.FormatString = "N2";
             this.Miktar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.Miktar.FieldName = "Miktar";
-            this.Miktar.MinWidth = 15;
             this.Miktar.Name = "Miktar";
             this.Miktar.Visible = true;
             this.Miktar.VisibleIndex = 4;
-            this.Miktar.Width = 45;
+            this.Miktar.Width = 60;
             // 
             // ParaBirimi
             // 
@@ -285,13 +279,12 @@ namespace WindowsFormsApDevex
             this.ParaBirimi.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ParaBirimi.Caption = "PARA BİRİMİ";
             this.ParaBirimi.FieldName = "ParaBirimi";
-            this.ParaBirimi.MinWidth = 15;
             this.ParaBirimi.Name = "ParaBirimi";
             this.ParaBirimi.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ParaBirimi", "Toplam={0:0.## }")});
             this.ParaBirimi.Visible = true;
             this.ParaBirimi.VisibleIndex = 13;
-            this.ParaBirimi.Width = 58;
+            this.ParaBirimi.Width = 77;
             // 
             // Tutar
             // 
@@ -299,11 +292,10 @@ namespace WindowsFormsApDevex
             this.Tutar.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.Tutar.Caption = "TUTAR";
             this.Tutar.FieldName = "Tutar";
-            this.Tutar.MinWidth = 15;
             this.Tutar.Name = "Tutar";
             this.Tutar.Visible = true;
             this.Tutar.VisibleIndex = 6;
-            this.Tutar.Width = 42;
+            this.Tutar.Width = 56;
             // 
             // urunAdi
             // 
@@ -312,110 +304,114 @@ namespace WindowsFormsApDevex
             this.urunAdi.Caption = "ÜRÜN ADI";
             this.urunAdi.ColumnEdit = this.urunSecimi;
             this.urunAdi.FieldName = "UrunAdi";
-            this.urunAdi.MinWidth = 19;
+            this.urunAdi.MinWidth = 25;
             this.urunAdi.Name = "urunAdi";
             this.urunAdi.Visible = true;
             this.urunAdi.VisibleIndex = 1;
-            this.urunAdi.Width = 81;
+            this.urunAdi.Width = 108;
             // 
             // UrunHizmetId
             // 
             this.UrunHizmetId.Caption = "Urun Hizmet Id";
             this.UrunHizmetId.FieldName = "UrunHizmetId";
+            this.UrunHizmetId.MinWidth = 27;
             this.UrunHizmetId.Name = "UrunHizmetId";
-            this.UrunHizmetId.Width = 56;
             // 
             // SiparisDetayId
             // 
             this.SiparisDetayId.Caption = "SiparisDetayId";
             this.SiparisDetayId.FieldName = "SiparisDetayId";
+            this.SiparisDetayId.MinWidth = 27;
             this.SiparisDetayId.Name = "SiparisDetayId";
+            this.SiparisDetayId.Width = 100;
             // 
             // SatirTipi
             // 
             this.SatirTipi.Caption = "SATIR TİPİ";
             this.SatirTipi.ColumnEdit = this.repositoryItemComboBox1;
             this.SatirTipi.FieldName = "SatirTipi";
-            this.SatirTipi.MinWidth = 15;
             this.SatirTipi.Name = "SatirTipi";
             this.SatirTipi.Visible = true;
             this.SatirTipi.VisibleIndex = 0;
-            this.SatirTipi.Width = 45;
+            this.SatirTipi.Width = 60;
             // 
             // KdvOrani
             // 
             this.KdvOrani.Caption = "KDV ORANI";
             this.KdvOrani.ColumnEdit = this.repoComboKdvOrani;
             this.KdvOrani.FieldName = "KdvOrani";
-            this.KdvOrani.MinWidth = 15;
             this.KdvOrani.Name = "KdvOrani";
             this.KdvOrani.Visible = true;
             this.KdvOrani.VisibleIndex = 10;
-            this.KdvOrani.Width = 43;
+            this.KdvOrani.Width = 57;
             // 
             // KdvToplamTutari
             // 
             this.KdvToplamTutari.Caption = "KDV TOPLAM TUTAR";
             this.KdvToplamTutari.FieldName = "KdvToplamTutari";
+            this.KdvToplamTutari.MinWidth = 27;
             this.KdvToplamTutari.Name = "KdvToplamTutari";
             this.KdvToplamTutari.OptionsColumn.AllowEdit = false;
             this.KdvToplamTutari.Visible = true;
             this.KdvToplamTutari.VisibleIndex = 11;
-            this.KdvToplamTutari.Width = 71;
+            this.KdvToplamTutari.Width = 95;
             // 
             // AraToplam
             // 
             this.AraToplam.Caption = "ARA TOPLAM";
             this.AraToplam.FieldName = "AraToplam";
+            this.AraToplam.MinWidth = 27;
             this.AraToplam.Name = "AraToplam";
             this.AraToplam.Visible = true;
             this.AraToplam.VisibleIndex = 9;
-            this.AraToplam.Width = 69;
+            this.AraToplam.Width = 92;
             // 
             // indirimOrani
             // 
             this.indirimOrani.Caption = "İNDİRİM ORANI";
             this.indirimOrani.FieldName = "IndirimOrani";
-            this.indirimOrani.MinWidth = 19;
+            this.indirimOrani.MinWidth = 25;
             this.indirimOrani.Name = "indirimOrani";
             this.indirimOrani.Visible = true;
             this.indirimOrani.VisibleIndex = 7;
-            this.indirimOrani.Width = 53;
+            this.indirimOrani.Width = 71;
             // 
             // indirimkazanci
             // 
             this.indirimkazanci.Caption = "İNDİRİM KAZANCI";
             this.indirimkazanci.FieldName = "IndirimKazanci";
-            this.indirimkazanci.MinWidth = 19;
+            this.indirimkazanci.MinWidth = 25;
             this.indirimkazanci.Name = "indirimkazanci";
             this.indirimkazanci.OptionsColumn.AllowEdit = false;
             this.indirimkazanci.Visible = true;
             this.indirimkazanci.VisibleIndex = 8;
-            this.indirimkazanci.Width = 76;
+            this.indirimkazanci.Width = 101;
             // 
             // Toplam
             // 
             this.Toplam.Caption = "TOPLAM";
             this.Toplam.FieldName = "Toplam";
-            this.Toplam.MinWidth = 19;
+            this.Toplam.MinWidth = 25;
             this.Toplam.Name = "Toplam";
             this.Toplam.Visible = true;
             this.Toplam.VisibleIndex = 12;
-            this.Toplam.Width = 70;
+            this.Toplam.Width = 93;
             // 
             // StokMiktari
             // 
             this.StokMiktari.Caption = "STOK MİKTARI";
             this.StokMiktari.FieldName = "StokMiktari";
+            this.StokMiktari.MinWidth = 27;
             this.StokMiktari.Name = "StokMiktari";
             this.StokMiktari.Visible = true;
             this.StokMiktari.VisibleIndex = 5;
+            this.StokMiktari.Width = 100;
             // 
             // btnEditMusteriler
             // 
             this.btnEditMusteriler.EditValue = "Müşteriler";
-            this.btnEditMusteriler.Location = new System.Drawing.Point(94, 10);
-            this.btnEditMusteriler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditMusteriler.Location = new System.Drawing.Point(125, 12);
+            this.btnEditMusteriler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditMusteriler.Name = "btnEditMusteriler";
             this.btnEditMusteriler.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnEditMusteriler.Properties.Appearance.Options.UseFont = true;
@@ -423,17 +419,17 @@ namespace WindowsFormsApDevex
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.btnEditMusteriler.Properties.ReadOnly = true;
             this.btnEditMusteriler.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnEditMusteriler_Properties_ButtonClick);
-            this.btnEditMusteriler.Size = new System.Drawing.Size(151, 18);
+            this.btnEditMusteriler.Size = new System.Drawing.Size(201, 22);
             this.btnEditMusteriler.TabIndex = 1;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(19, 15);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl1.Location = new System.Drawing.Point(25, 18);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(58, 12);
+            this.labelControl1.Size = new System.Drawing.Size(74, 16);
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "Müşteri Adı";
             // 
@@ -441,10 +437,10 @@ namespace WindowsFormsApDevex
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(19, 43);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl2.Location = new System.Drawing.Point(25, 53);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(50, 12);
+            this.labelControl2.Size = new System.Drawing.Size(63, 16);
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Sipariş No";
             // 
@@ -452,26 +448,26 @@ namespace WindowsFormsApDevex
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(19, 72);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl3.Location = new System.Drawing.Point(25, 89);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(67, 12);
+            this.labelControl3.Size = new System.Drawing.Size(82, 16);
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Sipariş Tarihi";
             // 
             // txtSiparisNo
             // 
-            this.txtSiparisNo.Location = new System.Drawing.Point(94, 38);
-            this.txtSiparisNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSiparisNo.Location = new System.Drawing.Point(125, 47);
+            this.txtSiparisNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiparisNo.Name = "txtSiparisNo";
-            this.txtSiparisNo.Size = new System.Drawing.Size(151, 20);
+            this.txtSiparisNo.Size = new System.Drawing.Size(201, 22);
             this.txtSiparisNo.TabIndex = 5;
             // 
             // dateEditSiparisTarihi
             // 
             this.dateEditSiparisTarihi.EditValue = null;
-            this.dateEditSiparisTarihi.Location = new System.Drawing.Point(94, 67);
-            this.dateEditSiparisTarihi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateEditSiparisTarihi.Location = new System.Drawing.Point(125, 82);
+            this.dateEditSiparisTarihi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateEditSiparisTarihi.Name = "dateEditSiparisTarihi";
             this.dateEditSiparisTarihi.Properties.BeepOnError = false;
             this.dateEditSiparisTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -479,7 +475,7 @@ namespace WindowsFormsApDevex
             this.dateEditSiparisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditSiparisTarihi.Properties.MaskSettings.Set("mask", "G");
-            this.dateEditSiparisTarihi.Size = new System.Drawing.Size(151, 20);
+            this.dateEditSiparisTarihi.Size = new System.Drawing.Size(201, 22);
             this.dateEditSiparisTarihi.TabIndex = 8;
             // 
             // btnSiparisDetayKaydet
@@ -488,22 +484,23 @@ namespace WindowsFormsApDevex
             this.btnSiparisDetayKaydet.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnSiparisDetayKaydet.Appearance.Options.UseFont = true;
             this.btnSiparisDetayKaydet.ImageOptions.Image = global::WindowsFormsApDevex.Properties.Resources.save_16x161;
-            this.btnSiparisDetayKaydet.Location = new System.Drawing.Point(989, 505);
-            this.btnSiparisDetayKaydet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSiparisDetayKaydet.Location = new System.Drawing.Point(1319, 622);
+            this.btnSiparisDetayKaydet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSiparisDetayKaydet.Name = "btnSiparisDetayKaydet";
-            this.btnSiparisDetayKaydet.Size = new System.Drawing.Size(74, 24);
+            this.btnSiparisDetayKaydet.Size = new System.Drawing.Size(99, 30);
             this.btnSiparisDetayKaydet.TabIndex = 9;
             this.btnSiparisDetayKaydet.Text = "KAYDET";
             this.btnSiparisDetayKaydet.Click += new System.EventHandler(this.btnSiparisDetayKaydet_Click);
             // 
             // lookUpEditKurlar
             // 
-            this.lookUpEditKurlar.Location = new System.Drawing.Point(372, 9);
+            this.lookUpEditKurlar.Location = new System.Drawing.Point(496, 11);
+            this.lookUpEditKurlar.Margin = new System.Windows.Forms.Padding(4);
             this.lookUpEditKurlar.Name = "lookUpEditKurlar";
             this.lookUpEditKurlar.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditKurlar.Properties.NullText = "";
-            this.lookUpEditKurlar.Size = new System.Drawing.Size(151, 20);
+            this.lookUpEditKurlar.Size = new System.Drawing.Size(201, 22);
             this.lookUpEditKurlar.TabIndex = 10;
             this.lookUpEditKurlar.EditValueChanged += new System.EventHandler(this.lookUpEditKurlar_EditValueChanged);
             // 
@@ -511,10 +508,10 @@ namespace WindowsFormsApDevex
             // 
             this.labelKurlar.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelKurlar.Appearance.Options.UseFont = true;
-            this.labelKurlar.Location = new System.Drawing.Point(297, 13);
-            this.labelKurlar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelKurlar.Location = new System.Drawing.Point(396, 16);
+            this.labelKurlar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelKurlar.Name = "labelKurlar";
-            this.labelKurlar.Size = new System.Drawing.Size(32, 12);
+            this.labelKurlar.Size = new System.Drawing.Size(39, 16);
             this.labelKurlar.TabIndex = 11;
             this.labelKurlar.Text = "Kurlar";
             // 
@@ -522,75 +519,81 @@ namespace WindowsFormsApDevex
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(297, 39);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl4.Location = new System.Drawing.Point(396, 48);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(55, 12);
+            this.labelControl4.Size = new System.Drawing.Size(68, 16);
             this.labelControl4.TabIndex = 13;
             this.labelControl4.Text = "Kur Değeri";
             // 
             // txtKurDegeri
             // 
-            this.txtKurDegeri.Location = new System.Drawing.Point(372, 36);
-            this.txtKurDegeri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKurDegeri.Location = new System.Drawing.Point(496, 44);
+            this.txtKurDegeri.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKurDegeri.Name = "txtKurDegeri";
             this.txtKurDegeri.Properties.BeepOnError = false;
             this.txtKurDegeri.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txtKurDegeri.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.txtKurDegeri.Properties.MaskSettings.Set("mask", "n4");
             this.txtKurDegeri.Properties.UseMaskAsDisplayFormat = true;
-            this.txtKurDegeri.Size = new System.Drawing.Size(151, 20);
+            this.txtKurDegeri.Size = new System.Drawing.Size(201, 22);
             this.txtKurDegeri.TabIndex = 14;
             // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(543, 16);
-            this.labelControl5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl5.Location = new System.Drawing.Point(724, 20);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(63, 12);
+            this.labelControl5.Size = new System.Drawing.Size(77, 16);
             this.labelControl5.TabIndex = 16;
             this.labelControl5.Text = "Ödeme Şekli";
             // 
             // lookUpEditOdemeSekli
             // 
-            this.lookUpEditOdemeSekli.Location = new System.Drawing.Point(618, 12);
+            this.lookUpEditOdemeSekli.Location = new System.Drawing.Point(824, 15);
+            this.lookUpEditOdemeSekli.Margin = new System.Windows.Forms.Padding(4);
             this.lookUpEditOdemeSekli.Name = "lookUpEditOdemeSekli";
             this.lookUpEditOdemeSekli.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditOdemeSekli.Properties.NullText = "";
             this.lookUpEditOdemeSekli.Properties.DoubleClick += new System.EventHandler(this.lookUpEditOdemeSekli_Properties_DoubleClick);
-            this.lookUpEditOdemeSekli.Size = new System.Drawing.Size(151, 20);
+            this.lookUpEditOdemeSekli.Size = new System.Drawing.Size(201, 22);
             this.lookUpEditOdemeSekli.TabIndex = 15;
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(543, 44);
-            this.labelControl6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelControl6.Location = new System.Drawing.Point(724, 54);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(61, 12);
+            this.labelControl6.Size = new System.Drawing.Size(72, 16);
             this.labelControl6.TabIndex = 18;
             this.labelControl6.Text = "Teslim Şekli";
             // 
             // lookUpEditTeslimSekli
             // 
-            this.lookUpEditTeslimSekli.Location = new System.Drawing.Point(618, 40);
+            this.lookUpEditTeslimSekli.Location = new System.Drawing.Point(824, 49);
+            this.lookUpEditTeslimSekli.Margin = new System.Windows.Forms.Padding(4);
             this.lookUpEditTeslimSekli.Name = "lookUpEditTeslimSekli";
             this.lookUpEditTeslimSekli.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditTeslimSekli.Properties.NullText = "";
             this.lookUpEditTeslimSekli.Properties.DoubleClick += new System.EventHandler(this.lookUpEditTeslimSekli_Properties_DoubleClick);
-            this.lookUpEditTeslimSekli.Size = new System.Drawing.Size(151, 20);
+            this.lookUpEditTeslimSekli.Size = new System.Drawing.Size(201, 22);
             this.lookUpEditTeslimSekli.TabIndex = 17;
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // FrmSiparisler
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 538);
+            this.ClientSize = new System.Drawing.Size(1433, 662);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.lookUpEditTeslimSekli);
             this.Controls.Add(this.labelControl5);
@@ -607,7 +610,7 @@ namespace WindowsFormsApDevex
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnEditMusteriler);
             this.Controls.Add(this.gridControlSiparisDetay);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmSiparisler";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -679,5 +682,6 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit urunSecimi;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repoComboKdvOrani;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

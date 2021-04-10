@@ -16,7 +16,7 @@ namespace WindowsFormsApDevex
     public partial class FrmSiparislerListesi : Form
     {
         public int SiparisID { get; set; }
-        SiparisDal siparisCls = new SiparisDal();
+        SiparisListesiMan siparisListesiMan = new SiparisListesiMan();
         public FrmSiparislerListesi()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace WindowsFormsApDevex
         }
         private void GetSiparisList()
         {
-            gridControlSiparisler.DataSource = siparisCls.DataTableSiparisListele();
+            gridControlSiparisler.DataSource = siparisListesiMan.DataTableSiparisListele();
         }
         private void SiparisSil()
         {
@@ -43,19 +43,16 @@ namespace WindowsFormsApDevex
                     DialogResult result = MessageBox.Show("Seçilen Sipariş'e Ait Tüm Bilgiler Silinecek Emin misiniz ?", "Sipariş Silme ", MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
-                        siparisCls.SiparisDelete(siparisId);
+                        siparisListesiMan.SiparisDelete(siparisId);
                     }
                 }
-            
             }
         }
-
         private void sİPARİŞSİLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SiparisSil();
             GetSiparisList();
         }
-
         private void sİPARİŞDÜZENLEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataRow dr = gridViewSiparisler.GetDataRow(gridViewSiparisler.FocusedRowHandle);
@@ -86,7 +83,6 @@ namespace WindowsFormsApDevex
                 MessageBox.Show("Sipariş Listesi Yenilendi");
             }
         }
-
         private void yAZDIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmRapor frmRapor = new FrmRapor();
@@ -105,8 +101,6 @@ namespace WindowsFormsApDevex
             //ReportPrintTool print = new ReportPrintTool(xtraReport3);
             //print.AutoShowParametersPanel = true;
             //print.ShowPreviewDialog();
-
-        
         }
 
       

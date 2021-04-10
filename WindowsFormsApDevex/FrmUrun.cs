@@ -12,7 +12,7 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmUrun : Form
     {
-        UrunDal urun = new UrunDal();
+        UrunMalzemeMan urunMalzemeMan = new UrunMalzemeMan();
         public int urunId { get; set; }
         public FrmUrun(int urunId)
         {
@@ -24,11 +24,10 @@ namespace WindowsFormsApDevex
                 txtUrunBirimFiyati.Text = "";
                 txtUrunStokMiktari.Text = "";
                 txtKdvOrani.Text = "";
-
             }
             else
             {
-                DataRow row = urun.DataRowGetUrun(urunId);
+                DataRow row = urunMalzemeMan.DataRowGetUrun(urunId);
                 if (row != null)
                 {
                     txtUrunAdi.Text = row["UrunAdi"].ToString();
@@ -36,24 +35,49 @@ namespace WindowsFormsApDevex
                     txtUrunStokMiktari.Text = row["StokMiktari"].ToString();
                     txtKdvOrani.Text = row["UrunMalzemeKdvOrani"].ToString();
                 }
-
             }
         }
-
         private void btnUrunKaydet_Click(object sender, EventArgs e)
         {
-            if (urunId > 0)
+            if (TxtKontrol())
             {
-                urun.UrunUpdate(urunId, txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text), Convert.ToInt32(txtKdvOrani.Text));
-                MessageBox.Show("Ürün Güncellendi");
-                this.Close();
+                if (urunId > 0)
+                {
+                    urunMalzemeMan.UrunUpdate(urunId, txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text), Convert.ToInt32(txtKdvOrani.Text));
+                    MessageBox.Show("Ürün Güncellendi");
+                    this.Close();
+                }
+                else
+                {
+                    urunMalzemeMan.UrunInsert(txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text), Convert.ToInt32(txtKdvOrani.Text));
+                    MessageBox.Show("Ürün Eklendi");
+                    this.Close();
+                }
             }
-            else
+        }
+        private bool TxtKontrol()
+        {
+            if (txtUrunAdi.Text=="")
             {
-                urun.UrunInsert(txtUrunAdi.Text, Convert.ToDecimal(txtUrunBirimFiyati.Text), Convert.ToInt32(txtUrunStokMiktari.Text), Convert.ToInt32(txtKdvOrani.Text));
-                MessageBox.Show("Ürün Eklendi");
-                this.Close();
+                MessageBox.Show("Ürün Adı Giriniz.");
+                return false;
             }
+            if (txtUrunBirimFiyati.Text == "")
+            {
+                MessageBox.Show("Ürün BirimFiyati Giriniz.");
+                return false;
+            }
+            if (txtUrunStokMiktari.Text == "")
+            {
+                MessageBox.Show("Ürün Stok Miktarı Giriniz.");
+                return false;
+            }
+            if (txtKdvOrani.Text == "")
+            {
+                MessageBox.Show("Ürün Kdv Oranı Giriniz.");
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace WindowsFormsApDevex.DataAccess
 {
-    public class KurlarDal
+    public class KurlarMan
     {
         SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;

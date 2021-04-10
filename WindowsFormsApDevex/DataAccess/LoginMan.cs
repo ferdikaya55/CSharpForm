@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApDevex.DataAccess
 {
-    public class LoginDal
+    public class LoginMan
     {
         SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;

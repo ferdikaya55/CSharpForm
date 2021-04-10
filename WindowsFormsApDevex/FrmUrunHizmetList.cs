@@ -13,7 +13,7 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmUrunHizmetList : Form
     {
-        UrunHizmetDal urunhizmetDal = new UrunHizmetDal();
+        UrunHizmetMan urunhizmetMan = new UrunHizmetMan();
         public int SecilenUrunHizmetId { get; set; }
         public FrmUrunHizmetList()
         {
@@ -22,7 +22,7 @@ namespace WindowsFormsApDevex
 
         private void FrmUrunHizmetList_Load(object sender, EventArgs e)
         {
-            gridControlUrunHizmetList.DataSource = urunhizmetDal.DataTableUrunHizmet();
+            gridControlUrunHizmetList.DataSource = urunhizmetMan.DataTableUrunHizmet();
         }
 
         private void gridControlUrunHizmetList_DoubleClick(object sender, EventArgs e)

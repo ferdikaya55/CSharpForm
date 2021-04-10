@@ -8,7 +8,7 @@ using System.Data;
 
 namespace WindowsFormsApDevex
 {
-    public class UrunDal
+    public class UrunMalzemeMan
     {
         SqlConnection connection = new SqlConnection(@"Data source=.\MSSQLSERVERDEV;Initial Catalog=OycDB1;Integrated Security=SSPI");
         SqlCommand command;

@@ -17,7 +17,7 @@ namespace WindowsFormsApDevex
     }
     public partial class FrmUrunlerList : Form
     {
-        UrunDal urunCls = new UrunDal();
+        UrunMalzemeMan urunMalzemeMan = new UrunMalzemeMan();
 
         public UrunFormAcilisTipi AcilisTipi { get; set; }
         public int SecilenUrunId { get; set; }
@@ -61,14 +61,14 @@ namespace WindowsFormsApDevex
                 int.TryParse(row["UrunMalzemeId"].ToString(), out urunId);
                 if (urunId != 0)
                 {
-                    urunCls.UrunDelete(urunId);
+                    urunMalzemeMan.UrunDelete(urunId);
                 }
             }
         }
     
         private void GetUrunList()
         {
-            gridControlUrunler.DataSource = urunCls.DataTableUrunler();
+            gridControlUrunler.DataSource = urunMalzemeMan.DataTableUrunler();
         }
         private void gridViewUrunler_DoubleClick(object sender, EventArgs e)
         {
@@ -110,7 +110,6 @@ namespace WindowsFormsApDevex
             {
                 UrunGuncelle();
             }
-
         }
 
         private void ürünEkleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,7 +129,6 @@ namespace WindowsFormsApDevex
             UrunSil();
             GetUrunList();
         }
-
         private void gridViewUrunler_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             GridView view = sender as GridView;
@@ -146,7 +144,6 @@ namespace WindowsFormsApDevex
                 e.Appearance.ForeColor = Color.White;
             }
         }
-
         private void barBtnUrunEkle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UrunEkle();
@@ -164,7 +161,6 @@ namespace WindowsFormsApDevex
             UrunSil();
             GetUrunList();
         }
-
         private void barBtnUrunCikis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();

@@ -26,5 +26,10 @@ namespace WindowsFormsApDevex
             print.AutoShowParametersPanel = true;
             print.ShowPreviewDialog();
         }
+
+        private void FrmRapor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

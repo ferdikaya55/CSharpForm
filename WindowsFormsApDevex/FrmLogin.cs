@@ -12,7 +12,7 @@ namespace WindowsFormsApDevex.DataAccess
 {
     public partial class FrmLogin : Form
     {
-        LoginDal loginDal = new LoginDal();
+        LoginMan loginMan = new LoginMan();
         bool durum = false;
         public FrmLogin()
         {
@@ -26,7 +26,7 @@ namespace WindowsFormsApDevex.DataAccess
            
             if (ad!=null && sifre!=null)
             {
-               durum= loginDal.Login(ad, sifre);
+               durum= loginMan.Login(ad, sifre);
                 if (durum)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -60,7 +60,7 @@ namespace WindowsFormsApDevex.DataAccess
 
                 if (ad != null && sifre != null)
                 {
-                    durum = loginDal.Login(ad, sifre);
+                    durum = loginMan.Login(ad, sifre);
                     if (durum)
                     {
                         this.DialogResult = DialogResult.OK;

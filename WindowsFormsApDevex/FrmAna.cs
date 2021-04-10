@@ -13,16 +13,12 @@ namespace WindowsFormsApDevex
 {
     public partial class FrmAna : Form
     {
-        
         public string Yetki { get; set; }
         public FrmAna()
         {
-           
            // this.Yetki = yetki;
             InitializeComponent();
         }
-      
-       
         private void navBarMusteriler_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             Müşteriler frmMusteriList = new Müşteriler(FormAcilisTipi.Listele);
@@ -60,7 +56,6 @@ namespace WindowsFormsApDevex
             //    navBarMusteriler.Visible = false;
             //}
         }
-
         private void navBarItemKurlar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             FrmKurlar frmKurlar = new FrmKurlar();
