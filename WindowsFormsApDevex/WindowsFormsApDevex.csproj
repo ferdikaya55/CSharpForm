@@ -129,6 +129,12 @@
     <Compile Include="FrmTeslimSekliList.Designer.cs">
       <DependentUpon>FrmTeslimSekliList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUrunHizmet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUrunHizmet.Designer.cs">
+      <DependentUpon>FrmUrunHizmet.cs</DependentUpon>
+    </Compile>
     <Compile Include="OycRapor.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTeslimSekliList.resx">
       <DependentUpon>FrmTeslimSekliList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUrunHizmet.resx">
+      <DependentUpon>FrmUrunHizmet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OycRapor.resx">
       <DependentUpon>OycRapor.cs</DependentUpon>
@@ -360,6 +369,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\report_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16x165.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x161.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

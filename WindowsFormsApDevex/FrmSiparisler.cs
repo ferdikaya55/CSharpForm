@@ -185,7 +185,7 @@ namespace WindowsFormsApDevex
                         dr["StokMiktari"] = Urunrow["StokMiktari"];
                         dr["KdvOrani"] = Urunrow["UrunMalzemeKdvOrani"];
                         dr["Birim"] = "Adet";
-                        dr["ParaBirimi"] = KurAdi;
+                        dr["ParaBirimi"] = lookUpEditKurlar.Text;
                         dr["Miktar"]=1;
                         dr["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
                         dr["KdvOrani"] = 0;
@@ -209,7 +209,7 @@ namespace WindowsFormsApDevex
                         drNew["StokMiktari"] = Urunrow["StokMiktari"];
                         drNew["KdvOrani"] = Urunrow["UrunMalzemeKdvOrani"];
                         drNew["Birim"] = "Adet";
-                        drNew["ParaBirimi"] = KurAdi;
+                        drNew["ParaBirimi"] = lookUpEditKurlar.Text;
                         drNew["Tutar"] = Convert.ToDouble(dr["Miktar"]) * Convert.ToDouble(dr["BirimFiyati"]);
                         drNew["KdvOrani"] = 0;
                         drNew["KdvToplamTutari"] = 0;
@@ -226,7 +226,7 @@ namespace WindowsFormsApDevex
         }
         private void SelectUrunHizmet()
         {
-            FrmUrunHizmetList frmurunHizmet = new FrmUrunHizmetList();
+            FrmUrunHizmetList frmurunHizmet = new FrmUrunHizmetList(UrunHizmetFormAcilisTipi.Secim);
             frmurunHizmet.ShowDialog();
             int urunHizmetId = frmurunHizmet.SecilenUrunHizmetId;
             if (urunHizmetId > 0)
@@ -245,7 +245,7 @@ namespace WindowsFormsApDevex
                         dr["BirimFiyati"] = Urunrow["BirimFiyati"];
                         dr["KdvOrani"] = Urunrow["UrunHizmetKdvOrani"];
                         dr["Birim"] = "Adet";
-                        dr["ParaBirimi"] = KurAdi;
+                        dr["ParaBirimi"] = lookUpEditKurlar.Text;
                         dr["Miktar"] = 1;
                         dr["KdvOrani"] = 0;
                         dr["KdvToplamTutari"] = 0;
@@ -267,7 +267,7 @@ namespace WindowsFormsApDevex
                         drNew["BirimFiyati"] = Urunrow["BirimFiyati"];
                         drNew["KdvOrani"] = Urunrow["UrunHizmetKdvOrani"];
                         drNew["Birim"] = "Adet";
-                        drNew["ParaBirimi"] = KurAdi;
+                        drNew["ParaBirimi"] = lookUpEditKurlar.Text;
                         drNew["KdvOrani"] = 0;
                         drNew["KdvToplamTutari"] = 0;
                         drNew["IndirimOrani"] = 0;

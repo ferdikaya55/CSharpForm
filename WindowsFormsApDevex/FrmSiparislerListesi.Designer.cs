@@ -43,19 +43,12 @@ namespace WindowsFormsApDevex
             this.Telefon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SiparisId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Tutar = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEditBaslangicTarihi = new DevExpress.XtraEditors.DateEdit();
-            this.dateEditBitisTarihi = new DevExpress.XtraEditors.DateEdit();
             this.KurDegeri = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.KurAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSiparisler)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControlSiparisler
@@ -68,7 +61,7 @@ namespace WindowsFormsApDevex
             this.gridControlSiparisler.Location = new System.Drawing.Point(12, 64);
             this.gridControlSiparisler.MainView = this.gridViewSiparisler;
             this.gridControlSiparisler.Name = "gridControlSiparisler";
-            this.gridControlSiparisler.Size = new System.Drawing.Size(807, 378);
+            this.gridControlSiparisler.Size = new System.Drawing.Size(919, 409);
             this.gridControlSiparisler.TabIndex = 0;
             this.gridControlSiparisler.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSiparisler});
@@ -114,7 +107,8 @@ namespace WindowsFormsApDevex
             this.Telefon,
             this.SiparisId,
             this.Tutar,
-            this.KurDegeri});
+            this.KurDegeri,
+            this.KurAdi});
             this.gridViewSiparisler.GridControl = this.gridControlSiparisler;
             this.gridViewSiparisler.Name = "gridViewSiparisler";
             this.gridViewSiparisler.OptionsBehavior.Editable = false;
@@ -134,7 +128,7 @@ namespace WindowsFormsApDevex
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MusteriAd", "{0}")});
             this.MusteriAd.Visible = true;
             this.MusteriAd.VisibleIndex = 0;
-            this.MusteriAd.Width = 146;
+            this.MusteriAd.Width = 110;
             // 
             // SiparisNo
             // 
@@ -145,7 +139,7 @@ namespace WindowsFormsApDevex
             this.SiparisNo.OptionsColumn.AllowEdit = false;
             this.SiparisNo.Visible = true;
             this.SiparisNo.VisibleIndex = 1;
-            this.SiparisNo.Width = 155;
+            this.SiparisNo.Width = 117;
             // 
             // SiparisTarihi
             // 
@@ -156,7 +150,7 @@ namespace WindowsFormsApDevex
             this.SiparisTarihi.OptionsColumn.AllowEdit = false;
             this.SiparisTarihi.Visible = true;
             this.SiparisTarihi.VisibleIndex = 2;
-            this.SiparisTarihi.Width = 155;
+            this.SiparisTarihi.Width = 106;
             // 
             // Adres
             // 
@@ -167,7 +161,7 @@ namespace WindowsFormsApDevex
             this.Adres.OptionsColumn.AllowEdit = false;
             this.Adres.Visible = true;
             this.Adres.VisibleIndex = 3;
-            this.Adres.Width = 173;
+            this.Adres.Width = 133;
             // 
             // Telefon
             // 
@@ -178,7 +172,7 @@ namespace WindowsFormsApDevex
             this.Telefon.OptionsColumn.AllowEdit = false;
             this.Telefon.Visible = true;
             this.Telefon.VisibleIndex = 4;
-            this.Telefon.Width = 149;
+            this.Telefon.Width = 104;
             // 
             // SiparisId
             // 
@@ -191,13 +185,31 @@ namespace WindowsFormsApDevex
             // 
             // Tutar
             // 
-            this.Tutar.Caption = "Tutar";
+            this.Tutar.Caption = "TUTAR";
             this.Tutar.FieldName = "Tutar";
             this.Tutar.MinWidth = 25;
             this.Tutar.Name = "Tutar";
             this.Tutar.Visible = true;
             this.Tutar.VisibleIndex = 6;
-            this.Tutar.Width = 94;
+            // 
+            // KurDegeri
+            // 
+            this.KurDegeri.Caption = "KUR DEĞERİ";
+            this.KurDegeri.FieldName = "KurDegeri";
+            this.KurDegeri.MinWidth = 25;
+            this.KurDegeri.Name = "KurDegeri";
+            this.KurDegeri.Visible = true;
+            this.KurDegeri.VisibleIndex = 5;
+            // 
+            // KurAdi
+            // 
+            this.KurAdi.Caption = "KUR ADI";
+            this.KurAdi.FieldName = "KurAdi";
+            this.KurAdi.MinWidth = 25;
+            this.KurAdi.Name = "KurAdi";
+            this.KurAdi.Visible = true;
+            this.KurAdi.VisibleIndex = 7;
+            this.KurAdi.Width = 81;
             // 
             // labelControl1
             // 
@@ -206,65 +218,11 @@ namespace WindowsFormsApDevex
             this.labelControl1.Size = new System.Drawing.Size(0, 16);
             this.labelControl1.TabIndex = 21;
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 17);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(90, 16);
-            this.labelControl2.TabIndex = 22;
-            this.labelControl2.Text = "Başlangıç Tarihi";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(213, 17);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(60, 16);
-            this.labelControl3.TabIndex = 23;
-            this.labelControl3.Text = "Bitiş Tarihi";
-            // 
-            // dateEditBaslangicTarihi
-            // 
-            this.dateEditBaslangicTarihi.EditValue = null;
-            this.dateEditBaslangicTarihi.Location = new System.Drawing.Point(91, 14);
-            this.dateEditBaslangicTarihi.Name = "dateEditBaslangicTarihi";
-            this.dateEditBaslangicTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBaslangicTarihi.Size = new System.Drawing.Size(100, 22);
-            this.dateEditBaslangicTarihi.TabIndex = 24;
-            // 
-            // dateEditBitisTarihi
-            // 
-            this.dateEditBitisTarihi.EditValue = null;
-            this.dateEditBitisTarihi.Location = new System.Drawing.Point(278, 14);
-            this.dateEditBitisTarihi.Name = "dateEditBitisTarihi";
-            this.dateEditBitisTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBitisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditBitisTarihi.Size = new System.Drawing.Size(100, 22);
-            this.dateEditBitisTarihi.TabIndex = 25;
-            // 
-            // KurDegeri
-            // 
-            this.KurDegeri.Caption = "Kur Degeri";
-            this.KurDegeri.FieldName = "KurDegeri";
-            this.KurDegeri.MinWidth = 25;
-            this.KurDegeri.Name = "KurDegeri";
-            this.KurDegeri.Visible = true;
-            this.KurDegeri.VisibleIndex = 5;
-            this.KurDegeri.Width = 94;
-            // 
             // FrmSiparislerListesi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 454);
-            this.Controls.Add(this.dateEditBitisTarihi);
-            this.Controls.Add(this.dateEditBaslangicTarihi);
-            this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.labelControl2);
+            this.ClientSize = new System.Drawing.Size(943, 485);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControlSiparisler);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -276,10 +234,6 @@ namespace WindowsFormsApDevex
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSiparisler)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSiparisler)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBaslangicTarihi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditBitisTarihi.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,11 +254,8 @@ namespace WindowsFormsApDevex
         private System.Windows.Forms.ToolStripMenuItem sİPARİŞSİLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sİPARİŞDÜZENLEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yAZDIRToolStripMenuItem;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.DateEdit dateEditBaslangicTarihi;
-        private DevExpress.XtraEditors.DateEdit dateEditBitisTarihi;
         private DevExpress.XtraGrid.Columns.GridColumn Tutar;
         private DevExpress.XtraGrid.Columns.GridColumn KurDegeri;
+        private DevExpress.XtraGrid.Columns.GridColumn KurAdi;
     }
 }

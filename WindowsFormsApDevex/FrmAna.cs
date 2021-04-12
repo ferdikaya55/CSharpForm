@@ -44,7 +44,7 @@ namespace WindowsFormsApDevex
         }
         private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            FrmUrunHizmetList frmUrunHizmetList = new FrmUrunHizmetList();
+            FrmUrunHizmetList frmUrunHizmetList = new FrmUrunHizmetList(UrunHizmetFormAcilisTipi.Listele);
             frmUrunHizmetList.ShowDialog();
         }
 

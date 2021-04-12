@@ -16,7 +16,7 @@ namespace WindowsFormsApDevex.DataAccess
         public DataTable DataTableSiparisListele()
         {
             connection.Open();
-            adapter = new SqlDataAdapter("select s.SiparisId,m.MusteriAd,m.Adres,m.Telefon,s.SiparisNo,s.SiparisTarihi,s.KurDegeri,(select sum(sd.Toplam) from Siparis_Detay sd where sd.SiparisId = s.SiparisId) as Tutar from Siparisler s left join Musteriler m on s.MusteriId = m.MusteriId order by s.SiparisId desc", connection);
+            adapter = new SqlDataAdapter("select s.SiparisId,m.MusteriAd,m.Adres,m.Telefon,s.SiparisNo,s.SiparisTarihi,s.KurDegeri,(select sum(sd.Toplam) from Siparis_Detay sd where sd.SiparisId = s.SiparisId) as Tutar,KurAdi from Siparisler s left join Musteriler m on s.MusteriId = m.MusteriId inner join Kurlar on s.KurId=Kurlar.KurId order by s.SiparisId desc", connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
             connection.Close();
