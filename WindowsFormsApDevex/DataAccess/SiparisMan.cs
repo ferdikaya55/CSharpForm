@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
+using WindowsFormsApDevex.Objects;
 
 namespace WindowsFormsApDevex
 {
@@ -16,17 +17,17 @@ namespace WindowsFormsApDevex
         SqlDataAdapter adapter;
         SqlDataReader reader;
    
-        public int SiparisInsert(int musteriId,int siparisNo, DateTime siparisTarihi,int kurId,double kurDegeri,int odemeId,int teslimId)
+        public int SiparisInsert(Siparis siparis)
         {
             string query = "INSERT INTO Siparisler(MusteriId,SiparisNo,SiparisTarihi,KurId,KurDegeri,OdemeId,TeslimId) VALUES (@MusteriId,@SiparisNo,@SiparisTarihi,@KurId,@KurDegeri,@OdemeId,@TeslimId) Select @@IDENTITY ";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriId", musteriId);
-            command.Parameters.AddWithValue("@SiparisNo", siparisNo);
-            command.Parameters.AddWithValue("@SiparisTarihi", siparisTarihi);
-            command.Parameters.AddWithValue("@KurId", kurId);
-            command.Parameters.AddWithValue("@KurDegeri", kurDegeri);
-            command.Parameters.AddWithValue("@OdemeId", odemeId);
-            command.Parameters.AddWithValue("@TeslimId", teslimId);
+            command.Parameters.AddWithValue("@MusteriId", siparis.MusteriId);
+            command.Parameters.AddWithValue("@SiparisNo", siparis.SiparisNo);
+            command.Parameters.AddWithValue("@SiparisTarihi", siparis.SiparisTarihi);
+            command.Parameters.AddWithValue("@KurId", siparis.KurId);
+            command.Parameters.AddWithValue("@KurDegeri", siparis.KurDegeri);
+            command.Parameters.AddWithValue("@OdemeId", siparis.OdemeId);
+            command.Parameters.AddWithValue("@TeslimId", siparis.TeslimId);
 
             connection.Open();
             int siparisId = 0;
@@ -39,6 +40,22 @@ namespace WindowsFormsApDevex
 
             return siparisId;
            
+        }
+        public void SiparisUpdate(Siparis siparis)
+        {
+            string query = "Update Siparisler set MusteriId=@MusteriId,SiparisNo=@SiparisNo,SiparisTarihi=@SiparisTarihi,KurId=@KurId,KurDegeri=@KurDegeri,OdemeId=@OdemeId,TeslimId=@TeslimId where SiparisId=@SiparisId";
+            command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@SiparisId", siparis.SiparisId);
+            command.Parameters.AddWithValue("@MusteriId", siparis.MusteriId);
+            command.Parameters.AddWithValue("@SiparisNo", siparis.SiparisNo);
+            command.Parameters.AddWithValue("@SiparisTarihi", siparis.SiparisTarihi);
+            command.Parameters.AddWithValue("@KurId", siparis.KurId);
+            command.Parameters.AddWithValue("@KurDegeri", siparis.KurDegeri);
+            command.Parameters.AddWithValue("@OdemeId", siparis.OdemeId);
+            command.Parameters.AddWithValue("@TeslimId", siparis.TeslimId);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
         public DataTable GetDataTableDetay(int siparisId)
         {
@@ -126,70 +143,70 @@ namespace WindowsFormsApDevex
             connection.Close();
         }
     
-        public void SiparisDetayInsert(int siparisId,int? urunId,int? urunhizmetId, double miktar,double birimFiyati,double tutar, string birim, int kurId,double kurDegeri,string satirTipi,int kdvOrani,double kdvtutar,double araToplam,int indirimOrani,double indirimKazanci,double toplam)
+        public void SiparisDetayInsert(SiparisD siparisD)
         {
             string query = "INSERT INTO Siparis_Detay(SiparisId,UrunMalzemeId,UrunHizmetId,Miktar,Tutar,BirimFiyati,Birim,KurId,KurDegeri,SatirTipi,KdvOrani,KdvToplamTutari,AraToplam,IndirimOrani,IndirimKazanci,Toplam)" +
                 " VALUES (@SiparisId,@UrunMalzemeId,@UrunHizmetId,@Miktar,@Tutar,@BirimFiyati,@Birim,@KurId,@KurDegeri,@SatirTipi,@KdvOrani,@KdvToplamTutari,@AraToplam,@IndirimOrani,@IndirimKazanci,@Toplam)";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@SiparisId", siparisId);
-            if (urunId == null)
+            command.Parameters.AddWithValue("@SiparisId", siparisD.SiparisId);
+            if (siparisD.UrunMalzemeId==null)
             {
                 command.Parameters.AddWithValue("@UrunMalzemeId", DBNull.Value);
             }
-            else command.Parameters.AddWithValue("@UrunMalzemeId", urunId);
-            if (urunhizmetId==null)
+            else command.Parameters.AddWithValue("@UrunMalzemeId", siparisD.UrunMalzemeId);
+            if (siparisD.UrunHizmetId==null)
             {
                 command.Parameters.AddWithValue("@UrunHizmetId", DBNull.Value);
             }
-            else command.Parameters.AddWithValue("@UrunHizmetId", urunhizmetId);
+            else command.Parameters.AddWithValue("@UrunHizmetId", siparisD.UrunHizmetId);
       
-            command.Parameters.AddWithValue("@Miktar", miktar);
-            command.Parameters.AddWithValue("@Tutar", tutar);
-            command.Parameters.AddWithValue("@BirimFiyati", birimFiyati);
-            command.Parameters.AddWithValue("@Birim", birim);
-            command.Parameters.AddWithValue("@KurId", kurId);
-            command.Parameters.AddWithValue("@KurDegeri", kurDegeri);
-            command.Parameters.AddWithValue("@SatirTipi", satirTipi);
-            command.Parameters.AddWithValue("@KdvOrani", kdvOrani);
-            command.Parameters.AddWithValue("@KdvToplamTutari", kdvtutar);
-            command.Parameters.AddWithValue("@AraToplam", araToplam);
-            command.Parameters.AddWithValue("@IndirimOrani", indirimOrani);
-            command.Parameters.AddWithValue("@IndirimKazanci", indirimKazanci);
-            command.Parameters.AddWithValue("@Toplam", toplam);
+            command.Parameters.AddWithValue("@Miktar", siparisD.Miktar);
+            command.Parameters.AddWithValue("@Tutar", siparisD.Tutar);
+            command.Parameters.AddWithValue("@BirimFiyati", siparisD.BirimFiyati);
+            command.Parameters.AddWithValue("@Birim", siparisD.Birim);
+            command.Parameters.AddWithValue("@KurId", siparisD.KurId);
+            command.Parameters.AddWithValue("@KurDegeri", siparisD.KurDegeri);
+            command.Parameters.AddWithValue("@SatirTipi", siparisD.SatirTipi);
+            command.Parameters.AddWithValue("@KdvOrani", siparisD.KdvOrani);
+            command.Parameters.AddWithValue("@KdvToplamTutari", siparisD.KdvToplamTutari);
+            command.Parameters.AddWithValue("@AraToplam", siparisD.AraToplam);
+            command.Parameters.AddWithValue("@IndirimOrani", siparisD.IndirimOrani);
+            command.Parameters.AddWithValue("@IndirimKazanci", siparisD.IndirimKazanci);
+            command.Parameters.AddWithValue("@Toplam", siparisD.Toplam);
 
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public void SiparisDetayUpdate(int siparisDetayId, int? urunId,int? urunHizmetId, string birim, double miktar, double birimFiyati, int kurId,double kurDegeri, double tutar,string satirTipi, int kdvOrani, double kdvtutar, double araToplam, int indirimOrani, double indirimKazanci, double toplam)
+        public void SiparisDetayUpdate(SiparisD siparisD)
         {
             string query = "UPDATE Siparis_Detay set UrunMalzemeId = @UrunMalzemeId,UrunHizmetId=@UrunHizmetId, Miktar = @Miktar, Tutar = @Tutar, BirimFiyati = @BirimFiyati, Birim = @Birim, KurId = @KurId,Kurdegeri=@KurDegeri,SatirTipi=@SatirTipi,KdvOrani=@KdvOrani,KdvToplamTutari=@KdvToplamTutari,AraToplam=@AraToplam,IndirimOrani=@IndirimOrani,IndirimKazanci=@IndirimKazanci,Toplam=@Toplam where Siparis_Detay.SiparisDetayId = @SiparisDetayId";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@SiparisDetayId", siparisDetayId);
-            if (urunId == null)
+            command.Parameters.AddWithValue("@SiparisDetayId", siparisD.SiparisDetayId);
+            if (siparisD.UrunMalzemeId == null)
             {
                 command.Parameters.AddWithValue("@UrunMalzemeId", DBNull.Value);
             }
-            else command.Parameters.AddWithValue("@UrunMalzemeId", urunId);
-            if (urunHizmetId == null)
+            else command.Parameters.AddWithValue("@UrunMalzemeId", siparisD.UrunMalzemeId);
+            if (siparisD.UrunHizmetId == null)
             {
                 command.Parameters.AddWithValue("@UrunHizmetId", DBNull.Value);
             }
-            else command.Parameters.AddWithValue("@UrunHizmetId", urunHizmetId);
-           
-            command.Parameters.AddWithValue("@Miktar", miktar);
-            command.Parameters.AddWithValue("@Tutar", tutar);
-            command.Parameters.AddWithValue("@BirimFiyati", birimFiyati);
-            command.Parameters.AddWithValue("@Birim", birim);
-            command.Parameters.AddWithValue("@KurId", kurId);
-            command.Parameters.AddWithValue("@KurDegeri", kurDegeri);
-            command.Parameters.AddWithValue("@SatirTipi", satirTipi);
-            command.Parameters.AddWithValue("@KdvOrani", kdvOrani);
-            command.Parameters.AddWithValue("@KdvToplamTutari", kdvtutar);
-            command.Parameters.AddWithValue("@AraToplam", araToplam);
-            command.Parameters.AddWithValue("@IndirimOrani", indirimOrani);
-            command.Parameters.AddWithValue("@IndirimKazanci", indirimKazanci);
-            command.Parameters.AddWithValue("@Toplam", toplam);
+            else command.Parameters.AddWithValue("@UrunHizmetId", siparisD.UrunHizmetId);
+
+            command.Parameters.AddWithValue("@Miktar", siparisD.Miktar);
+            command.Parameters.AddWithValue("@Tutar", siparisD.Tutar);
+            command.Parameters.AddWithValue("@BirimFiyati", siparisD.BirimFiyati);
+            command.Parameters.AddWithValue("@Birim", siparisD.Birim);
+            command.Parameters.AddWithValue("@KurId", siparisD.KurId);
+            command.Parameters.AddWithValue("@KurDegeri", siparisD.KurDegeri);
+            command.Parameters.AddWithValue("@SatirTipi", siparisD.SatirTipi);
+            command.Parameters.AddWithValue("@KdvOrani", siparisD.KdvOrani);
+            command.Parameters.AddWithValue("@KdvToplamTutari", siparisD.KdvToplamTutari);
+            command.Parameters.AddWithValue("@AraToplam", siparisD.AraToplam);
+            command.Parameters.AddWithValue("@IndirimOrani", siparisD.IndirimOrani);
+            command.Parameters.AddWithValue("@IndirimKazanci", siparisD.IndirimKazanci);
+            command.Parameters.AddWithValue("@Toplam", siparisD.Toplam);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
@@ -203,21 +220,6 @@ namespace WindowsFormsApDevex
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public void SiparisUpdate(int siparisId,int musteriId, int siparisNo, DateTime siparisTarihi,int kurId,double kurDegeri,int odemeId,int teslimId)
-        {
-            string query = "Update Siparisler set MusteriId=@MusteriId,SiparisNo=@SiparisNo,SiparisTarihi=@SiparisTarihi,KurId=@KurId,KurDegeri=@KurDegeri,OdemeId=@OdemeId,TeslimId=@TeslimId where SiparisId=@SiparisId";
-            command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@SiparisId", siparisId);
-            command.Parameters.AddWithValue("@MusteriId", musteriId);
-            command.Parameters.AddWithValue("@SiparisNo", siparisNo);
-            command.Parameters.AddWithValue("@SiparisTarihi", siparisTarihi);
-            command.Parameters.AddWithValue("@KurId", kurId);
-            command.Parameters.AddWithValue("@KurDegeri", kurDegeri);
-            command.Parameters.AddWithValue("@OdemeId", odemeId);
-            command.Parameters.AddWithValue("@TeslimId", teslimId);
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
+  
     }
 }

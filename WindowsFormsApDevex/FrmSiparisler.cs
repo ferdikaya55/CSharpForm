@@ -19,6 +19,7 @@ using WindowsFormsApDevex.Helper;
 using System.Xml;
 using DevExpress.XtraSplashScreen;
 using System.Threading;
+using WindowsFormsApDevex.Objects;
 
 namespace WindowsFormsApDevex
 {
@@ -45,6 +46,8 @@ namespace WindowsFormsApDevex
         OdemeSekliMan odemeSekliMan = new OdemeSekliMan();
         TeslimSekliMan teslimSekliMan = new TeslimSekliMan();
         FrmUrunlerList frmUrunler;
+        Siparis siparisObj = new Siparis();
+        SiparisD siparisDObj = new SiparisD();
 
         public FrmSiparisler(int siparisId)
         {
@@ -64,9 +67,15 @@ namespace WindowsFormsApDevex
                     txtSiparisNo.Text = row["SiparisNo"].ToString();
                     dateEditSiparisTarihi.Text = row["SiparisTarihi"].ToString();
                     lookUpEditKurlar.EditValue = row["KurId"];
+                    KurID = Convert.ToInt32(lookUpEditKurlar.EditValue);
+                    if (KurID == 1)
+                    {
+                        txtKurDegeri.EditValue = 1;
+                        txtKurDegeri.Enabled = false;
+                    }
                     txtKurDegeri.Text = row["KurDegeri"].ToString();
                     lookUpEditOdemeSekli.EditValue= row["OdemeId"];
-                    lookUpEditTeslimSekli.EditValue = row["TeslimId"];
+                    lookUpEditTeslimSekli.EditValue = row["TeslimId"];  
                 }
             }
             else
@@ -283,48 +292,49 @@ namespace WindowsFormsApDevex
         }
         private bool YeniSiparisEkle()
         {
-            int musteriId, siparisNo,kdvOrani,indirimOrani, paraBirimi,teslimId,odemeId;
-            int? urunId, urunhizmetId;
-            double miktar, tutar, birimFiyati,kdvToplamTutar, araToplam,indirimKazanci,toplam,kurDegeri;
-            string birim, satirTipi;
-            DateTime siparisTarihi;
+         
             bool siparisDurum = false;
             if (TxtSiparisKontrol() && SiparisDetayKontrol())
             {
-                musteriId = SeciliMusteriId;
-                siparisNo = Convert.ToInt32(txtSiparisNo.Text);
-                siparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
-                paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
-                kurDegeri = Convert.ToDouble(txtKurDegeri.Text);
-                teslimId = Convert.ToInt32(lookUpEditTeslimSekli.EditValue);
-                odemeId = Convert.ToInt32(lookUpEditOdemeSekli.EditValue);
-                SiparisID = siparisMan.SiparisInsert(musteriId, siparisNo, siparisTarihi,paraBirimi,kurDegeri,odemeId,teslimId);
+                siparisObj.MusteriId = SeciliMusteriId;
+                siparisObj.SiparisNo = Convert.ToInt32(txtSiparisNo.Text);
+                siparisObj.SiparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
+                siparisObj.KurId = Convert.ToInt32(lookUpEditKurlar.EditValue);
+                siparisObj.KurDegeri = Convert.ToDouble(txtKurDegeri.Text);
+                siparisObj.TeslimId = Convert.ToInt32(lookUpEditTeslimSekli.EditValue);
+                siparisObj.OdemeId = Convert.ToInt32(lookUpEditOdemeSekli.EditValue);
+               
+                SiparisID = siparisMan.SiparisInsert(siparisObj);
+
                 foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
                 {
-                    urunId = null;
-                    urunhizmetId = null;
+                    siparisDObj.UrunMalzemeId = null;
+                    siparisDObj.UrunHizmetId = null;
+
                     if (row["UrunMalzemeId"] != null && row["UrunMalzemeId"] != DBNull.Value)
                     {
-                        urunId = Convert.ToInt32(row["UrunMalzemeId"]);
+                        siparisDObj.UrunMalzemeId = Convert.ToInt32(row["UrunMalzemeId"]);
                     }
                     if (row["UrunHizmetId"] != null && row["UrunHizmetId"] != DBNull.Value)
                     {
-                        urunhizmetId = Convert.ToInt32(row["UrunHizmetId"]);
+                        siparisDObj.UrunHizmetId = Convert.ToInt32(row["UrunHizmetId"]);
                     }
-                    miktar = Convert.ToDouble(row["Miktar"]);
-                    birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
-                    tutar = Convert.ToDouble(row["Tutar"]);
-                    birim = row["Birim"].ToString();
-                    paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
-                    satirTipi = row["SatirTipi"].ToString();
-                    kdvOrani = Convert.ToInt32(row["KdvOrani"]);
-                    kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
-                    araToplam = Convert.ToDouble(row["AraToplam"]);
-                    indirimOrani= Convert.ToInt32(row["IndirimOrani"]);
-                    indirimKazanci = Convert.ToDouble(row["IndirimKazanci"]);
-                    toplam = Convert.ToDouble(row["Toplam"]);
+                    siparisDObj.SiparisId = SiparisID;
+                    siparisDObj.Miktar = Convert.ToDouble(row["Miktar"]);
+                    siparisDObj.BirimFiyati = Convert.ToDouble(row["BirimFiyati"]);
+                    siparisDObj.Tutar = Convert.ToDouble(row["Tutar"]);
+                    siparisDObj.Birim = row["Birim"].ToString();
+                    siparisDObj.KurId = Convert.ToInt32(lookUpEditKurlar.EditValue);
+                    siparisDObj.SatirTipi = row["SatirTipi"].ToString();
+                    siparisDObj.KdvOrani = Convert.ToInt32(row["KdvOrani"]);
+                    siparisDObj.KdvToplamTutari = Convert.ToDouble(row["KdvToplamTutari"]);
+                    siparisDObj.AraToplam = Convert.ToDouble(row["AraToplam"]);
+                    siparisDObj.IndirimOrani= Convert.ToInt32(row["IndirimOrani"]);
+                    siparisDObj.IndirimKazanci = Convert.ToDouble(row["IndirimKazanci"]);
+                    siparisDObj.Toplam = Convert.ToDouble(row["Toplam"]);
+                    siparisDObj.KurDegeri = Convert.ToDouble(txtKurDegeri.Text);
 
-                    siparisMan.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi,kurDegeri, satirTipi,kdvOrani,kdvToplamTutar, araToplam,indirimOrani,indirimKazanci,toplam);
+                    siparisMan.SiparisDetayInsert(siparisDObj);
 
                 }
                 siparisDurum = true;
@@ -335,81 +345,80 @@ namespace WindowsFormsApDevex
         }
         private bool SiparisGuncelle()
         {
-            int musteriId, siparisNo, sDetayId,kdvOrani,indirimOrani,paraBirimi, teslimId, odemeId;
-            int? urunId, urunhizmetId;
-            double miktar, tutar, birimFiyati, kdvToplamTutar, araToplam,indirimKazanci, toplam,kurDegeri;
-            string birim,satirTipi;
-            DateTime siparisTarihi;
             bool siparisGuncelleDurum = false;
-            paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
-            kurDegeri = Convert.ToDouble(txtKurDegeri.Text);
-            teslimId = Convert.ToInt32(lookUpEditTeslimSekli.EditValue);
-            odemeId = Convert.ToInt32(lookUpEditOdemeSekli.EditValue);
+
             if (TxtSiparisKontrol() && SiparisDetayKontrol())
             {
-                musteriId = SeciliMusteriId;
-                siparisNo = Convert.ToInt32(txtSiparisNo.Text);
-                siparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
-                siparisMan.SiparisUpdate(SiparisID, musteriId, siparisNo, siparisTarihi, paraBirimi, kurDegeri,odemeId,teslimId);
+                siparisObj.MusteriId = SeciliMusteriId;
+                siparisObj.SiparisNo = Convert.ToInt32(txtSiparisNo.Text);
+                siparisObj.SiparisTarihi = Convert.ToDateTime(dateEditSiparisTarihi.EditValue);
+                siparisObj.KurId = Convert.ToInt32(lookUpEditKurlar.EditValue);
+                siparisObj.KurDegeri = Convert.ToDouble(txtKurDegeri.Text);
+                siparisObj.TeslimId = Convert.ToInt32(lookUpEditTeslimSekli.EditValue);
+                siparisObj.OdemeId = Convert.ToInt32(lookUpEditOdemeSekli.EditValue);
+                siparisMan.SiparisUpdate(siparisObj);
 
                 foreach (DataRow row in ((DataTable)gridControlSiparisDetay.DataSource).Rows)
                 {
-                    urunId = null;
-                    urunhizmetId = null;
-                    
+                    siparisDObj.UrunMalzemeId = null;
+                    siparisDObj.UrunHizmetId = null;
+
                     if (row["SiparisDetayId"] != DBNull.Value)
                     {
                         if (row["SatirTipi"].ToString()=="Malzeme")
                         {
-                            urunId = Convert.ToInt32(row["UrunMalzemeId"]);
-                            urunhizmetId = null;
+                            siparisDObj.UrunMalzemeId = Convert.ToInt32(row["UrunMalzemeId"]);
+                            siparisDObj.UrunHizmetId = null;
                         }
                         if (row["SatirTipi"].ToString() == "Hizmet")
                         {
-                            urunhizmetId = Convert.ToInt32(row["UrunHizmetId"]);
-                            urunId = null;
+                            siparisDObj.UrunHizmetId = Convert.ToInt32(row["UrunHizmetId"]);
+                            siparisDObj.UrunMalzemeId = null;
                         }
-                        sDetayId = Convert.ToInt32(row["SiparisDetayId"]);
-                        miktar = Convert.ToDouble(row["Miktar"]);
-                        birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
-                        tutar = Convert.ToDouble(row["Tutar"]);
-                        birim = row["Birim"].ToString();
-                        paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
-                        satirTipi = row["SatirTipi"].ToString();
-                        kdvOrani = Convert.ToInt32(row["KdvOrani"]);
-                        kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
-                        araToplam = Convert.ToDouble(row["AraToplam"]);
-                        indirimOrani = Convert.ToInt32(row["IndirimOrani"]);
-                        indirimKazanci = Convert.ToDouble(row["IndirimKazanci"]);
-                        toplam = Convert.ToDouble(row["Toplam"]);
-                        siparisMan.SiparisDetayUpdate(sDetayId, urunId, urunhizmetId, birim, miktar, birimFiyati, paraBirimi,kurDegeri, tutar, satirTipi,kdvOrani,kdvToplamTutar, araToplam, indirimOrani, indirimKazanci, toplam);
+                        siparisDObj.SiparisDetayId = Convert.ToInt32(row["SiparisDetayId"]);
+
+                        siparisDObj.Miktar = Convert.ToDouble(row["Miktar"]);
+                        siparisDObj.BirimFiyati = Convert.ToDouble(row["BirimFiyati"]);
+                        siparisDObj.Tutar = Convert.ToDouble(row["Tutar"]);
+                        siparisDObj.Birim = row["Birim"].ToString();
+                        siparisDObj.KurId = Convert.ToInt32(lookUpEditKurlar.EditValue);
+                        siparisDObj.SatirTipi = row["SatirTipi"].ToString();
+                        siparisDObj.KdvOrani = Convert.ToInt32(row["KdvOrani"]);
+                        siparisDObj.KdvToplamTutari = Convert.ToDouble(row["KdvToplamTutari"]);
+                        siparisDObj.AraToplam = Convert.ToDouble(row["AraToplam"]);
+                        siparisDObj.IndirimOrani = Convert.ToInt32(row["IndirimOrani"]);
+                        siparisDObj.IndirimKazanci = Convert.ToDouble(row["IndirimKazanci"]);
+                        siparisDObj.Toplam = Convert.ToDouble(row["Toplam"]);
+                        siparisDObj.KurDegeri = Convert.ToDouble(txtKurDegeri.Text);
+                        siparisMan.SiparisDetayUpdate(siparisDObj);
                     }
                     else
                     {
                         if (row["SatirTipi"].ToString() == "Malzeme")
                         {
-                            urunId = Convert.ToInt32(row["UrunMalzemeId"]);
-                            urunhizmetId = null;
+                            siparisDObj.UrunMalzemeId = Convert.ToInt32(row["UrunMalzemeId"]);
+                            siparisDObj.UrunHizmetId = null;
                         }
                         if (row["SatirTipi"].ToString() == "Hizmet")
                         {
-                            urunhizmetId = Convert.ToInt32(row["UrunHizmetId"]);
-                            urunId = null;
+                            siparisDObj.UrunHizmetId = Convert.ToInt32(row["UrunHizmetId"]);
+                            siparisDObj.UrunMalzemeId = null;
                         }
-                       
-                        miktar = Convert.ToDouble(row["Miktar"]);
-                        birimFiyati = Convert.ToDouble(row["BirimFiyati"]);
-                        tutar = Convert.ToDouble(row["Tutar"]);
-                        birim = row["Birim"].ToString();
-                        paraBirimi = Convert.ToInt32(lookUpEditKurlar.EditValue);
-                        satirTipi = row["SatirTipi"].ToString();
-                        kdvOrani = Convert.ToInt32(row["KdvOrani"]);
-                        kdvToplamTutar = Convert.ToDouble(row["KdvToplamTutari"]);
-                        araToplam = Convert.ToDouble(row["AraToplam"]);
-                        indirimOrani = Convert.ToInt32(row["IndirimOrani"]);
-                        indirimKazanci = Convert.ToDouble(row["IndirimKazanci"]);
-                        toplam = Convert.ToDouble(row["Toplam"]);
-                        siparisMan.SiparisDetayInsert(SiparisID, urunId, urunhizmetId, miktar, birimFiyati, tutar, birim, paraBirimi,kurDegeri, satirTipi,kdvOrani,kdvToplamTutar, araToplam, indirimOrani, indirimKazanci, toplam);
+                        siparisDObj.SiparisId = SiparisID;
+                        siparisDObj.Miktar = Convert.ToDouble(row["Miktar"]);
+                        siparisDObj.BirimFiyati = Convert.ToDouble(row["BirimFiyati"]);
+                        siparisDObj.Tutar = Convert.ToDouble(row["Tutar"]);
+                        siparisDObj.Birim = row["Birim"].ToString();
+                        siparisDObj.KurId = Convert.ToInt32(lookUpEditKurlar.EditValue);
+                        siparisDObj.SatirTipi = row["SatirTipi"].ToString();
+                        siparisDObj.KdvOrani = Convert.ToInt32(row["KdvOrani"]);
+                        siparisDObj.KdvToplamTutari = Convert.ToDouble(row["KdvToplamTutari"]);
+                        siparisDObj.AraToplam = Convert.ToDouble(row["AraToplam"]);
+                        siparisDObj.IndirimOrani = Convert.ToInt32(row["IndirimOrani"]);
+                        siparisDObj.IndirimKazanci = Convert.ToDouble(row["IndirimKazanci"]);
+                        siparisDObj.Toplam = Convert.ToDouble(row["Toplam"]);
+                        siparisDObj.KurDegeri = Convert.ToDouble(txtKurDegeri.Text);
+                        siparisMan.SiparisDetayInsert(siparisDObj);
                     }
 
                 }
@@ -864,6 +873,7 @@ namespace WindowsFormsApDevex
                 {
                     row["ParaBirimi"] = KurAdi;
                 }
+              
                 if (KurID != 1)
                 {
                     string kurDegeri = KurDegerleriniCek(KurAdi);

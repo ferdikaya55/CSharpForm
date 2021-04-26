@@ -135,6 +135,9 @@
     <Compile Include="FrmUrunHizmet.Designer.cs">
       <DependentUpon>FrmUrunHizmet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Musteri.cs" />
+    <Compile Include="Objects\Siparis.cs" />
+    <Compile Include="Objects\SiparisD.cs" />
     <Compile Include="OycRapor.cs">
       <SubType>Component</SubType>
     </Compile>

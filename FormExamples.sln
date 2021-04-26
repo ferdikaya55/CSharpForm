@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp2", "WindowsFormsApp2\WindowsFormsApp2.csproj", "{9247F9C4-235D-43FB-BBD2-814C9FEB5E91}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApDevex", "WindowsFormsApDevex\WindowsFormsApDevex.csproj", "{B5FFAD02-DB26-46E1-89E6-73AFFF17DBAF}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9247F9C4-235D-43FB-BBD2-814C9FEB5E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9247F9C4-235D-43FB-BBD2-814C9FEB5E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9247F9C4-235D-43FB-BBD2-814C9FEB5E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9247F9C4-235D-43FB-BBD2-814C9FEB5E91}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5FFAD02-DB26-46E1-89E6-73AFFF17DBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5FFAD02-DB26-46E1-89E6-73AFFF17DBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5FFAD02-DB26-46E1-89E6-73AFFF17DBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU

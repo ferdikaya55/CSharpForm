@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using WindowsFormsApDevex.Objects;
 
 namespace WindowsFormsApDevex
 {
@@ -42,27 +43,33 @@ namespace WindowsFormsApDevex
             return table.Rows[0];
         }
 
-        public void MusteriInsert(string ad,string adres,string tel)
+        public void MusteriInsert(Musteri musteri)
         {
-            string query = "INSERT INTO Musteriler(MusteriAd,Adres,Telefon) VALUES (@MusteriAd,@Adres,@Telefon)";
+            string query = "INSERT INTO Musteriler(MusteriAd,Adres,Telefon,Fax,Email,VergiNo) VALUES (@MusteriAd,@Adres,@Telefon,@Fax,@Email,@VergiNo)";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriAd",ad);
-            command.Parameters.AddWithValue("@Adres",adres);
-            command.Parameters.AddWithValue("@Telefon", tel);
+            command.Parameters.AddWithValue("@MusteriAd",musteri.MusteriAd);
+            command.Parameters.AddWithValue("@Adres",musteri.Adres);
+            command.Parameters.AddWithValue("@Telefon", musteri.Telefon);
+            command.Parameters.AddWithValue("@Fax", musteri.Fax);
+            command.Parameters.AddWithValue("@Email", musteri.Email);
+            command.Parameters.AddWithValue("@VergiNo", musteri.VergiNo);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
            
 
         }
-        public void MusteriUpdate(int id,string ad,string telefon,string adres)
+        public void MusteriUpdate(Musteri musteri)
         {
-            string query = "UPDATE Musteriler SET MusteriAd=@MusteriAd,Adres=@Adres,Telefon=@Telefon WHERE MusteriId=@MusteriId";
+            string query = "UPDATE Musteriler SET MusteriAd=@MusteriAd,Adres=@Adres,Telefon=@Telefon,Fax=@Fax,Email=@Email,VergiNo=@VergiNo WHERE MusteriId=@MusteriId";
             command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@MusteriId",id );
-            command.Parameters.AddWithValue("@MusteriAd",ad );
-            command.Parameters.AddWithValue("@Adres",adres );
-            command.Parameters.AddWithValue("@Telefon",telefon);
+            command.Parameters.AddWithValue("@MusteriId", musteri.MusteriId);
+            command.Parameters.AddWithValue("@MusteriAd", musteri.MusteriAd);
+            command.Parameters.AddWithValue("@Adres", musteri.Adres);
+            command.Parameters.AddWithValue("@Telefon", musteri.Telefon);
+            command.Parameters.AddWithValue("@Fax", musteri.Fax);
+            command.Parameters.AddWithValue("@Email", musteri.Email);
+            command.Parameters.AddWithValue("@VergiNo", musteri.VergiNo);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();

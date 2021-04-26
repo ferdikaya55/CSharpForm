@@ -51,6 +51,9 @@ namespace WindowsFormsApDevex
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.Fax = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Email = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.VergiNo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMusteriler)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -63,10 +66,10 @@ namespace WindowsFormsApDevex
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControlMusteriler.ContextMenuStrip = this.contextMenuStrip1;
-            this.gridControlMusteriler.Location = new System.Drawing.Point(22, 67);
+            this.gridControlMusteriler.Location = new System.Drawing.Point(12, 40);
             this.gridControlMusteriler.MainView = this.gridView1;
             this.gridControlMusteriler.Name = "gridControlMusteriler";
-            this.gridControlMusteriler.Size = new System.Drawing.Size(501, 381);
+            this.gridControlMusteriler.Size = new System.Drawing.Size(751, 267);
             this.gridControlMusteriler.TabIndex = 0;
             this.gridControlMusteriler.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -115,7 +118,10 @@ namespace WindowsFormsApDevex
             this.gridMusteriId,
             this.gridColumn2,
             this.gridMusteriAdres,
-            this.gridMusteriTelefon});
+            this.gridMusteriTelefon,
+            this.Fax,
+            this.Email,
+            this.VergiNo});
             this.gridView1.GridControl = this.gridControlMusteriler;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -135,8 +141,8 @@ namespace WindowsFormsApDevex
             // 
             // gridColumn2
             // 
-            this.gridColumn2.AppearanceCell.BackColor = System.Drawing.Color.Silver;
-            this.gridColumn2.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridColumn2.AppearanceCell.BackColor = System.Drawing.Color.Transparent;
+            this.gridColumn2.AppearanceCell.BackColor2 = System.Drawing.Color.White;
             this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn2.AppearanceCell.Options.UseFont = true;
@@ -150,12 +156,12 @@ namespace WindowsFormsApDevex
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MusteriAd", "{0}")});
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 93;
+            this.gridColumn2.Width = 111;
             // 
             // gridMusteriAdres
             // 
-            this.gridMusteriAdres.AppearanceCell.BackColor = System.Drawing.Color.Silver;
-            this.gridMusteriAdres.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridMusteriAdres.AppearanceCell.BackColor = System.Drawing.Color.Transparent;
+            this.gridMusteriAdres.AppearanceCell.BackColor2 = System.Drawing.Color.White;
             this.gridMusteriAdres.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.gridMusteriAdres.AppearanceCell.Options.UseBackColor = true;
             this.gridMusteriAdres.AppearanceCell.Options.UseFont = true;
@@ -166,13 +172,13 @@ namespace WindowsFormsApDevex
             this.gridMusteriAdres.Name = "gridMusteriAdres";
             this.gridMusteriAdres.OptionsColumn.AllowEdit = false;
             this.gridMusteriAdres.Visible = true;
-            this.gridMusteriAdres.VisibleIndex = 1;
-            this.gridMusteriAdres.Width = 132;
+            this.gridMusteriAdres.VisibleIndex = 2;
+            this.gridMusteriAdres.Width = 136;
             // 
             // gridMusteriTelefon
             // 
-            this.gridMusteriTelefon.AppearanceCell.BackColor = System.Drawing.Color.Silver;
-            this.gridMusteriTelefon.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridMusteriTelefon.AppearanceCell.BackColor = System.Drawing.Color.Transparent;
+            this.gridMusteriTelefon.AppearanceCell.BackColor2 = System.Drawing.Color.White;
             this.gridMusteriTelefon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.gridMusteriTelefon.AppearanceCell.Options.UseBackColor = true;
             this.gridMusteriTelefon.AppearanceCell.Options.UseFont = true;
@@ -183,8 +189,8 @@ namespace WindowsFormsApDevex
             this.gridMusteriTelefon.Name = "gridMusteriTelefon";
             this.gridMusteriTelefon.OptionsColumn.AllowEdit = false;
             this.gridMusteriTelefon.Visible = true;
-            this.gridMusteriTelefon.VisibleIndex = 2;
-            this.gridMusteriTelefon.Width = 103;
+            this.gridMusteriTelefon.VisibleIndex = 3;
+            this.gridMusteriTelefon.Width = 119;
             // 
             // barManager1
             // 
@@ -275,17 +281,17 @@ namespace WindowsFormsApDevex
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(546, 24);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlTop.Size = new System.Drawing.Size(809, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 448);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 299);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(546, 20);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(809, 20);
             // 
             // barDockControlLeft
             // 
@@ -293,23 +299,50 @@ namespace WindowsFormsApDevex
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 424);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 275);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(546, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(809, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 424);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 275);
+            // 
+            // Fax
+            // 
+            this.Fax.Caption = "FAX";
+            this.Fax.FieldName = "Fax";
+            this.Fax.Name = "Fax";
+            this.Fax.Visible = true;
+            this.Fax.VisibleIndex = 4;
+            this.Fax.Width = 138;
+            // 
+            // Email
+            // 
+            this.Email.Caption = "EMAİL";
+            this.Email.FieldName = "Email";
+            this.Email.Name = "Email";
+            this.Email.Visible = true;
+            this.Email.VisibleIndex = 5;
+            this.Email.Width = 148;
+            // 
+            // VergiNo
+            // 
+            this.VergiNo.Caption = "VERGİ NUMARASI";
+            this.VergiNo.FieldName = "VergiNo";
+            this.VergiNo.Name = "VergiNo";
+            this.VergiNo.Visible = true;
+            this.VergiNo.VisibleIndex = 1;
+            this.VergiNo.Width = 128;
             // 
             // Müşteriler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 468);
+            this.ClientSize = new System.Drawing.Size(809, 319);
             this.Controls.Add(this.gridControlMusteriler);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -352,6 +385,9 @@ namespace WindowsFormsApDevex
         private DevExpress.XtraBars.BarButtonItem barBtnGuncelle;
         private DevExpress.XtraBars.BarButtonItem barBtnSil;
         private DevExpress.XtraBars.BarButtonItem barBtnCikis;
+        private DevExpress.XtraGrid.Columns.GridColumn Fax;
+        private DevExpress.XtraGrid.Columns.GridColumn Email;
+        private DevExpress.XtraGrid.Columns.GridColumn VergiNo;
     }
 }
 
